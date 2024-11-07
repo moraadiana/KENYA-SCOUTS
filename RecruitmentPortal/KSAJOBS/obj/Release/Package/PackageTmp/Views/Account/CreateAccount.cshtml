@@ -1,0 +1,166 @@
+﻿@model KSAJOBS.Models.Register
+@{
+    ViewBag.Title = "Create Account";
+    Layout = "~/Views/Shared/_Site.cshtml";
+}
+
+@Html.Action("Notification")
+
+<div class="container">
+    <section class="content">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><i class="fa fa-user-circle"></i>&nbsp;General Information</div>
+            <div class="panel-body">
+                <form action="/account/createaccount" method="post">
+                    <p class="label label-danger">@ViewBag.errorMsg</p>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Initials</label>
+                                <select name="Initials" class="form-control">
+                                    <option value="0">Mr.</option>
+                                    <option value="1">Miss.</option>
+                                    <option value="2">Mrs.</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" name="FirstName" class="form-control" placeholder="First Name" required value="" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Middle Name</label>
+                                <input type="text" name="MiddleName" class="form-control" placeholder="Middle Name" value="" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" name="LastName" class="form-control" placeholder="Last Name" required value="" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>ID Number</label>
+                                <input type="text" name="IdNumber" class="form-control" placeholder="ID Number" required value="" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="text" name="PhoneNumber" class="form-control" placeholder="Phone Number" required value="" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <select name="Gender" class="form-control">
+                                    <option value="0">Male</option>
+                                    <option value="1">Female</option>
+                                    <option value="2">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Marital Status</label>
+                                <select name="MaritalStatus" class="form-control">
+                                    <option value="0">Single</option>
+                                    <option value="1">Married</option>
+                                    <option value="2">Separated</option>
+                                    <option value="3">Divorced</option>
+                                    <option value="4">Widow(er)</option>
+                                    <option value="5">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Postal Code</label>
+                                <input type="text" name="PostalCode" class="form-control" placeholder="Postal Code" required value="" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Postal Address</label>
+                                <input type="text" name="PostalAddress" class="form-control" placeholder="Postal Address" required value="" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Date of Birth</label>
+                                <input type="date" id="txtDoB" name="BirthDate" class="form-control" placeholder="Date of Birth" required value="" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Applicant Type</label>
+                                <select name="ApplicantType" class="form-control">
+                                    <option value="0">External</option>
+                                    <option value="1">Internal</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" name="EmailAddress" class="form-control" placeholder="Email Address" required value="" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Disability</label>
+                                <select name="Disability" class="form-control">
+                                    <option value="1">No</option>
+                                    <option value="2">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+                        @*<div class="col-md-4">
+                            <div class="form-group">
+                                <label>Disability Status</label>
+                                <input type="text" name="DisabilityStatus" class="form-control" placeholder="Disability Status" value="" />
+                            </div>
+                        </div>*@
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" name="Password" class="form-control" placeholder="Password" value="" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Confirm Password</label>
+                                <input type="password" name="ConfirmPassword" class="form-control" placeholder="Confirm Password" value="" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Citizenship</label>
+                                <select name="Citizenship" class="form-control select2">
+                                    @foreach (var country in @Model.CitizenshipList)
+                                    {
+                                        <option value="@country.Code">@country.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary pull-right">Create Account</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    $j('#MainContent_txtDoB').Zebra_DatePicker({
+        view: 'years',
+        direction: [1, true],
+    });
+</script>

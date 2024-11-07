@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title - KENYA Scouts</title>
+    <link rel="icon" href="~/images/logo1.png" />
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="~/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="~/bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/dist/css/AdminLTE.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="~/dist/css/skins/_all-skins.min.css">
+    <!-- Tostr notification -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link href="~/Zebra_Datepicker-master/public/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/Zebra_Datepicker-master/examples/public/javascript/jquery-1.12.0.js"></script>
+    <script src="~/Zebra_Datepicker-master/public/javascript/zebra_datepicker.js"></script>
+    <script src="~/Zebra_Datepicker-master/public/javascript/zebra_datepicker.src.js"></script>
+
+    <script type="text/javascript">
+        var $j = jQuery.noConflict();
+        $j(document).ready(function () {
+            var $zdp = $j('#Main2__dtRequiredDate').data('Zebra_DatePicker');
+            // assuming the controls you want to attach the plugin to
+            // have the "datepicker" class set
+            $j('ctl00_Main2__datepicker').Zebra_DatePicker();
+
+        });
+    </script>
+</head>
+<!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+<body class="hold-transition skin-blue layout-top-nav">
+    <div class="wrapper">
+
+        <header class="main-header">
+            <nav class="navbar navbar-static-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a href="/home/index" class="navbar-brand"><b>KSA </b>Online Jobs Board</a>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                        <ul class="nav navbar-nav">
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                    <!-- Navbar Right Menu -->
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <!-- User Account Menu -->
+                            <li class="dropdown user user-menu">
+                                <!-- Menu Toggle Button -->
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <!-- The user image in the navbar-->
+                                    <img src="~/images/logo1.png" class="user-image" alt="User Image">
+                                    <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                    <span class="hidden-xs">KSA</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="/account/login" style="color: black; text-align: center">Sign in</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-custom-menu -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+        </header>
+        <!-- Full Width Column -->
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="container">
+                <center>
+                    <strong>Copyright &copy; @DateTime.Now.Year - KSA| Powered by <a href="https://appkings.co.ke" target="_blank">AppKings Solutions LTD</a>.</strong> All rights reserved.
+                </center>
+            </div>
+            <!-- /.container -->
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery 3 -->
+    <script src="~/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="~/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="~/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/dist/js/demo.js"></script>
+    <!-- DataTables -->
+    <script src="~/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <!-- page script -->
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
+    </script>
+</body>
+</html>
+

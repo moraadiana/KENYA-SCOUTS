@@ -1,0 +1,47 @@
+﻿@model KSAJOBS.ViewModels.JobDetail
+@{
+    ViewBag.Title = "Job Details";
+    Layout = "~/Views/Shared/_Site.cshtml";
+}
+
+<div class="container">
+    <section class="content">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <i class="fa fa-briefcase"></i>&nbsp; Job Details For <b>
+                    @ViewBag.JobTitle
+                </b>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Requirements</h4>
+                        <div>
+                            <ul>
+                                @foreach (var requirement in @Model.JobRequirements)
+                                {
+                                    <li>@requirement.Requirements</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <h4>Responsibilities</h4>
+                        <div>
+                            <ul>
+                                @foreach (var responsibility in @Model.JobResponsibilities)
+                                {
+                                    <li>@responsibility.Responsibilities</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <a href="@Url.Action("index")" class="btn btn-warning">Go Back</a>
+                        <a href="@Url.Action("login","account")" class="btn btn-primary">Apply</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

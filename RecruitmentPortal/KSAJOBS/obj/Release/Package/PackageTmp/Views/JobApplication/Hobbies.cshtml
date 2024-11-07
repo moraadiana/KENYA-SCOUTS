@@ -1,0 +1,72 @@
+﻿@model KSAJOBS.Models.Hobby
+@{
+    ViewBag.Title = "Applicant Hobbies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Action("Notification")
+
+<div class="container">
+    <section class="content">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><i class="fa fa-list"></i>&nbsp;Hobbies</div>
+            <div class="panel-body">
+                <div class="box-body">
+                    <form action="/jobapplication/hobbies" method="post">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Hobbies</label>
+                                    <input type="text" name="ApplicantHobby" placeholder="Hobby" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-linkedin"><i class="fa fa-pencil-square"></i>&nbsp;Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            @if (@Model.ApplicantHobbies.Count > 0)
+                            {
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#No</th>
+                                            <th>Hobby</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var hobby in @Model.ApplicantHobbies)
+                                        {
+                                            <tr>
+                                                <td>@hobby.Counter</td>
+                                                <td>@hobby.Hobbies</td>
+                                                <td><a href="@Url.Action("removehobby","jobapplication",new {hobby = hobby.Hobbies})" class="label label-danger"><i class="fa fa-trash"></i></a></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            }
+                            else
+                            {
+                                <p class="text-danger">No records</p>
+                            }
+
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="@Url.Action("complete","jobapplication")" class="btn btn-linkedin pull-right"><i class="fa fa-paper-plane"></i>&nbsp;Complete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

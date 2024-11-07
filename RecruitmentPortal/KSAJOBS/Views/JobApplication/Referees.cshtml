@@ -1,0 +1,110 @@
+﻿@model KSAJOBS.Models.Referee
+@{
+    ViewBag.Title = "Referees";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Action("Notification")
+
+<div class="container">
+    <section class="content">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><i class="fa fa-list"></i>&nbsp;Referees</div>
+            <div class="panel-body">
+                <div class="box-body">
+                    <form action="/jobapplication/referees" method="post">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Referee Name</label>
+                                    <input type="text" name="RefereeName" placeholder="Referee Name" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Referee Designation</label>
+                                    <input type="text" name="RefereeDesignation" placeholder="Referee Designation" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Referee Institution</label>
+                                    <input type="text" name="RefereeInstitution" placeholder="Referee Institution" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Referee Email</label>
+                                    <input type="email" name="RefereeEmail" placeholder="Referee Email" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Referee Phone Number</label>
+                                    <input type="text" name="RefereePhone" placeholder="Referee Phone Number" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Referee Address</label>
+                                    <input type="text" name="RefereeAddress" placeholder="Referee Address" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-linkedin"><i class="fa fa-pencil-square"></i>&nbsp;Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            @if (@Model.ApplicantReferees.Count > 0)
+                            {
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#No</th>
+                                            <th>Full Names</th>
+                                            <th>Designation</th>
+                                            <th>Institution</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var referee in @Model.ApplicantReferees)
+                                        {
+                                            <tr>
+                                                <td>@referee.Counter</td>
+                                                <td>@referee.FullName</td>
+                                                <td>@referee.Designation</td>
+                                                <td>@referee.Institution</td>
+                                                <td>@referee.Email</td>
+                                                <td>@referee.Phone</td>
+                                                <td class="text-center"><a href="@Url.Action("removereferee","jobapplication",new {email=referee.Email})" class="label label-danger"><i class="fa fa-trash"></i></a></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            }
+                            else
+                            {
+                                <p class="text-danger">No records</p>
+                            }
+
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="@Url.Action("navigatehobbies","jobapplication")" class="btn btn-primary pull-right"><i class="fa fa-paper-plane"></i>&nbsp;Next</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

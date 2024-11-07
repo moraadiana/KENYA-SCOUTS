@@ -1,0 +1,46 @@
+﻿@model IEnumerable<KSAJOBS.ViewModels.MyApplication>
+@{
+    ViewBag.Title = "My Applications";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Action("Notification")
+
+<div class="container">
+    <section class="content">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><i class="fa fa-list"></i>&nbsp;My Job Applications</div>
+            <div class="panel-body">
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>#No</th>
+                                <th>Application No.</th>
+                                <th>Job ID</th>
+                                <th>Job Title</th>
+                                <th>Date Applied</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var job in @Model)
+                            {
+                                <tr>
+                                    <td>@job.Counter</td>
+                                    <td>@job.JobApplicationNo</td>
+                                    <td>@job.JobId</td>
+                                    <td>@job.JobTitle</td>
+                                    <td>@Convert.ToDateTime(job.DateApplied).ToString("MMMM dd, yyyy")</td>
+                                    <td>@job.Status</td>
+                                    <td><a href="@Url.Action("generalinformation", "jobapplication", new {jobId=job.JobId, refNo=job.JobRefNo})">View</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

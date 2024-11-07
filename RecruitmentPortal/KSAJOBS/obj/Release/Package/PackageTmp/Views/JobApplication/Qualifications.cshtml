@@ -1,0 +1,142 @@
+﻿@model KSAJOBS.Models.Qualification
+@{
+    ViewBag.Title = "Qualifications";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Action("Notification")
+
+<div class="container">
+    <section class="content">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><i class="fa fa-list"></i>&nbsp;Qualifications</div>
+            <div class="panel-body">
+                <div class="box-body">
+                    <form action="/jobapplication/qualifications" method="post">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Qualification Type</label>
+                                    <select id="qualification-type" name="QualificationType" class="form-control">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Qualification Code</label>
+                                    <select id="qualification-code" name="QualificationCode" class="form-control">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>From</label>
+                                    <input type="date" name="DateFrom" placeholder="From Date" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>To</label>
+                                    <input type="date" name="DateTo" placeholder="Date To" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Intitution</label>
+                                    <input type="text" name="Institution" placeholder="Institution Name" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Type</label>
+                                    <select class="form-control" name="Type">
+                                        <option value="1">Internal</option>
+                                        <option value="2">External</option>
+                                        <option value="3">Previous Position</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-linkedin"><i class="fa fa-pencil-square"></i>&nbsp;Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#No</th>
+                                        <th>Qualification Type</th>
+                                        <th>Qualification Description</th>
+                                        <th>Institution</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var qualification in @Model.ApplicantQualifications)
+                                    {
+                                        <tr>
+                                            <td>@qualification.Counter</td>
+                                            <td>@qualification.QualificationType</td>
+                                            <td>@qualification.QualificationDescription</td>
+                                            <td>@qualification.Institution</td>
+                                            <td>@Convert.ToDateTime(qualification.StartDate).ToShortDateString()</td>
+                                            <td>@Convert.ToDateTime(qualification.EndDate).ToShortDateString()</td>
+                                            <td class="text-center"><a href="@Url.Action("removequalification","jobapplication", new {applicationNo = qualification.ApplitionNo, qualificationCode = qualification.QualificationCode})" class="label label-danger"><i class="fa fa-trash"></i></a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="@Url.Action("navigatereferees","jobapplication")" class="btn btn-primary pull-right"><i class="fa fa-paper-plane"></i>&nbsp;Next</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<script>
+    const qualificationContainer = document.getElementById("qualification-type");
+    const qualificationCodeContainer = document.getElementById("qualification-code");
+
+    const getQualificationCodes = async function () {
+        const qualificationType = qualificationContainer.value;
+        qualificationCodeContainer.innerHTML = '';
+        const response = await fetch(`/JobApplication/QualificationCode?qualificationCode=${qualificationType}`)
+        const data = await response.json();
+        let html = '';
+        data.forEach(function (qualification, i, arr) {
+            html += `<option value='${qualification.Code}'>${qualification.Description}</option>`;
+            qualificationCodeContainer.innerHTML = html;
+        });
+    }
+
+    const getQualificationTypes = async function () {
+        const response = await fetch('/JobApplication/QualificationType')
+        const data = await response.json();
+        const uniqueData = [...new Set(data.map(c => c.Code))];
+        let html = '';
+        uniqueData.forEach(function (qualification, i, arr) {
+            html += `<option value='${qualification}'>${qualification}</option>`;
+        });
+        qualificationContainer.innerHTML = html;
+        getQualificationCodes();
+    }
+
+    getQualificationTypes();
+
+    qualificationContainer.addEventListener('change', getQualificationCodes);
+</script>

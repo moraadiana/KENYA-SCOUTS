@@ -1,0 +1,981 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/Recruitment" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/Recruitment" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/Recruitment" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="CreateOnlineRecruitmentAccount">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="initials" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="firstName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="middleName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="lastName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="idNumber" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="phoneNumber" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="gender" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="maritalStatus" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="postalCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="postalAddress" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="birthDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="applicantType" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="emailAddress" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="disability" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="disabilityStatus" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="password" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="citizenship" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateOnlineRecruitmentAccount_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteDocumentAttachment">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="fileName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteDocumentAttachment_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteMemoAttachment">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteMemoAttachment_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAdvertisedJobs">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetAdvertisedJobs_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetApplicantHobbies">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetApplicantHobbies_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetApplicantQualifications">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetApplicantQualifications_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetApplicantReferees">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetApplicantReferees_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAttachmentFileName">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="systemId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAttachmentFileName_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetJobQualificationCodes">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="jobId" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="qualificationCode" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetJobQualificationCodes_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetJobQualificationType">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="jobId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetJobQualificationType_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetJobTitle">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="jobId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetJobTitle_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyApplications">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyApplications_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetNationalities">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetNationalities_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HRMApplicantHobby">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="hobby" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HRMApplicantHobby_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HRMApplicantQualifications">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="qualifcationType" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="qualificationCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="institution" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dateFrom" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="dateTo" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="type" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HRMApplicantQualifications_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HRMApplicantReferees">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="names" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="designation" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="institution" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="address" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="phone" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="email" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HRMApplicantReferees_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HRMRemoveApplicantHobby">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="hobby" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HRMRemoveApplicantHobby_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HRMRemoveApplicantQualification">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="qualificationCode" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HRMRemoveApplicantQualification_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HRMRemoveApplicantReferee">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="email" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HRMRemoveApplicantReferee_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="JobDescription">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="jobId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="JobDescription_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="JobRequirements">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="jobId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="JobRequirements_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RecruitmentUserDetails">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RecruitmentUserDetails_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RecruitmentUserLogin">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="password" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RecruitmentUserLogin_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RecruitmentUserNames">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RecruitmentUserNames_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RecruitmentUserPassword">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RecruitmentUserPassword_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RegFileUpload">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="retNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="fileName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="attachment" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="tableId" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RegFileUpload_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SaveMemoAttchmnts">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentsNoz" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="attachmentz" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="decriptionz" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SaveMemoAttchmnts_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SubmitJobApplication">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="jobId" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="refNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SubmitJobApplication_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="CreateOnlineRecruitmentAccount">
+    <part name="parameters" element="tns:CreateOnlineRecruitmentAccount" />
+  </message>
+  <message name="CreateOnlineRecruitmentAccount_Result">
+    <part name="parameters" element="tns:CreateOnlineRecruitmentAccount_Result" />
+  </message>
+  <message name="DeleteDocumentAttachment">
+    <part name="parameters" element="tns:DeleteDocumentAttachment" />
+  </message>
+  <message name="DeleteDocumentAttachment_Result">
+    <part name="parameters" element="tns:DeleteDocumentAttachment_Result" />
+  </message>
+  <message name="DeleteMemoAttachment">
+    <part name="parameters" element="tns:DeleteMemoAttachment" />
+  </message>
+  <message name="DeleteMemoAttachment_Result">
+    <part name="parameters" element="tns:DeleteMemoAttachment_Result" />
+  </message>
+  <message name="GetAdvertisedJobs">
+    <part name="parameters" element="tns:GetAdvertisedJobs" />
+  </message>
+  <message name="GetAdvertisedJobs_Result">
+    <part name="parameters" element="tns:GetAdvertisedJobs_Result" />
+  </message>
+  <message name="GetApplicantHobbies">
+    <part name="parameters" element="tns:GetApplicantHobbies" />
+  </message>
+  <message name="GetApplicantHobbies_Result">
+    <part name="parameters" element="tns:GetApplicantHobbies_Result" />
+  </message>
+  <message name="GetApplicantQualifications">
+    <part name="parameters" element="tns:GetApplicantQualifications" />
+  </message>
+  <message name="GetApplicantQualifications_Result">
+    <part name="parameters" element="tns:GetApplicantQualifications_Result" />
+  </message>
+  <message name="GetApplicantReferees">
+    <part name="parameters" element="tns:GetApplicantReferees" />
+  </message>
+  <message name="GetApplicantReferees_Result">
+    <part name="parameters" element="tns:GetApplicantReferees_Result" />
+  </message>
+  <message name="GetAttachmentFileName">
+    <part name="parameters" element="tns:GetAttachmentFileName" />
+  </message>
+  <message name="GetAttachmentFileName_Result">
+    <part name="parameters" element="tns:GetAttachmentFileName_Result" />
+  </message>
+  <message name="GetJobQualificationCodes">
+    <part name="parameters" element="tns:GetJobQualificationCodes" />
+  </message>
+  <message name="GetJobQualificationCodes_Result">
+    <part name="parameters" element="tns:GetJobQualificationCodes_Result" />
+  </message>
+  <message name="GetJobQualificationType">
+    <part name="parameters" element="tns:GetJobQualificationType" />
+  </message>
+  <message name="GetJobQualificationType_Result">
+    <part name="parameters" element="tns:GetJobQualificationType_Result" />
+  </message>
+  <message name="GetJobTitle">
+    <part name="parameters" element="tns:GetJobTitle" />
+  </message>
+  <message name="GetJobTitle_Result">
+    <part name="parameters" element="tns:GetJobTitle_Result" />
+  </message>
+  <message name="GetMyApplications">
+    <part name="parameters" element="tns:GetMyApplications" />
+  </message>
+  <message name="GetMyApplications_Result">
+    <part name="parameters" element="tns:GetMyApplications_Result" />
+  </message>
+  <message name="GetNationalities">
+    <part name="parameters" element="tns:GetNationalities" />
+  </message>
+  <message name="GetNationalities_Result">
+    <part name="parameters" element="tns:GetNationalities_Result" />
+  </message>
+  <message name="HRMApplicantHobby">
+    <part name="parameters" element="tns:HRMApplicantHobby" />
+  </message>
+  <message name="HRMApplicantHobby_Result">
+    <part name="parameters" element="tns:HRMApplicantHobby_Result" />
+  </message>
+  <message name="HRMApplicantQualifications">
+    <part name="parameters" element="tns:HRMApplicantQualifications" />
+  </message>
+  <message name="HRMApplicantQualifications_Result">
+    <part name="parameters" element="tns:HRMApplicantQualifications_Result" />
+  </message>
+  <message name="HRMApplicantReferees">
+    <part name="parameters" element="tns:HRMApplicantReferees" />
+  </message>
+  <message name="HRMApplicantReferees_Result">
+    <part name="parameters" element="tns:HRMApplicantReferees_Result" />
+  </message>
+  <message name="HRMRemoveApplicantHobby">
+    <part name="parameters" element="tns:HRMRemoveApplicantHobby" />
+  </message>
+  <message name="HRMRemoveApplicantHobby_Result">
+    <part name="parameters" element="tns:HRMRemoveApplicantHobby_Result" />
+  </message>
+  <message name="HRMRemoveApplicantQualification">
+    <part name="parameters" element="tns:HRMRemoveApplicantQualification" />
+  </message>
+  <message name="HRMRemoveApplicantQualification_Result">
+    <part name="parameters" element="tns:HRMRemoveApplicantQualification_Result" />
+  </message>
+  <message name="HRMRemoveApplicantReferee">
+    <part name="parameters" element="tns:HRMRemoveApplicantReferee" />
+  </message>
+  <message name="HRMRemoveApplicantReferee_Result">
+    <part name="parameters" element="tns:HRMRemoveApplicantReferee_Result" />
+  </message>
+  <message name="JobDescription">
+    <part name="parameters" element="tns:JobDescription" />
+  </message>
+  <message name="JobDescription_Result">
+    <part name="parameters" element="tns:JobDescription_Result" />
+  </message>
+  <message name="JobRequirements">
+    <part name="parameters" element="tns:JobRequirements" />
+  </message>
+  <message name="JobRequirements_Result">
+    <part name="parameters" element="tns:JobRequirements_Result" />
+  </message>
+  <message name="RecruitmentUserDetails">
+    <part name="parameters" element="tns:RecruitmentUserDetails" />
+  </message>
+  <message name="RecruitmentUserDetails_Result">
+    <part name="parameters" element="tns:RecruitmentUserDetails_Result" />
+  </message>
+  <message name="RecruitmentUserLogin">
+    <part name="parameters" element="tns:RecruitmentUserLogin" />
+  </message>
+  <message name="RecruitmentUserLogin_Result">
+    <part name="parameters" element="tns:RecruitmentUserLogin_Result" />
+  </message>
+  <message name="RecruitmentUserNames">
+    <part name="parameters" element="tns:RecruitmentUserNames" />
+  </message>
+  <message name="RecruitmentUserNames_Result">
+    <part name="parameters" element="tns:RecruitmentUserNames_Result" />
+  </message>
+  <message name="RecruitmentUserPassword">
+    <part name="parameters" element="tns:RecruitmentUserPassword" />
+  </message>
+  <message name="RecruitmentUserPassword_Result">
+    <part name="parameters" element="tns:RecruitmentUserPassword_Result" />
+  </message>
+  <message name="RegFileUpload">
+    <part name="parameters" element="tns:RegFileUpload" />
+  </message>
+  <message name="RegFileUpload_Result">
+    <part name="parameters" element="tns:RegFileUpload_Result" />
+  </message>
+  <message name="SaveMemoAttchmnts">
+    <part name="parameters" element="tns:SaveMemoAttchmnts" />
+  </message>
+  <message name="SaveMemoAttchmnts_Result">
+    <part name="parameters" element="tns:SaveMemoAttchmnts_Result" />
+  </message>
+  <message name="SubmitJobApplication">
+    <part name="parameters" element="tns:SubmitJobApplication" />
+  </message>
+  <message name="SubmitJobApplication_Result">
+    <part name="parameters" element="tns:SubmitJobApplication_Result" />
+  </message>
+  <portType name="Recruitment_Port">
+    <operation name="CreateOnlineRecruitmentAccount">
+      <input name="CreateOnlineRecruitmentAccount" message="tns:CreateOnlineRecruitmentAccount" />
+      <output name="CreateOnlineRecruitmentAccount_Result" message="tns:CreateOnlineRecruitmentAccount_Result" />
+    </operation>
+    <operation name="DeleteDocumentAttachment">
+      <input name="DeleteDocumentAttachment" message="tns:DeleteDocumentAttachment" />
+      <output name="DeleteDocumentAttachment_Result" message="tns:DeleteDocumentAttachment_Result" />
+    </operation>
+    <operation name="DeleteMemoAttachment">
+      <input name="DeleteMemoAttachment" message="tns:DeleteMemoAttachment" />
+      <output name="DeleteMemoAttachment_Result" message="tns:DeleteMemoAttachment_Result" />
+    </operation>
+    <operation name="GetAdvertisedJobs">
+      <input name="GetAdvertisedJobs" message="tns:GetAdvertisedJobs" />
+      <output name="GetAdvertisedJobs_Result" message="tns:GetAdvertisedJobs_Result" />
+    </operation>
+    <operation name="GetApplicantHobbies">
+      <input name="GetApplicantHobbies" message="tns:GetApplicantHobbies" />
+      <output name="GetApplicantHobbies_Result" message="tns:GetApplicantHobbies_Result" />
+    </operation>
+    <operation name="GetApplicantQualifications">
+      <input name="GetApplicantQualifications" message="tns:GetApplicantQualifications" />
+      <output name="GetApplicantQualifications_Result" message="tns:GetApplicantQualifications_Result" />
+    </operation>
+    <operation name="GetApplicantReferees">
+      <input name="GetApplicantReferees" message="tns:GetApplicantReferees" />
+      <output name="GetApplicantReferees_Result" message="tns:GetApplicantReferees_Result" />
+    </operation>
+    <operation name="GetAttachmentFileName">
+      <input name="GetAttachmentFileName" message="tns:GetAttachmentFileName" />
+      <output name="GetAttachmentFileName_Result" message="tns:GetAttachmentFileName_Result" />
+    </operation>
+    <operation name="GetJobQualificationCodes">
+      <input name="GetJobQualificationCodes" message="tns:GetJobQualificationCodes" />
+      <output name="GetJobQualificationCodes_Result" message="tns:GetJobQualificationCodes_Result" />
+    </operation>
+    <operation name="GetJobQualificationType">
+      <input name="GetJobQualificationType" message="tns:GetJobQualificationType" />
+      <output name="GetJobQualificationType_Result" message="tns:GetJobQualificationType_Result" />
+    </operation>
+    <operation name="GetJobTitle">
+      <input name="GetJobTitle" message="tns:GetJobTitle" />
+      <output name="GetJobTitle_Result" message="tns:GetJobTitle_Result" />
+    </operation>
+    <operation name="GetMyApplications">
+      <input name="GetMyApplications" message="tns:GetMyApplications" />
+      <output name="GetMyApplications_Result" message="tns:GetMyApplications_Result" />
+    </operation>
+    <operation name="GetNationalities">
+      <input name="GetNationalities" message="tns:GetNationalities" />
+      <output name="GetNationalities_Result" message="tns:GetNationalities_Result" />
+    </operation>
+    <operation name="HRMApplicantHobby">
+      <input name="HRMApplicantHobby" message="tns:HRMApplicantHobby" />
+      <output name="HRMApplicantHobby_Result" message="tns:HRMApplicantHobby_Result" />
+    </operation>
+    <operation name="HRMApplicantQualifications">
+      <input name="HRMApplicantQualifications" message="tns:HRMApplicantQualifications" />
+      <output name="HRMApplicantQualifications_Result" message="tns:HRMApplicantQualifications_Result" />
+    </operation>
+    <operation name="HRMApplicantReferees">
+      <input name="HRMApplicantReferees" message="tns:HRMApplicantReferees" />
+      <output name="HRMApplicantReferees_Result" message="tns:HRMApplicantReferees_Result" />
+    </operation>
+    <operation name="HRMRemoveApplicantHobby">
+      <input name="HRMRemoveApplicantHobby" message="tns:HRMRemoveApplicantHobby" />
+      <output name="HRMRemoveApplicantHobby_Result" message="tns:HRMRemoveApplicantHobby_Result" />
+    </operation>
+    <operation name="HRMRemoveApplicantQualification">
+      <input name="HRMRemoveApplicantQualification" message="tns:HRMRemoveApplicantQualification" />
+      <output name="HRMRemoveApplicantQualification_Result" message="tns:HRMRemoveApplicantQualification_Result" />
+    </operation>
+    <operation name="HRMRemoveApplicantReferee">
+      <input name="HRMRemoveApplicantReferee" message="tns:HRMRemoveApplicantReferee" />
+      <output name="HRMRemoveApplicantReferee_Result" message="tns:HRMRemoveApplicantReferee_Result" />
+    </operation>
+    <operation name="JobDescription">
+      <input name="JobDescription" message="tns:JobDescription" />
+      <output name="JobDescription_Result" message="tns:JobDescription_Result" />
+    </operation>
+    <operation name="JobRequirements">
+      <input name="JobRequirements" message="tns:JobRequirements" />
+      <output name="JobRequirements_Result" message="tns:JobRequirements_Result" />
+    </operation>
+    <operation name="RecruitmentUserDetails">
+      <input name="RecruitmentUserDetails" message="tns:RecruitmentUserDetails" />
+      <output name="RecruitmentUserDetails_Result" message="tns:RecruitmentUserDetails_Result" />
+    </operation>
+    <operation name="RecruitmentUserLogin">
+      <input name="RecruitmentUserLogin" message="tns:RecruitmentUserLogin" />
+      <output name="RecruitmentUserLogin_Result" message="tns:RecruitmentUserLogin_Result" />
+    </operation>
+    <operation name="RecruitmentUserNames">
+      <input name="RecruitmentUserNames" message="tns:RecruitmentUserNames" />
+      <output name="RecruitmentUserNames_Result" message="tns:RecruitmentUserNames_Result" />
+    </operation>
+    <operation name="RecruitmentUserPassword">
+      <input name="RecruitmentUserPassword" message="tns:RecruitmentUserPassword" />
+      <output name="RecruitmentUserPassword_Result" message="tns:RecruitmentUserPassword_Result" />
+    </operation>
+    <operation name="RegFileUpload">
+      <input name="RegFileUpload" message="tns:RegFileUpload" />
+      <output name="RegFileUpload_Result" message="tns:RegFileUpload_Result" />
+    </operation>
+    <operation name="SaveMemoAttchmnts">
+      <input name="SaveMemoAttchmnts" message="tns:SaveMemoAttchmnts" />
+      <output name="SaveMemoAttchmnts_Result" message="tns:SaveMemoAttchmnts_Result" />
+    </operation>
+    <operation name="SubmitJobApplication">
+      <input name="SubmitJobApplication" message="tns:SubmitJobApplication" />
+      <output name="SubmitJobApplication_Result" message="tns:SubmitJobApplication_Result" />
+    </operation>
+  </portType>
+  <binding name="Recruitment_Binding" type="tns:Recruitment_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="CreateOnlineRecruitmentAccount">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:CreateOnlineRecruitmentAccount" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateOnlineRecruitmentAccount">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateOnlineRecruitmentAccount_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteDocumentAttachment">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:DeleteDocumentAttachment" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteDocumentAttachment">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteDocumentAttachment_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteMemoAttachment">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:DeleteMemoAttachment" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteMemoAttachment">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteMemoAttachment_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetAdvertisedJobs">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetAdvertisedJobs" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetAdvertisedJobs">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetAdvertisedJobs_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetApplicantHobbies">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetApplicantHobbies" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetApplicantHobbies">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetApplicantHobbies_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetApplicantQualifications">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetApplicantQualifications" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetApplicantQualifications">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetApplicantQualifications_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetApplicantReferees">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetApplicantReferees" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetApplicantReferees">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetApplicantReferees_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetAttachmentFileName">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetAttachmentFileName" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetAttachmentFileName">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetAttachmentFileName_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetJobQualificationCodes">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetJobQualificationCodes" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetJobQualificationCodes">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetJobQualificationCodes_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetJobQualificationType">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetJobQualificationType" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetJobQualificationType">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetJobQualificationType_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetJobTitle">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetJobTitle" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetJobTitle">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetJobTitle_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetMyApplications">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetMyApplications" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMyApplications">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMyApplications_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetNationalities">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetNationalities" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetNationalities">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetNationalities_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="HRMApplicantHobby">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:HRMApplicantHobby" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="HRMApplicantHobby">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="HRMApplicantHobby_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="HRMApplicantQualifications">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:HRMApplicantQualifications" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="HRMApplicantQualifications">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="HRMApplicantQualifications_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="HRMApplicantReferees">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:HRMApplicantReferees" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="HRMApplicantReferees">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="HRMApplicantReferees_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="HRMRemoveApplicantHobby">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:HRMRemoveApplicantHobby" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="HRMRemoveApplicantHobby">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="HRMRemoveApplicantHobby_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="HRMRemoveApplicantQualification">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:HRMRemoveApplicantQualification" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="HRMRemoveApplicantQualification">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="HRMRemoveApplicantQualification_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="HRMRemoveApplicantReferee">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:HRMRemoveApplicantReferee" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="HRMRemoveApplicantReferee">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="HRMRemoveApplicantReferee_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="JobDescription">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:JobDescription" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="JobDescription">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="JobDescription_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="JobRequirements">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:JobRequirements" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="JobRequirements">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="JobRequirements_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RecruitmentUserDetails">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:RecruitmentUserDetails" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RecruitmentUserDetails">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RecruitmentUserDetails_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RecruitmentUserLogin">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:RecruitmentUserLogin" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RecruitmentUserLogin">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RecruitmentUserLogin_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RecruitmentUserNames">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:RecruitmentUserNames" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RecruitmentUserNames">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RecruitmentUserNames_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RecruitmentUserPassword">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:RecruitmentUserPassword" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RecruitmentUserPassword">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RecruitmentUserPassword_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RegFileUpload">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:RegFileUpload" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RegFileUpload">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RegFileUpload_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SaveMemoAttchmnts">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:SaveMemoAttchmnts" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SaveMemoAttchmnts">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SaveMemoAttchmnts_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SubmitJobApplication">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:SubmitJobApplication" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SubmitJobApplication">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SubmitJobApplication_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Recruitment">
+    <port name="Recruitment_Port" binding="tns:Recruitment_Binding">
+      <address location="http://108.181.152.166:9147/KSA/WS/KSA/Codeunit/Recruitment" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

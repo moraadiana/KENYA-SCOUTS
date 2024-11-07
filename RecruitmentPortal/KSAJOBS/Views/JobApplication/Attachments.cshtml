@@ -1,0 +1,72 @@
+﻿@model IEnumerable<KSAJOBS.ViewModels.ApplicantAttachments>
+@{
+    ViewBag.Title = "Attachments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@Html.Action("Notification")
+
+<div class="container">
+    <section class="content">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><i class="fa fa-list"></i>&nbsp;Attachments</div>
+            <div class="panel-body">
+                <div class="box-body">
+                    <form action="/jobapplication/attachments" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Upload your CV and other supporting documents (Less than 5 MB)</p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Attachment</label>
+                                    <input type="file" name="attachmentFile" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-linkedin"><i class="fa fa-upload"></i>&nbsp;Upload</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <br />
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#No</th>
+                                        <th>Document No</th>
+                                        <th>Description</th>
+                                        <th>Created At</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var attachment in @Model)
+                                    {
+                                        <tr>
+                                            <td>@attachment.Counter</td>
+                                            <td>@attachment.DocumentNo</td>
+                                            <td>@attachment.Description</td>
+                                            <td>@Convert.ToDateTime(attachment.CreatedAt).ToShortDateString()</td>
+                                            <td class="text-center"><a href="@Url.Action("removeattachment","jobapplication", new { systemId = attachment.SystemId })" class="label label-danger"><i class="fa fa-trash"></i></a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="@Url.Action("complete","jobapplication")" class="btn btn-primary pull-right"><i class="fa fa-paper-plane"></i>&nbsp;Complete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
