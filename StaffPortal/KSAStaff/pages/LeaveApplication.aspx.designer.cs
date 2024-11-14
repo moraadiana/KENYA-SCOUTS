@@ -33,15 +33,6 @@ namespace KSAStaff.pages
         protected global::System.Web.UI.WebControls.DropDownList ddlReliver;
 
         /// <summary>
-        /// ddlResponsibilityCenter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlResponsibilityCenter;
-
-        /// <summary>
         /// txtAppliedDays control.
         /// </summary>
         /// <remarks>
@@ -49,6 +40,15 @@ namespace KSAStaff.pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAppliedDays;
+
+        /// <summary>
+        /// lblResCenter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblResCenter;
 
         /// <summary>
         /// txtStartDate control.
@@ -67,15 +67,6 @@ namespace KSAStaff.pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblBalance;
-
-        /// <summary>
-        /// lblDirectorate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDirectorate;
 
         /// <summary>
         /// lblDepartment control.

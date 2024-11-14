@@ -97,30 +97,64 @@ namespace KSAStaff
             return connection;
         }
 
+        /* public static string EmployeeGender
+         {
+             get
+             {
+                 string s = "";
+
+                 try
+                 {
+                     string strSQL = String.Format("SELECT [Gender] FROM [" + Components.Company_Name + "$HRM-Employee C$b81538f8-8ab8-4c54-b747-1d1b3033fd21] WHERE No_ = '" + HttpContext.Current.Session["username"].ToString() + "'");
+                     SqlCommand command = new SqlCommand(strSQL, getconnToNAV());
+                     using (SqlDataReader dr = command.ExecuteReader())
+                     {
+                         if (dr.HasRows)
+                         {
+                             dr.Read();
+                             s = (Convert.ToInt32(dr["Gender"])).ToString();
+                         }
+                     }
+                 }
+                 catch (Exception ex)
+                 {
+                     ex.Data.Clear();
+                 }
+                 return s;
+             }
+         }*/
         public static string EmployeeGender
         {
             get
             {
-                string s = "";
+                string genderValue = "";
 
                 try
                 {
-                    string strSQL = String.Format("SELECT [Gender] FROM [" + Components.Company_Name + "$HRM-Employee C$b81538f8-8ab8-4c54-b747-1d1b3033fd21] WHERE No_ = '" + HttpContext.Current.Session["username"].ToString() + "'");
-                    SqlCommand command = new SqlCommand(strSQL, getconnToNAV());
-                    using (SqlDataReader dr = command.ExecuteReader())
+                    // Retrieve username from session
+                    var username = HttpContext.Current.Session["username"];
+                    if (username == null || string.IsNullOrEmpty(username.ToString()))
                     {
-                        if (dr.HasRows)
-                        {
-                            dr.Read();
-                            s = (Convert.ToInt32(dr["Gender"])).ToString();
-                        }
+                        throw new Exception("Session variable 'username' is not set or is empty.");
+                    }
+
+                    // Initialize the web service client for GetStaffGender
+                    var client = new Staffportal(); // Replace with actual client name
+                    client.Credentials = new NetworkCredential("webportals", "Webportals@2024");
+                    genderValue = client.GetStaffGender(username.ToString()); // Call the AL procedure via web service
+
+                    if (string.IsNullOrEmpty(genderValue))
+                    {
+                        Console.WriteLine("Gender not returned for user: " + username.ToString());
                     }
                 }
                 catch (Exception ex)
                 {
-                    ex.Data.Clear();
+                    // Log the exception to see what went wrong
+                    Console.WriteLine("Error retrieving EmployeeGender: " + ex.Message);
                 }
-                return s;
+
+                return genderValue;
             }
         }
 

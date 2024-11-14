@@ -11,6 +11,7 @@
 
         <section class="content">
             <div class="row">
+            <div class="row">
                 <div class="col-md-12">
                     <asp:MultiView ID="MultiView1" runat="server">
                         <asp:View ID="vwHeader" runat="server">

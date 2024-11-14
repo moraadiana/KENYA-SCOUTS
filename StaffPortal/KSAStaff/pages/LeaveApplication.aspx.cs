@@ -13,6 +13,7 @@ namespace KSAStaff.pages
     public partial class LeaveApplication : System.Web.UI.Page
     {
         Staffportal webportals = Components.ObjNav;
+        string[] strLimiters2 = new string[] { "[]" };
         string[] strLimiters = new string[] { "::" };
         SqlConnection connection;
         SqlCommand command;
@@ -29,8 +30,8 @@ namespace KSAStaff.pages
                 LoadLeaveTypes();
                 LoadReliever();
                 LoadResponsibilityCenter();
-                LoadDays();
-                //LoadLeaveBalance();
+                //LoadDays();
+                LoadLeaveBalance();
                 LoadStaffDepartmentDetails();
             }
         }
@@ -47,8 +48,8 @@ namespace KSAStaff.pages
                     string returnMsg = responseArr[0];
                     if (returnMsg == "SUCCESS")
                     {
-                        lblDirectorate.Text = responseArr[1];
-                        lblDepartment.Text = responseArr[2];
+                        //lblDirectorate.Text = responseArr[1];
+                        lblDepartment.Text = responseArr[1];
                     }
                     else
                     {
@@ -63,98 +64,85 @@ namespace KSAStaff.pages
             }
         }
 
+
         private void LoadResponsibilityCenter()
-        {           
-
-                try
-                {
-
+        {
+            try
+            {
                 string grouping = "LEAVE";
-                    ddlResponsibilityCenter.Items.Clear();
-                    connection = Components.getconnToNAV();
-                    command = new SqlCommand()
-                    {
-                        CommandText = "spLoadResponsibilityCentre",
-                        CommandType = CommandType.StoredProcedure,
-                        Connection = connection
-                    };
-                    command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                    command.Parameters.AddWithValue("@grouping", "'"+grouping+"'");
-                    reader = command.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            
-                                ListItem li = new ListItem(reader["Code"].ToString().ToUpper(), reader["Code"].ToString());
-                                ddlResponsibilityCenter.Items.Add(li);
-                           
-                        }
-                    }
+                string responsibilityCenters = webportals.GetDocResponsibilityCentres(grouping);
 
-                }
-                catch (Exception ex)
+                if (!string.IsNullOrEmpty(responsibilityCenters))
                 {
-                    ex.Data.Clear();
+                    string[] centers = responsibilityCenters.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+
+                    if (centers.Length > 0)
+                    {
+                        lblResCenter.Text = centers[0];
+                    }
+                }
+                else
+                {
+                    lblResCenter.Text = "No responsibility centers found.";
                 }
             }
+            catch (Exception ex)
+            {
+                ex.Data.Clear();
+                lblResCenter.Text = "Error loading responsibility centers.";
+            }
+        }
 
         private void LoadReliever()
         {
             try
             {
                 ddlReliver.Items.Clear();
-                string username = Session["username"].ToString();
-                connection = Components.getconnToNAV();
-                command = new SqlCommand()
+                string Relievers = webportals.GetRelievers();
+                if (!string.IsNullOrEmpty(Relievers))
                 {
-                    CommandText = "spGetRelievers",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
+                    string[] relieverArr = Relievers.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string reliever in relieverArr)
                     {
-                        if (reader["No_"].ToString() == username) continue;
-                        ListItem li = new ListItem(reader["Name"].ToString().ToUpper(), reader["No_"].ToString());
+                        string[] responseArr = reliever.Split(strLimiters, StringSplitOptions.None);
+                        ListItem li = new ListItem(responseArr[1], responseArr[0]);
                         ddlReliver.Items.Add(li);
                     }
                 }
-
             }
             catch (Exception ex)
             {
                 ex.Data.Clear();
             }
         }
-
         private void LoadLeaveTypes()
         {
             try
             {
                 string gender = Components.EmployeeGender;
-                ddlLeaveType.Items.Clear();
-                connection = Components.getconnToNAV();
-               
+                string LeaveTypeList = webportals.GetLeaveTypes(gender);
 
-                command = new SqlCommand()
+                if (!string.IsNullOrEmpty(LeaveTypeList))
                 {
-                    CommandText = "spGetLeaveTypes",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                command.Parameters.AddWithValue("@gender", "'" + gender + "'");
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
+
+                    string[] LeaveTypeLines = LeaveTypeList.Split('|');
+
+
+                    ddlLeaveType.Items.Clear();
+
+                    foreach (string LeaveTypeLine in LeaveTypeLines)
                     {
-                        ListItem li = new ListItem(reader["Description"].ToString().ToUpper(), reader["Code"].ToString());
-                        ddlLeaveType.Items.Add(li);
+
+                        string[] details = LeaveTypeLine.Split(new string[] { "::" }, StringSplitOptions.None);
+                        if (details.Length == 2)
+                        {
+                            string Code = details[0];
+                            string Description = details[1];
+
+                            // Add new item to the dropdown list
+                            System.Web.UI.WebControls.ListItem listItem = new System.Web.UI.WebControls.ListItem($"{Code} - {Description}", Code);
+                            ddlLeaveType.Items.Add(listItem);
+                        }
                     }
                 }
             }
@@ -163,7 +151,7 @@ namespace KSAStaff.pages
                 ex.Data.Clear();
             }
         }
-
+        /*
         private void LoadLeaveBalance()
         {
             try
@@ -196,27 +184,71 @@ namespace KSAStaff.pages
                 ex.Data.Clear();
             }
         }
+        */
+        private string GetCurrentLeavePeriod()
+        {
+            string currentLeavePeriod = "";
 
-        private void DefaultDays()
+            try
+            {
+                using (SqlConnection conn =Components.getconnToNAV())
+                {
+                    string sqlStmt2 = "spGetCurrentLeavePeriod";
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        cmd.CommandText = sqlStmt2;
+                        cmd.Connection = conn;
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@Company_Name",Components.Company_Name);
+
+                        SqlParameter outputParam = new SqlParameter("@Year", SqlDbType.NVarChar, 50)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputParam);
+
+                        cmd.ExecuteNonQuery();
+
+
+                        currentLeavePeriod = outputParam.Value.ToString();
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                currentLeavePeriod = "Error retrieving leave period";
+                Ex.Data.Clear();
+            }
+
+            return currentLeavePeriod;
+        }
+        private void LoadLeaveBalance()
         {
             try
             {
-                string leaveType = ddlLeaveType.SelectedValue.ToString();
-                connection = Components.getconnToNAV();
-                command = new SqlCommand()
+                string leaveType = ddlLeaveType.SelectedValue;
+                string employeeNo = Session["username"].ToString();
+                string currentLeavePeriod = GetCurrentLeavePeriod();
+                string availableDays = webportals.AvailableLeaveDays(employeeNo, leaveType,currentLeavePeriod);
+                if (!string.IsNullOrEmpty(availableDays))
                 {
-                    CommandText = "spGetDefaultDays",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                command.Parameters.AddWithValue("@LeaveType", "'" + leaveType + "'");
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
+                    double leaveBalance = Convert.ToDouble(availableDays);
+                    if (leaveBalance > 0)
+                    {
+                        lblBalance.Text = availableDays;
+                        lbtnSubmit.Visible = true;
+                    }
+                    else
+                    {
+                        lblBalance.Text = "Not Available";
+                        lbtnSubmit.Visible = false;
+                    }
+                }
+                else
                 {
-                    reader.Read();
-                    string days = Convert.ToDouble(Convert.ToDecimal(reader["Days"])).ToString();
-                    lblBalance.Text = days;
+                    lblBalance.Text = "Not Available";
+                    lbtnSubmit.Visible = false;
                 }
             }
             catch (Exception ex)
@@ -224,7 +256,25 @@ namespace KSAStaff.pages
                 ex.Data.Clear();
             }
         }
+        private void DefaultDays()
+        {
+            try
+            {
+                LoadLeaveBalance();
+                string leaveType = ddlLeaveType.SelectedValue;
+                string defaultDays = webportals.GetDefaultDays(leaveType);
+                if (!string.IsNullOrEmpty(defaultDays))
+                {
+                    lblBalance.Text = defaultDays;
+                }
 
+                
+            }
+            catch (Exception ex)
+            {
+                ex.Data.Clear();
+            }
+        }
         private bool HasPendingApplication()
         {
             bool pendingApplication = false;
@@ -244,7 +294,8 @@ namespace KSAStaff.pages
             return pendingApplication;
         }
 
-        private void LoadDays()
+       
+        protected void ddlLeaveType_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -257,19 +308,8 @@ namespace KSAStaff.pages
                 else
                 {
                     DefaultDays();
+                    //LoadLeaveBalance();
                 }
-            }
-            catch (Exception ex)
-            {
-                ex.Data.Clear();
-            }
-        }
-
-        protected void ddlLeaveType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                LoadDays();
             }
             catch (Exception ex)
             {
@@ -317,10 +357,10 @@ namespace KSAStaff.pages
                 string username = Session["username"].ToString();
                 string leaveType = ddlLeaveType.SelectedValue;
                 string reliever = ddlReliver.SelectedValue;
-                string resCenter = ddlResponsibilityCenter.SelectedValue;
+                string resCenter = lblResCenter.Text;
                 string appliedDays = txtAppliedDays.Text;
                 string startDate = txtStartDate.Text;
-                string directorate = lblDirectorate.Text;
+               // string directorate = lblDirectorate.Text;
                 string department = lblDepartment.Text;
                 string availableDays = lblBalance.Text;
                 string purpose = txtPurpose.Text;
@@ -361,11 +401,11 @@ namespace KSAStaff.pages
                     Message("Start date cannot be null");
                     return;
                 }
-                if (string.IsNullOrEmpty(directorate))
-                {
-                    Message("KSA cannot be null");
-                    return;
-                }
+                //if (string.IsNullOrEmpty(directorate))
+                //{
+                //    Message("KSA cannot be null");
+                //    return;
+                //}
                 if (string.IsNullOrEmpty(department))
                 {
                     Message("Department cannot be null");
@@ -403,7 +443,7 @@ namespace KSAStaff.pages
                 DateTime returnDate = Convert.ToDateTime(lblReturnDate.Text);
 
                 // Applications
-                string response = webportals.HRMLeaveApplication(username, reliever, leaveType, Convert.ToDecimal(appliedDays), Convert.ToDateTime(startDate), endDate, returnDate, purpose, resCenter,directorate,department);
+                string response = webportals.HRMLeaveApplication(username, reliever, leaveType, Convert.ToDecimal(appliedDays), Convert.ToDateTime(startDate), endDate, returnDate, purpose, resCenter,department);
                 if (!string.IsNullOrEmpty(response))
                 {
                     string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
