@@ -51,7 +51,7 @@ namespace KSAStaff.pages
                         string responsibilityCenter = responseArr[2];
                         ListItem li = new ListItem(imprestNumber + " => " + imprestDescription, imprestNumber);
                         ddlPostedImprest.Items.Add(li);
-                        ddlResponsibilityCenter.SelectedValue = responsibilityCenter;
+                        lblResCenter.Text    = responsibilityCenter;
                     }
                 }
 
@@ -69,7 +69,7 @@ namespace KSAStaff.pages
                 connection = Components.getconnToNAV();
                 command = new SqlCommand()
                 {
-                    CommandText = "spImprestToSurrender",
+                    CommandText = "spGetMyImprestsPosted",
                     CommandType = CommandType.StoredProcedure,
                     Connection = connection
                 };
@@ -95,34 +95,27 @@ namespace KSAStaff.pages
         {
             try
             {
-                string grouping = "SURRENDER";
-                ddlResponsibilityCenter.Items.Clear();
-                connection = Components.getconnToNAV();
-                command = new SqlCommand()
+                string grouping = "IMPSURR";
+                string responsibilityCenters = webportals.GetDocResponsibilityCentres(grouping);
+
+                if (!string.IsNullOrEmpty(responsibilityCenters))
                 {
-                    CommandText = "spLoadResponsibilityCentre",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                command.Parameters.AddWithValue("@grouping", "'" + grouping + "'");
-                
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
+                    string[] centers = responsibilityCenters.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+
+                    if (centers.Length > 0)
                     {
-
-                       ListItem li = new ListItem(reader["Code"].ToString().ToUpper(), reader["Code"].ToString());
-                        ddlResponsibilityCenter.Items.Add(li);
-
+                        lblResCenter.Text = centers[0];
                     }
                 }
-
+                else
+                {
+                    lblResCenter.Text = "No responsibility centers found.";
+                }
             }
             catch (Exception ex)
             {
                 ex.Data.Clear();
+                lblResCenter.Text = "Error loading responsibility centers.";
             }
         }
 
@@ -225,7 +218,7 @@ namespace KSAStaff.pages
             try
             {
                 string imprestNo = ddlPostedImprest.SelectedValue.ToString();
-                string responsibilityCenter = ddlResponsibilityCenter.SelectedValue.ToString();
+                string responsibilityCenter = lblResCenter.Text.ToString();
                 string username = Session["username"].ToString();
                 string documentNo = string.Empty;
 

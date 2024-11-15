@@ -2,6 +2,108 @@
 <definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/Staffportal" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="RemoveImprestRequisitionLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="advanceType" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveImprestRequisitionLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemovePettyCashRequisitionLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemovePettyCashRequisitionLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SaveMemoAttchmnts">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentsNoz" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="attachmentz" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="decriptionz" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SaveMemoAttchmnts_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="StaffLogin">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="password" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="StaffLogin_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdatePettyCashSurrenderLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="pettyCashNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="amountSpent" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="cashReturned" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="accountNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdatePettyCashSurrenderLines_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="UpdateStaffPassword">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="genpass" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateStaffPassword_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ValidateStartDate">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="starting_Date" type="date" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ValidateStartDate_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
       <element name="AvailableLeaveDays1">
         <complexType>
           <sequence>
@@ -22,7 +124,6 @@
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="leaveType" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="currentLeavePeriod" type="string" />
           </sequence>
         </complexType>
       </element>
@@ -129,7 +230,6 @@
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="username" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="directorate" type="string" />
             <element minOccurs="1" maxOccurs="1" name="department" type="string" />
             <element minOccurs="1" maxOccurs="1" name="resCenter" type="string" />
             <element minOccurs="1" maxOccurs="1" name="purpose" type="string" />
@@ -278,6 +378,19 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GenerateMemoReport">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="memoNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="fileNameFromApp" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateMemoReport_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
       <element name="GeneratePayslipReport">
         <complexType>
           <sequence>
@@ -317,6 +430,20 @@
       <element name="Generatep9Report_Result">
         <complexType>
           <sequence />
+        </complexType>
+      </element>
+      <element name="GetAdvancetype">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="type" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAdvancetype_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
         </complexType>
       </element>
       <element name="GetAttachmentDetails">
@@ -417,6 +544,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetLeaveTypes1">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="gender" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetLeaveTypes1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetLeaveTypes">
         <complexType>
           <sequence>
@@ -425,6 +566,20 @@
         </complexType>
       </element>
       <element name="GetLeaveTypes_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyImprests">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyImprests_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -463,6 +618,30 @@
         </complexType>
       </element>
       <element name="GetNextPettyCashNo_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPayslipMonths">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetPayslipMonths_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPayslipYears">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetPayslipYears_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -593,7 +772,7 @@
           </sequence>
         </complexType>
       </element>
-      <element name="HRMLeaveApplication">
+      <element name="HRMLeaveApplication1">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="username" type="string" />
@@ -606,6 +785,28 @@
             <element minOccurs="1" maxOccurs="1" name="purpose" type="string" />
             <element minOccurs="1" maxOccurs="1" name="responsibilityCenter" type="string" />
             <element minOccurs="1" maxOccurs="1" name="department" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HRMLeaveApplication1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HRMLeaveApplication">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="reliever" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="leaveType" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="appliedDays" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="startDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="endDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="returnDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="purpose" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="responsibilityCenter" type="string" />
           </sequence>
         </complexType>
       </element>
@@ -1015,6 +1216,24 @@
           </sequence>
         </complexType>
       </element>
+      <element name="RegFileUploadAtt1">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="retNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="fileName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="attachment" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="tableId" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="docType" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RegFileUploadAtt1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="RegFileUploadAtt">
         <complexType>
           <sequence>
@@ -1062,110 +1281,50 @@
           </sequence>
         </complexType>
       </element>
-      <element name="RemoveImprestRequisitionLine">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="imprestNo" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="advanceType" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="RemoveImprestRequisitionLine_Result">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="RemovePettyCashRequisitionLine">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="RemovePettyCashRequisitionLine_Result">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="SaveMemoAttchmnts">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="documentsNoz" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="attachmentz" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="decriptionz" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="SaveMemoAttchmnts_Result">
-        <complexType>
-          <sequence />
-        </complexType>
-      </element>
-      <element name="StaffLogin">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="password" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="StaffLogin_Result">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="UpdatePettyCashSurrenderLines">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="pettyCashNo" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="amountSpent" type="decimal" />
-            <element minOccurs="1" maxOccurs="1" name="cashReturned" type="decimal" />
-            <element minOccurs="1" maxOccurs="1" name="accountNo" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="UpdatePettyCashSurrenderLines_Result">
-        <complexType>
-          <sequence />
-        </complexType>
-      </element>
-      <element name="UpdateStaffPassword">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="genpass" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="UpdateStaffPassword_Result">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="ValidateStartDate">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="starting_Date" type="date" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="ValidateStartDate_Result">
-        <complexType>
-          <sequence />
-        </complexType>
-      </element>
     </schema>
   </types>
+  <message name="RemoveImprestRequisitionLine">
+    <part name="parameters" element="tns:RemoveImprestRequisitionLine" />
+  </message>
+  <message name="RemoveImprestRequisitionLine_Result">
+    <part name="parameters" element="tns:RemoveImprestRequisitionLine_Result" />
+  </message>
+  <message name="RemovePettyCashRequisitionLine">
+    <part name="parameters" element="tns:RemovePettyCashRequisitionLine" />
+  </message>
+  <message name="RemovePettyCashRequisitionLine_Result">
+    <part name="parameters" element="tns:RemovePettyCashRequisitionLine_Result" />
+  </message>
+  <message name="SaveMemoAttchmnts">
+    <part name="parameters" element="tns:SaveMemoAttchmnts" />
+  </message>
+  <message name="SaveMemoAttchmnts_Result">
+    <part name="parameters" element="tns:SaveMemoAttchmnts_Result" />
+  </message>
+  <message name="StaffLogin">
+    <part name="parameters" element="tns:StaffLogin" />
+  </message>
+  <message name="StaffLogin_Result">
+    <part name="parameters" element="tns:StaffLogin_Result" />
+  </message>
+  <message name="UpdatePettyCashSurrenderLines">
+    <part name="parameters" element="tns:UpdatePettyCashSurrenderLines" />
+  </message>
+  <message name="UpdatePettyCashSurrenderLines_Result">
+    <part name="parameters" element="tns:UpdatePettyCashSurrenderLines_Result" />
+  </message>
+  <message name="UpdateStaffPassword">
+    <part name="parameters" element="tns:UpdateStaffPassword" />
+  </message>
+  <message name="UpdateStaffPassword_Result">
+    <part name="parameters" element="tns:UpdateStaffPassword_Result" />
+  </message>
+  <message name="ValidateStartDate">
+    <part name="parameters" element="tns:ValidateStartDate" />
+  </message>
+  <message name="ValidateStartDate_Result">
+    <part name="parameters" element="tns:ValidateStartDate_Result" />
+  </message>
   <message name="AvailableLeaveDays1">
     <part name="parameters" element="tns:AvailableLeaveDays1" />
   </message>
@@ -1268,6 +1427,12 @@
   <message name="DetermineLeaveReturnDate_Result">
     <part name="parameters" element="tns:DetermineLeaveReturnDate_Result" />
   </message>
+  <message name="GenerateMemoReport">
+    <part name="parameters" element="tns:GenerateMemoReport" />
+  </message>
+  <message name="GenerateMemoReport_Result">
+    <part name="parameters" element="tns:GenerateMemoReport_Result" />
+  </message>
   <message name="GeneratePayslipReport">
     <part name="parameters" element="tns:GeneratePayslipReport" />
   </message>
@@ -1285,6 +1450,12 @@
   </message>
   <message name="Generatep9Report_Result">
     <part name="parameters" element="tns:Generatep9Report_Result" />
+  </message>
+  <message name="GetAdvancetype">
+    <part name="parameters" element="tns:GetAdvancetype" />
+  </message>
+  <message name="GetAdvancetype_Result">
+    <part name="parameters" element="tns:GetAdvancetype_Result" />
   </message>
   <message name="GetAttachmentDetails">
     <part name="parameters" element="tns:GetAttachmentDetails" />
@@ -1328,11 +1499,23 @@
   <message name="GetLeaveRelieverDetails_Result">
     <part name="parameters" element="tns:GetLeaveRelieverDetails_Result" />
   </message>
+  <message name="GetLeaveTypes1">
+    <part name="parameters" element="tns:GetLeaveTypes1" />
+  </message>
+  <message name="GetLeaveTypes1_Result">
+    <part name="parameters" element="tns:GetLeaveTypes1_Result" />
+  </message>
   <message name="GetLeaveTypes">
     <part name="parameters" element="tns:GetLeaveTypes" />
   </message>
   <message name="GetLeaveTypes_Result">
     <part name="parameters" element="tns:GetLeaveTypes_Result" />
+  </message>
+  <message name="GetMyImprests">
+    <part name="parameters" element="tns:GetMyImprests" />
+  </message>
+  <message name="GetMyImprests_Result">
+    <part name="parameters" element="tns:GetMyImprests_Result" />
   </message>
   <message name="GetMyleaveApplications">
     <part name="parameters" element="tns:GetMyleaveApplications" />
@@ -1351,6 +1534,18 @@
   </message>
   <message name="GetNextPettyCashNo_Result">
     <part name="parameters" element="tns:GetNextPettyCashNo_Result" />
+  </message>
+  <message name="GetPayslipMonths">
+    <part name="parameters" element="tns:GetPayslipMonths" />
+  </message>
+  <message name="GetPayslipMonths_Result">
+    <part name="parameters" element="tns:GetPayslipMonths_Result" />
+  </message>
+  <message name="GetPayslipYears">
+    <part name="parameters" element="tns:GetPayslipYears" />
+  </message>
+  <message name="GetPayslipYears_Result">
+    <part name="parameters" element="tns:GetPayslipYears_Result" />
   </message>
   <message name="GetPettyCashDetails">
     <part name="parameters" element="tns:GetPettyCashDetails" />
@@ -1405,6 +1600,12 @@
   </message>
   <message name="GetStoreItemQuantity_Result">
     <part name="parameters" element="tns:GetStoreItemQuantity_Result" />
+  </message>
+  <message name="HRMLeaveApplication1">
+    <part name="parameters" element="tns:HRMLeaveApplication1" />
+  </message>
+  <message name="HRMLeaveApplication1_Result">
+    <part name="parameters" element="tns:HRMLeaveApplication1_Result" />
   </message>
   <message name="HRMLeaveApplication">
     <part name="parameters" element="tns:HRMLeaveApplication" />
@@ -1574,6 +1775,12 @@
   <message name="OnsendLeaveRequisitionForApproval_Result">
     <part name="parameters" element="tns:OnsendLeaveRequisitionForApproval_Result" />
   </message>
+  <message name="RegFileUploadAtt1">
+    <part name="parameters" element="tns:RegFileUploadAtt1" />
+  </message>
+  <message name="RegFileUploadAtt1_Result">
+    <part name="parameters" element="tns:RegFileUploadAtt1_Result" />
+  </message>
   <message name="RegFileUploadAtt">
     <part name="parameters" element="tns:RegFileUploadAtt" />
   </message>
@@ -1592,49 +1799,35 @@
   <message name="RemoveHRMTrainingParticipant_Result">
     <part name="parameters" element="tns:RemoveHRMTrainingParticipant_Result" />
   </message>
-  <message name="RemoveImprestRequisitionLine">
-    <part name="parameters" element="tns:RemoveImprestRequisitionLine" />
-  </message>
-  <message name="RemoveImprestRequisitionLine_Result">
-    <part name="parameters" element="tns:RemoveImprestRequisitionLine_Result" />
-  </message>
-  <message name="RemovePettyCashRequisitionLine">
-    <part name="parameters" element="tns:RemovePettyCashRequisitionLine" />
-  </message>
-  <message name="RemovePettyCashRequisitionLine_Result">
-    <part name="parameters" element="tns:RemovePettyCashRequisitionLine_Result" />
-  </message>
-  <message name="SaveMemoAttchmnts">
-    <part name="parameters" element="tns:SaveMemoAttchmnts" />
-  </message>
-  <message name="SaveMemoAttchmnts_Result">
-    <part name="parameters" element="tns:SaveMemoAttchmnts_Result" />
-  </message>
-  <message name="StaffLogin">
-    <part name="parameters" element="tns:StaffLogin" />
-  </message>
-  <message name="StaffLogin_Result">
-    <part name="parameters" element="tns:StaffLogin_Result" />
-  </message>
-  <message name="UpdatePettyCashSurrenderLines">
-    <part name="parameters" element="tns:UpdatePettyCashSurrenderLines" />
-  </message>
-  <message name="UpdatePettyCashSurrenderLines_Result">
-    <part name="parameters" element="tns:UpdatePettyCashSurrenderLines_Result" />
-  </message>
-  <message name="UpdateStaffPassword">
-    <part name="parameters" element="tns:UpdateStaffPassword" />
-  </message>
-  <message name="UpdateStaffPassword_Result">
-    <part name="parameters" element="tns:UpdateStaffPassword_Result" />
-  </message>
-  <message name="ValidateStartDate">
-    <part name="parameters" element="tns:ValidateStartDate" />
-  </message>
-  <message name="ValidateStartDate_Result">
-    <part name="parameters" element="tns:ValidateStartDate_Result" />
-  </message>
   <portType name="Staffportal_Port">
+    <operation name="RemoveImprestRequisitionLine">
+      <input name="RemoveImprestRequisitionLine" message="tns:RemoveImprestRequisitionLine" />
+      <output name="RemoveImprestRequisitionLine_Result" message="tns:RemoveImprestRequisitionLine_Result" />
+    </operation>
+    <operation name="RemovePettyCashRequisitionLine">
+      <input name="RemovePettyCashRequisitionLine" message="tns:RemovePettyCashRequisitionLine" />
+      <output name="RemovePettyCashRequisitionLine_Result" message="tns:RemovePettyCashRequisitionLine_Result" />
+    </operation>
+    <operation name="SaveMemoAttchmnts">
+      <input name="SaveMemoAttchmnts" message="tns:SaveMemoAttchmnts" />
+      <output name="SaveMemoAttchmnts_Result" message="tns:SaveMemoAttchmnts_Result" />
+    </operation>
+    <operation name="StaffLogin">
+      <input name="StaffLogin" message="tns:StaffLogin" />
+      <output name="StaffLogin_Result" message="tns:StaffLogin_Result" />
+    </operation>
+    <operation name="UpdatePettyCashSurrenderLines">
+      <input name="UpdatePettyCashSurrenderLines" message="tns:UpdatePettyCashSurrenderLines" />
+      <output name="UpdatePettyCashSurrenderLines_Result" message="tns:UpdatePettyCashSurrenderLines_Result" />
+    </operation>
+    <operation name="UpdateStaffPassword">
+      <input name="UpdateStaffPassword" message="tns:UpdateStaffPassword" />
+      <output name="UpdateStaffPassword_Result" message="tns:UpdateStaffPassword_Result" />
+    </operation>
+    <operation name="ValidateStartDate">
+      <input name="ValidateStartDate" message="tns:ValidateStartDate" />
+      <output name="ValidateStartDate_Result" message="tns:ValidateStartDate_Result" />
+    </operation>
     <operation name="AvailableLeaveDays1">
       <input name="AvailableLeaveDays1" message="tns:AvailableLeaveDays1" />
       <output name="AvailableLeaveDays1_Result" message="tns:AvailableLeaveDays1_Result" />
@@ -1703,6 +1896,10 @@
       <input name="DetermineLeaveReturnDate" message="tns:DetermineLeaveReturnDate" />
       <output name="DetermineLeaveReturnDate_Result" message="tns:DetermineLeaveReturnDate_Result" />
     </operation>
+    <operation name="GenerateMemoReport">
+      <input name="GenerateMemoReport" message="tns:GenerateMemoReport" />
+      <output name="GenerateMemoReport_Result" message="tns:GenerateMemoReport_Result" />
+    </operation>
     <operation name="GeneratePayslipReport">
       <input name="GeneratePayslipReport" message="tns:GeneratePayslipReport" />
       <output name="GeneratePayslipReport_Result" message="tns:GeneratePayslipReport_Result" />
@@ -1714,6 +1911,10 @@
     <operation name="Generatep9Report">
       <input name="Generatep9Report" message="tns:Generatep9Report" />
       <output name="Generatep9Report_Result" message="tns:Generatep9Report_Result" />
+    </operation>
+    <operation name="GetAdvancetype">
+      <input name="GetAdvancetype" message="tns:GetAdvancetype" />
+      <output name="GetAdvancetype_Result" message="tns:GetAdvancetype_Result" />
     </operation>
     <operation name="GetAttachmentDetails">
       <input name="GetAttachmentDetails" message="tns:GetAttachmentDetails" />
@@ -1743,9 +1944,17 @@
       <input name="GetLeaveRelieverDetails" message="tns:GetLeaveRelieverDetails" />
       <output name="GetLeaveRelieverDetails_Result" message="tns:GetLeaveRelieverDetails_Result" />
     </operation>
+    <operation name="GetLeaveTypes1">
+      <input name="GetLeaveTypes1" message="tns:GetLeaveTypes1" />
+      <output name="GetLeaveTypes1_Result" message="tns:GetLeaveTypes1_Result" />
+    </operation>
     <operation name="GetLeaveTypes">
       <input name="GetLeaveTypes" message="tns:GetLeaveTypes" />
       <output name="GetLeaveTypes_Result" message="tns:GetLeaveTypes_Result" />
+    </operation>
+    <operation name="GetMyImprests">
+      <input name="GetMyImprests" message="tns:GetMyImprests" />
+      <output name="GetMyImprests_Result" message="tns:GetMyImprests_Result" />
     </operation>
     <operation name="GetMyleaveApplications">
       <input name="GetMyleaveApplications" message="tns:GetMyleaveApplications" />
@@ -1758,6 +1967,14 @@
     <operation name="GetNextPettyCashNo">
       <input name="GetNextPettyCashNo" message="tns:GetNextPettyCashNo" />
       <output name="GetNextPettyCashNo_Result" message="tns:GetNextPettyCashNo_Result" />
+    </operation>
+    <operation name="GetPayslipMonths">
+      <input name="GetPayslipMonths" message="tns:GetPayslipMonths" />
+      <output name="GetPayslipMonths_Result" message="tns:GetPayslipMonths_Result" />
+    </operation>
+    <operation name="GetPayslipYears">
+      <input name="GetPayslipYears" message="tns:GetPayslipYears" />
+      <output name="GetPayslipYears_Result" message="tns:GetPayslipYears_Result" />
     </operation>
     <operation name="GetPettyCashDetails">
       <input name="GetPettyCashDetails" message="tns:GetPettyCashDetails" />
@@ -1794,6 +2011,10 @@
     <operation name="GetStoreItemQuantity">
       <input name="GetStoreItemQuantity" message="tns:GetStoreItemQuantity" />
       <output name="GetStoreItemQuantity_Result" message="tns:GetStoreItemQuantity_Result" />
+    </operation>
+    <operation name="HRMLeaveApplication1">
+      <input name="HRMLeaveApplication1" message="tns:HRMLeaveApplication1" />
+      <output name="HRMLeaveApplication1_Result" message="tns:HRMLeaveApplication1_Result" />
     </operation>
     <operation name="HRMLeaveApplication">
       <input name="HRMLeaveApplication" message="tns:HRMLeaveApplication" />
@@ -1907,6 +2128,10 @@
       <input name="OnsendLeaveRequisitionForApproval" message="tns:OnsendLeaveRequisitionForApproval" />
       <output name="OnsendLeaveRequisitionForApproval_Result" message="tns:OnsendLeaveRequisitionForApproval_Result" />
     </operation>
+    <operation name="RegFileUploadAtt1">
+      <input name="RegFileUploadAtt1" message="tns:RegFileUploadAtt1" />
+      <output name="RegFileUploadAtt1_Result" message="tns:RegFileUploadAtt1_Result" />
+    </operation>
     <operation name="RegFileUploadAtt">
       <input name="RegFileUploadAtt" message="tns:RegFileUploadAtt" />
       <output name="RegFileUploadAtt_Result" message="tns:RegFileUploadAtt_Result" />
@@ -1919,37 +2144,72 @@
       <input name="RemoveHRMTrainingParticipant" message="tns:RemoveHRMTrainingParticipant" />
       <output name="RemoveHRMTrainingParticipant_Result" message="tns:RemoveHRMTrainingParticipant_Result" />
     </operation>
-    <operation name="RemoveImprestRequisitionLine">
-      <input name="RemoveImprestRequisitionLine" message="tns:RemoveImprestRequisitionLine" />
-      <output name="RemoveImprestRequisitionLine_Result" message="tns:RemoveImprestRequisitionLine_Result" />
-    </operation>
-    <operation name="RemovePettyCashRequisitionLine">
-      <input name="RemovePettyCashRequisitionLine" message="tns:RemovePettyCashRequisitionLine" />
-      <output name="RemovePettyCashRequisitionLine_Result" message="tns:RemovePettyCashRequisitionLine_Result" />
-    </operation>
-    <operation name="SaveMemoAttchmnts">
-      <input name="SaveMemoAttchmnts" message="tns:SaveMemoAttchmnts" />
-      <output name="SaveMemoAttchmnts_Result" message="tns:SaveMemoAttchmnts_Result" />
-    </operation>
-    <operation name="StaffLogin">
-      <input name="StaffLogin" message="tns:StaffLogin" />
-      <output name="StaffLogin_Result" message="tns:StaffLogin_Result" />
-    </operation>
-    <operation name="UpdatePettyCashSurrenderLines">
-      <input name="UpdatePettyCashSurrenderLines" message="tns:UpdatePettyCashSurrenderLines" />
-      <output name="UpdatePettyCashSurrenderLines_Result" message="tns:UpdatePettyCashSurrenderLines_Result" />
-    </operation>
-    <operation name="UpdateStaffPassword">
-      <input name="UpdateStaffPassword" message="tns:UpdateStaffPassword" />
-      <output name="UpdateStaffPassword_Result" message="tns:UpdateStaffPassword_Result" />
-    </operation>
-    <operation name="ValidateStartDate">
-      <input name="ValidateStartDate" message="tns:ValidateStartDate" />
-      <output name="ValidateStartDate_Result" message="tns:ValidateStartDate_Result" />
-    </operation>
   </portType>
   <binding name="Staffportal_Binding" type="tns:Staffportal_Port">
     <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="RemoveImprestRequisitionLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:RemoveImprestRequisitionLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RemoveImprestRequisitionLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RemoveImprestRequisitionLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RemovePettyCashRequisitionLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:RemovePettyCashRequisitionLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RemovePettyCashRequisitionLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RemovePettyCashRequisitionLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SaveMemoAttchmnts">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:SaveMemoAttchmnts" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SaveMemoAttchmnts">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SaveMemoAttchmnts_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="StaffLogin">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:StaffLogin" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="StaffLogin">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="StaffLogin_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdatePettyCashSurrenderLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:UpdatePettyCashSurrenderLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdatePettyCashSurrenderLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdatePettyCashSurrenderLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateStaffPassword">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:UpdateStaffPassword" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateStaffPassword">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateStaffPassword_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ValidateStartDate">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:ValidateStartDate" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ValidateStartDate">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ValidateStartDate_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="AvailableLeaveDays1">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:AvailableLeaveDays1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="AvailableLeaveDays1">
@@ -2103,6 +2363,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GenerateMemoReport">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:GenerateMemoReport" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateMemoReport">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateMemoReport_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GeneratePayslipReport">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:GeneratePayslipReport" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GeneratePayslipReport">
@@ -2127,6 +2396,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="Generatep9Report_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetAdvancetype">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetAdvancetype" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetAdvancetype">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetAdvancetype_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -2193,12 +2471,30 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetLeaveTypes1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetLeaveTypes1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetLeaveTypes1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetLeaveTypes1_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetLeaveTypes">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetLeaveTypes" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetLeaveTypes">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetLeaveTypes_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetMyImprests">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetMyImprests" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMyImprests">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMyImprests_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -2226,6 +2522,24 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetNextPettyCashNo_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPayslipMonths">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetPayslipMonths" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPayslipMonths">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPayslipMonths_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPayslipYears">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetPayslipYears" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPayslipYears">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPayslipYears_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -2307,6 +2621,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetStoreItemQuantity_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="HRMLeaveApplication1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:HRMLeaveApplication1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="HRMLeaveApplication1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="HRMLeaveApplication1_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -2562,6 +2885,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="RegFileUploadAtt1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:RegFileUploadAtt1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RegFileUploadAtt1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RegFileUploadAtt1_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="RegFileUploadAtt">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:RegFileUploadAtt" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="RegFileUploadAtt">
@@ -2586,69 +2918,6 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="RemoveHRMTrainingParticipant_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
-    <operation name="RemoveImprestRequisitionLine">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:RemoveImprestRequisitionLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="RemoveImprestRequisitionLine">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="RemoveImprestRequisitionLine_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
-    <operation name="RemovePettyCashRequisitionLine">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:RemovePettyCashRequisitionLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="RemovePettyCashRequisitionLine">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="RemovePettyCashRequisitionLine_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
-    <operation name="SaveMemoAttchmnts">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:SaveMemoAttchmnts" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="SaveMemoAttchmnts">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="SaveMemoAttchmnts_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
-    <operation name="StaffLogin">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:StaffLogin" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="StaffLogin">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="StaffLogin_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
-    <operation name="UpdatePettyCashSurrenderLines">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:UpdatePettyCashSurrenderLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="UpdatePettyCashSurrenderLines">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="UpdatePettyCashSurrenderLines_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
-    <operation name="UpdateStaffPassword">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:UpdateStaffPassword" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="UpdateStaffPassword">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="UpdateStaffPassword_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
-    <operation name="ValidateStartDate">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:ValidateStartDate" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="ValidateStartDate">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="ValidateStartDate_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

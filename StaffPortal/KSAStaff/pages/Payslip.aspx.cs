@@ -20,6 +20,7 @@ namespace KSAStaff.pages
         SqlDataAdapter adapter;
         Staffportal webportals = Components.ObjNav;
         string[] strLimiters = new string[] { "::" };
+        string[] strLimiters2 = new string[] { "[]" };
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -90,6 +91,7 @@ namespace KSAStaff.pages
                 ex.Data.Clear();
             }
         }
+
 
         private void ViewPayslip()
         {

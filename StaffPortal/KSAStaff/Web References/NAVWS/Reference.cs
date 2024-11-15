@@ -29,6 +29,20 @@ namespace KSAStaff.NAVWS {
     [System.Web.Services.WebServiceBindingAttribute(Name="Staffportal_Binding", Namespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal")]
     public partial class Staffportal : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
+        private System.Threading.SendOrPostCallback RemoveImprestRequisitionLineOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RemovePettyCashRequisitionLineOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SaveMemoAttchmntsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback StaffLoginOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdatePettyCashSurrenderLinesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback UpdateStaffPasswordOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ValidateStartDateOperationCompleted;
+        
         private System.Threading.SendOrPostCallback AvailableLeaveDays1OperationCompleted;
         
         private System.Threading.SendOrPostCallback AvailableLeaveDaysOperationCompleted;
@@ -63,11 +77,15 @@ namespace KSAStaff.NAVWS {
         
         private System.Threading.SendOrPostCallback DetermineLeaveReturnDateOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GenerateMemoReportOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GeneratePayslipReportOperationCompleted;
         
         private System.Threading.SendOrPostCallback GenerateStaffLeaveStatementOperationCompleted;
         
         private System.Threading.SendOrPostCallback Generatep9ReportOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAdvancetypeOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetAttachmentDetailsOperationCompleted;
         
@@ -83,13 +101,21 @@ namespace KSAStaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GetLeaveRelieverDetailsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetLeaveTypes1OperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetLeaveTypesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetMyImprestsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMyleaveApplicationsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetNextImprestSurrenderNoOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetNextPettyCashNoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetPayslipMonthsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetPayslipYearsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetPettyCashDetailsOperationCompleted;
         
@@ -108,6 +134,8 @@ namespace KSAStaff.NAVWS {
         private System.Threading.SendOrPostCallback GetStaffPasswordOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetStoreItemQuantityOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback HRMLeaveApplication1OperationCompleted;
         
         private System.Threading.SendOrPostCallback HRMLeaveApplicationOperationCompleted;
         
@@ -165,25 +193,13 @@ namespace KSAStaff.NAVWS {
         
         private System.Threading.SendOrPostCallback OnsendLeaveRequisitionForApprovalOperationCompleted;
         
+        private System.Threading.SendOrPostCallback RegFileUploadAtt1OperationCompleted;
+        
         private System.Threading.SendOrPostCallback RegFileUploadAttOperationCompleted;
         
         private System.Threading.SendOrPostCallback RemoveClaimRequisitionLinesOperationCompleted;
         
         private System.Threading.SendOrPostCallback RemoveHRMTrainingParticipantOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback RemoveImprestRequisitionLineOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback RemovePettyCashRequisitionLineOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback SaveMemoAttchmntsOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback StaffLoginOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback UpdatePettyCashSurrenderLinesOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback UpdateStaffPasswordOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback ValidateStartDateOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -222,6 +238,27 @@ namespace KSAStaff.NAVWS {
                 this.useDefaultCredentialsSetExplicitly = true;
             }
         }
+        
+        /// <remarks/>
+        public event RemoveImprestRequisitionLineCompletedEventHandler RemoveImprestRequisitionLineCompleted;
+        
+        /// <remarks/>
+        public event RemovePettyCashRequisitionLineCompletedEventHandler RemovePettyCashRequisitionLineCompleted;
+        
+        /// <remarks/>
+        public event SaveMemoAttchmntsCompletedEventHandler SaveMemoAttchmntsCompleted;
+        
+        /// <remarks/>
+        public event StaffLoginCompletedEventHandler StaffLoginCompleted;
+        
+        /// <remarks/>
+        public event UpdatePettyCashSurrenderLinesCompletedEventHandler UpdatePettyCashSurrenderLinesCompleted;
+        
+        /// <remarks/>
+        public event UpdateStaffPasswordCompletedEventHandler UpdateStaffPasswordCompleted;
+        
+        /// <remarks/>
+        public event ValidateStartDateCompletedEventHandler ValidateStartDateCompleted;
         
         /// <remarks/>
         public event AvailableLeaveDays1CompletedEventHandler AvailableLeaveDays1Completed;
@@ -275,6 +312,9 @@ namespace KSAStaff.NAVWS {
         public event DetermineLeaveReturnDateCompletedEventHandler DetermineLeaveReturnDateCompleted;
         
         /// <remarks/>
+        public event GenerateMemoReportCompletedEventHandler GenerateMemoReportCompleted;
+        
+        /// <remarks/>
         public event GeneratePayslipReportCompletedEventHandler GeneratePayslipReportCompleted;
         
         /// <remarks/>
@@ -282,6 +322,9 @@ namespace KSAStaff.NAVWS {
         
         /// <remarks/>
         public event Generatep9ReportCompletedEventHandler Generatep9ReportCompleted;
+        
+        /// <remarks/>
+        public event GetAdvancetypeCompletedEventHandler GetAdvancetypeCompleted;
         
         /// <remarks/>
         public event GetAttachmentDetailsCompletedEventHandler GetAttachmentDetailsCompleted;
@@ -305,7 +348,13 @@ namespace KSAStaff.NAVWS {
         public event GetLeaveRelieverDetailsCompletedEventHandler GetLeaveRelieverDetailsCompleted;
         
         /// <remarks/>
+        public event GetLeaveTypes1CompletedEventHandler GetLeaveTypes1Completed;
+        
+        /// <remarks/>
         public event GetLeaveTypesCompletedEventHandler GetLeaveTypesCompleted;
+        
+        /// <remarks/>
+        public event GetMyImprestsCompletedEventHandler GetMyImprestsCompleted;
         
         /// <remarks/>
         public event GetMyleaveApplicationsCompletedEventHandler GetMyleaveApplicationsCompleted;
@@ -315,6 +364,12 @@ namespace KSAStaff.NAVWS {
         
         /// <remarks/>
         public event GetNextPettyCashNoCompletedEventHandler GetNextPettyCashNoCompleted;
+        
+        /// <remarks/>
+        public event GetPayslipMonthsCompletedEventHandler GetPayslipMonthsCompleted;
+        
+        /// <remarks/>
+        public event GetPayslipYearsCompletedEventHandler GetPayslipYearsCompleted;
         
         /// <remarks/>
         public event GetPettyCashDetailsCompletedEventHandler GetPettyCashDetailsCompleted;
@@ -342,6 +397,9 @@ namespace KSAStaff.NAVWS {
         
         /// <remarks/>
         public event GetStoreItemQuantityCompletedEventHandler GetStoreItemQuantityCompleted;
+        
+        /// <remarks/>
+        public event HRMLeaveApplication1CompletedEventHandler HRMLeaveApplication1Completed;
         
         /// <remarks/>
         public event HRMLeaveApplicationCompletedEventHandler HRMLeaveApplicationCompleted;
@@ -428,6 +486,9 @@ namespace KSAStaff.NAVWS {
         public event OnsendLeaveRequisitionForApprovalCompletedEventHandler OnsendLeaveRequisitionForApprovalCompleted;
         
         /// <remarks/>
+        public event RegFileUploadAtt1CompletedEventHandler RegFileUploadAtt1Completed;
+        
+        /// <remarks/>
         public event RegFileUploadAttCompletedEventHandler RegFileUploadAttCompleted;
         
         /// <remarks/>
@@ -437,25 +498,230 @@ namespace KSAStaff.NAVWS {
         public event RemoveHRMTrainingParticipantCompletedEventHandler RemoveHRMTrainingParticipantCompleted;
         
         /// <remarks/>
-        public event RemoveImprestRequisitionLineCompletedEventHandler RemoveImprestRequisitionLineCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:RemoveImprestRequisitionLine", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="RemoveImprestRequisitionLine_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string RemoveImprestRequisitionLine(string imprestNo, string advanceType) {
+            object[] results = this.Invoke("RemoveImprestRequisitionLine", new object[] {
+                        imprestNo,
+                        advanceType});
+            return ((string)(results[0]));
+        }
         
         /// <remarks/>
-        public event RemovePettyCashRequisitionLineCompletedEventHandler RemovePettyCashRequisitionLineCompleted;
+        public void RemoveImprestRequisitionLineAsync(string imprestNo, string advanceType) {
+            this.RemoveImprestRequisitionLineAsync(imprestNo, advanceType, null);
+        }
         
         /// <remarks/>
-        public event SaveMemoAttchmntsCompletedEventHandler SaveMemoAttchmntsCompleted;
+        public void RemoveImprestRequisitionLineAsync(string imprestNo, string advanceType, object userState) {
+            if ((this.RemoveImprestRequisitionLineOperationCompleted == null)) {
+                this.RemoveImprestRequisitionLineOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveImprestRequisitionLineOperationCompleted);
+            }
+            this.InvokeAsync("RemoveImprestRequisitionLine", new object[] {
+                        imprestNo,
+                        advanceType}, this.RemoveImprestRequisitionLineOperationCompleted, userState);
+        }
+        
+        private void OnRemoveImprestRequisitionLineOperationCompleted(object arg) {
+            if ((this.RemoveImprestRequisitionLineCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RemoveImprestRequisitionLineCompleted(this, new RemoveImprestRequisitionLineCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
-        public event StaffLoginCompletedEventHandler StaffLoginCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:RemovePettyCashRequisitionLin" +
+            "e", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="RemovePettyCashRequisitionLine_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string RemovePettyCashRequisitionLine(int lineNo) {
+            object[] results = this.Invoke("RemovePettyCashRequisitionLine", new object[] {
+                        lineNo});
+            return ((string)(results[0]));
+        }
         
         /// <remarks/>
-        public event UpdatePettyCashSurrenderLinesCompletedEventHandler UpdatePettyCashSurrenderLinesCompleted;
+        public void RemovePettyCashRequisitionLineAsync(int lineNo) {
+            this.RemovePettyCashRequisitionLineAsync(lineNo, null);
+        }
         
         /// <remarks/>
-        public event UpdateStaffPasswordCompletedEventHandler UpdateStaffPasswordCompleted;
+        public void RemovePettyCashRequisitionLineAsync(int lineNo, object userState) {
+            if ((this.RemovePettyCashRequisitionLineOperationCompleted == null)) {
+                this.RemovePettyCashRequisitionLineOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemovePettyCashRequisitionLineOperationCompleted);
+            }
+            this.InvokeAsync("RemovePettyCashRequisitionLine", new object[] {
+                        lineNo}, this.RemovePettyCashRequisitionLineOperationCompleted, userState);
+        }
+        
+        private void OnRemovePettyCashRequisitionLineOperationCompleted(object arg) {
+            if ((this.RemovePettyCashRequisitionLineCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RemovePettyCashRequisitionLineCompleted(this, new RemovePettyCashRequisitionLineCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
-        public event ValidateStartDateCompletedEventHandler ValidateStartDateCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:SaveMemoAttchmnts", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="SaveMemoAttchmnts_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void SaveMemoAttchmnts(string documentsNoz, string attachmentz, string decriptionz, string username) {
+            this.Invoke("SaveMemoAttchmnts", new object[] {
+                        documentsNoz,
+                        attachmentz,
+                        decriptionz,
+                        username});
+        }
+        
+        /// <remarks/>
+        public void SaveMemoAttchmntsAsync(string documentsNoz, string attachmentz, string decriptionz, string username) {
+            this.SaveMemoAttchmntsAsync(documentsNoz, attachmentz, decriptionz, username, null);
+        }
+        
+        /// <remarks/>
+        public void SaveMemoAttchmntsAsync(string documentsNoz, string attachmentz, string decriptionz, string username, object userState) {
+            if ((this.SaveMemoAttchmntsOperationCompleted == null)) {
+                this.SaveMemoAttchmntsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSaveMemoAttchmntsOperationCompleted);
+            }
+            this.InvokeAsync("SaveMemoAttchmnts", new object[] {
+                        documentsNoz,
+                        attachmentz,
+                        decriptionz,
+                        username}, this.SaveMemoAttchmntsOperationCompleted, userState);
+        }
+        
+        private void OnSaveMemoAttchmntsOperationCompleted(object arg) {
+            if ((this.SaveMemoAttchmntsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SaveMemoAttchmntsCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:StaffLogin", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="StaffLogin_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string StaffLogin(string username, string password) {
+            object[] results = this.Invoke("StaffLogin", new object[] {
+                        username,
+                        password});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void StaffLoginAsync(string username, string password) {
+            this.StaffLoginAsync(username, password, null);
+        }
+        
+        /// <remarks/>
+        public void StaffLoginAsync(string username, string password, object userState) {
+            if ((this.StaffLoginOperationCompleted == null)) {
+                this.StaffLoginOperationCompleted = new System.Threading.SendOrPostCallback(this.OnStaffLoginOperationCompleted);
+            }
+            this.InvokeAsync("StaffLogin", new object[] {
+                        username,
+                        password}, this.StaffLoginOperationCompleted, userState);
+        }
+        
+        private void OnStaffLoginOperationCompleted(object arg) {
+            if ((this.StaffLoginCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.StaffLoginCompleted(this, new StaffLoginCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:UpdatePettyCashSurrenderLines" +
+            "", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="UpdatePettyCashSurrenderLines_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void UpdatePettyCashSurrenderLines(string documentNo, string pettyCashNo, decimal amountSpent, decimal cashReturned, string accountNo) {
+            this.Invoke("UpdatePettyCashSurrenderLines", new object[] {
+                        documentNo,
+                        pettyCashNo,
+                        amountSpent,
+                        cashReturned,
+                        accountNo});
+        }
+        
+        /// <remarks/>
+        public void UpdatePettyCashSurrenderLinesAsync(string documentNo, string pettyCashNo, decimal amountSpent, decimal cashReturned, string accountNo) {
+            this.UpdatePettyCashSurrenderLinesAsync(documentNo, pettyCashNo, amountSpent, cashReturned, accountNo, null);
+        }
+        
+        /// <remarks/>
+        public void UpdatePettyCashSurrenderLinesAsync(string documentNo, string pettyCashNo, decimal amountSpent, decimal cashReturned, string accountNo, object userState) {
+            if ((this.UpdatePettyCashSurrenderLinesOperationCompleted == null)) {
+                this.UpdatePettyCashSurrenderLinesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdatePettyCashSurrenderLinesOperationCompleted);
+            }
+            this.InvokeAsync("UpdatePettyCashSurrenderLines", new object[] {
+                        documentNo,
+                        pettyCashNo,
+                        amountSpent,
+                        cashReturned,
+                        accountNo}, this.UpdatePettyCashSurrenderLinesOperationCompleted, userState);
+        }
+        
+        private void OnUpdatePettyCashSurrenderLinesOperationCompleted(object arg) {
+            if ((this.UpdatePettyCashSurrenderLinesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdatePettyCashSurrenderLinesCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:UpdateStaffPassword", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="UpdateStaffPassword_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string UpdateStaffPassword(string username, string genpass) {
+            object[] results = this.Invoke("UpdateStaffPassword", new object[] {
+                        username,
+                        genpass});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void UpdateStaffPasswordAsync(string username, string genpass) {
+            this.UpdateStaffPasswordAsync(username, genpass, null);
+        }
+        
+        /// <remarks/>
+        public void UpdateStaffPasswordAsync(string username, string genpass, object userState) {
+            if ((this.UpdateStaffPasswordOperationCompleted == null)) {
+                this.UpdateStaffPasswordOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateStaffPasswordOperationCompleted);
+            }
+            this.InvokeAsync("UpdateStaffPassword", new object[] {
+                        username,
+                        genpass}, this.UpdateStaffPasswordOperationCompleted, userState);
+        }
+        
+        private void OnUpdateStaffPasswordOperationCompleted(object arg) {
+            if ((this.UpdateStaffPasswordCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.UpdateStaffPasswordCompleted(this, new UpdateStaffPasswordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:ValidateStartDate", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="ValidateStartDate_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void ValidateStartDate([System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime starting_Date) {
+            this.Invoke("ValidateStartDate", new object[] {
+                        starting_Date});
+        }
+        
+        /// <remarks/>
+        public void ValidateStartDateAsync(System.DateTime starting_Date) {
+            this.ValidateStartDateAsync(starting_Date, null);
+        }
+        
+        /// <remarks/>
+        public void ValidateStartDateAsync(System.DateTime starting_Date, object userState) {
+            if ((this.ValidateStartDateOperationCompleted == null)) {
+                this.ValidateStartDateOperationCompleted = new System.Threading.SendOrPostCallback(this.OnValidateStartDateOperationCompleted);
+            }
+            this.InvokeAsync("ValidateStartDate", new object[] {
+                        starting_Date}, this.ValidateStartDateOperationCompleted, userState);
+        }
+        
+        private void OnValidateStartDateOperationCompleted(object arg) {
+            if ((this.ValidateStartDateCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ValidateStartDateCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:AvailableLeaveDays1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="AvailableLeaveDays1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -492,28 +758,26 @@ namespace KSAStaff.NAVWS {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:AvailableLeaveDays", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="AvailableLeaveDays_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string AvailableLeaveDays(string employeeNo, string leaveType, string currentLeavePeriod) {
+        public string AvailableLeaveDays(string employeeNo, string leaveType) {
             object[] results = this.Invoke("AvailableLeaveDays", new object[] {
                         employeeNo,
-                        leaveType,
-                        currentLeavePeriod});
+                        leaveType});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void AvailableLeaveDaysAsync(string employeeNo, string leaveType, string currentLeavePeriod) {
-            this.AvailableLeaveDaysAsync(employeeNo, leaveType, currentLeavePeriod, null);
+        public void AvailableLeaveDaysAsync(string employeeNo, string leaveType) {
+            this.AvailableLeaveDaysAsync(employeeNo, leaveType, null);
         }
         
         /// <remarks/>
-        public void AvailableLeaveDaysAsync(string employeeNo, string leaveType, string currentLeavePeriod, object userState) {
+        public void AvailableLeaveDaysAsync(string employeeNo, string leaveType, object userState) {
             if ((this.AvailableLeaveDaysOperationCompleted == null)) {
                 this.AvailableLeaveDaysOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAvailableLeaveDaysOperationCompleted);
             }
             this.InvokeAsync("AvailableLeaveDays", new object[] {
                         employeeNo,
-                        leaveType,
-                        currentLeavePeriod}, this.AvailableLeaveDaysOperationCompleted, userState);
+                        leaveType}, this.AvailableLeaveDaysOperationCompleted, userState);
         }
         
         private void OnAvailableLeaveDaysOperationCompleted(object arg) {
@@ -723,10 +987,9 @@ namespace KSAStaff.NAVWS {
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:CreateImprestRequisitionHeade" +
             "r", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="CreateImprestRequisitionHeader_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string CreateImprestRequisitionHeader(string username, string directorate, string department, string resCenter, string purpose) {
+        public string CreateImprestRequisitionHeader(string username, string department, string resCenter, string purpose) {
             object[] results = this.Invoke("CreateImprestRequisitionHeader", new object[] {
                         username,
-                        directorate,
                         department,
                         resCenter,
                         purpose});
@@ -734,18 +997,17 @@ namespace KSAStaff.NAVWS {
         }
         
         /// <remarks/>
-        public void CreateImprestRequisitionHeaderAsync(string username, string directorate, string department, string resCenter, string purpose) {
-            this.CreateImprestRequisitionHeaderAsync(username, directorate, department, resCenter, purpose, null);
+        public void CreateImprestRequisitionHeaderAsync(string username, string department, string resCenter, string purpose) {
+            this.CreateImprestRequisitionHeaderAsync(username, department, resCenter, purpose, null);
         }
         
         /// <remarks/>
-        public void CreateImprestRequisitionHeaderAsync(string username, string directorate, string department, string resCenter, string purpose, object userState) {
+        public void CreateImprestRequisitionHeaderAsync(string username, string department, string resCenter, string purpose, object userState) {
             if ((this.CreateImprestRequisitionHeaderOperationCompleted == null)) {
                 this.CreateImprestRequisitionHeaderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateImprestRequisitionHeaderOperationCompleted);
             }
             this.InvokeAsync("CreateImprestRequisitionHeader", new object[] {
                         username,
-                        directorate,
                         department,
                         resCenter,
                         purpose}, this.CreateImprestRequisitionHeaderOperationCompleted, userState);
@@ -1045,6 +1307,36 @@ namespace KSAStaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:GenerateMemoReport", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="GenerateMemoReport_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void GenerateMemoReport(string memoNo, string fileNameFromApp) {
+            this.Invoke("GenerateMemoReport", new object[] {
+                        memoNo,
+                        fileNameFromApp});
+        }
+        
+        /// <remarks/>
+        public void GenerateMemoReportAsync(string memoNo, string fileNameFromApp) {
+            this.GenerateMemoReportAsync(memoNo, fileNameFromApp, null);
+        }
+        
+        /// <remarks/>
+        public void GenerateMemoReportAsync(string memoNo, string fileNameFromApp, object userState) {
+            if ((this.GenerateMemoReportOperationCompleted == null)) {
+                this.GenerateMemoReportOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGenerateMemoReportOperationCompleted);
+            }
+            this.InvokeAsync("GenerateMemoReport", new object[] {
+                        memoNo,
+                        fileNameFromApp}, this.GenerateMemoReportOperationCompleted, userState);
+        }
+        
+        private void OnGenerateMemoReportOperationCompleted(object arg) {
+            if ((this.GenerateMemoReportCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GenerateMemoReportCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:GeneratePayslipReport", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="GeneratePayslipReport_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public void GeneratePayslipReport(string employeeNo, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime period, string fileNameFromApp) {
             this.Invoke("GeneratePayslipReport", new object[] {
@@ -1135,6 +1427,36 @@ namespace KSAStaff.NAVWS {
             if ((this.Generatep9ReportCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.Generatep9ReportCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetAdvancetype", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="GetAdvancetype_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetAdvancetype(int type) {
+            object[] results = this.Invoke("GetAdvancetype", new object[] {
+                        type});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAdvancetypeAsync(int type) {
+            this.GetAdvancetypeAsync(type, null);
+        }
+        
+        /// <remarks/>
+        public void GetAdvancetypeAsync(int type, object userState) {
+            if ((this.GetAdvancetypeOperationCompleted == null)) {
+                this.GetAdvancetypeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAdvancetypeOperationCompleted);
+            }
+            this.InvokeAsync("GetAdvancetype", new object[] {
+                        type}, this.GetAdvancetypeOperationCompleted, userState);
+        }
+        
+        private void OnGetAdvancetypeOperationCompleted(object arg) {
+            if ((this.GetAdvancetypeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAdvancetypeCompleted(this, new GetAdvancetypeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1349,6 +1671,36 @@ namespace KSAStaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetLeaveTypes1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="GetLeaveTypes1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetLeaveTypes1(string gender) {
+            object[] results = this.Invoke("GetLeaveTypes1", new object[] {
+                        gender});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetLeaveTypes1Async(string gender) {
+            this.GetLeaveTypes1Async(gender, null);
+        }
+        
+        /// <remarks/>
+        public void GetLeaveTypes1Async(string gender, object userState) {
+            if ((this.GetLeaveTypes1OperationCompleted == null)) {
+                this.GetLeaveTypes1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLeaveTypes1OperationCompleted);
+            }
+            this.InvokeAsync("GetLeaveTypes1", new object[] {
+                        gender}, this.GetLeaveTypes1OperationCompleted, userState);
+        }
+        
+        private void OnGetLeaveTypes1OperationCompleted(object arg) {
+            if ((this.GetLeaveTypes1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetLeaveTypes1Completed(this, new GetLeaveTypes1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetLeaveTypes", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="GetLeaveTypes_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string GetLeaveTypes(string gender) {
@@ -1375,6 +1727,36 @@ namespace KSAStaff.NAVWS {
             if ((this.GetLeaveTypesCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetLeaveTypesCompleted(this, new GetLeaveTypesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetMyImprests", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="GetMyImprests_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetMyImprests(string username) {
+            object[] results = this.Invoke("GetMyImprests", new object[] {
+                        username});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetMyImprestsAsync(string username) {
+            this.GetMyImprestsAsync(username, null);
+        }
+        
+        /// <remarks/>
+        public void GetMyImprestsAsync(string username, object userState) {
+            if ((this.GetMyImprestsOperationCompleted == null)) {
+                this.GetMyImprestsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMyImprestsOperationCompleted);
+            }
+            this.InvokeAsync("GetMyImprests", new object[] {
+                        username}, this.GetMyImprestsOperationCompleted, userState);
+        }
+        
+        private void OnGetMyImprestsOperationCompleted(object arg) {
+            if ((this.GetMyImprestsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetMyImprestsCompleted(this, new GetMyImprestsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1461,6 +1843,62 @@ namespace KSAStaff.NAVWS {
             if ((this.GetNextPettyCashNoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetNextPettyCashNoCompleted(this, new GetNextPettyCashNoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetPayslipMonths", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="GetPayslipMonths_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetPayslipMonths() {
+            object[] results = this.Invoke("GetPayslipMonths", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetPayslipMonthsAsync() {
+            this.GetPayslipMonthsAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetPayslipMonthsAsync(object userState) {
+            if ((this.GetPayslipMonthsOperationCompleted == null)) {
+                this.GetPayslipMonthsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPayslipMonthsOperationCompleted);
+            }
+            this.InvokeAsync("GetPayslipMonths", new object[0], this.GetPayslipMonthsOperationCompleted, userState);
+        }
+        
+        private void OnGetPayslipMonthsOperationCompleted(object arg) {
+            if ((this.GetPayslipMonthsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetPayslipMonthsCompleted(this, new GetPayslipMonthsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetPayslipYears", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="GetPayslipYears_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetPayslipYears() {
+            object[] results = this.Invoke("GetPayslipYears", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetPayslipYearsAsync() {
+            this.GetPayslipYearsAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetPayslipYearsAsync(object userState) {
+            if ((this.GetPayslipYearsOperationCompleted == null)) {
+                this.GetPayslipYearsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPayslipYearsOperationCompleted);
+            }
+            this.InvokeAsync("GetPayslipYears", new object[0], this.GetPayslipYearsOperationCompleted, userState);
+        }
+        
+        private void OnGetPayslipYearsOperationCompleted(object arg) {
+            if ((this.GetPayslipYearsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetPayslipYearsCompleted(this, new GetPayslipYearsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1733,10 +2171,10 @@ namespace KSAStaff.NAVWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:HRMLeaveApplication", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="HRMLeaveApplication_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:HRMLeaveApplication1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="HRMLeaveApplication1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string HRMLeaveApplication(string username, string reliever, string leaveType, decimal appliedDays, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime startDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime endDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime returnDate, string purpose, string responsibilityCenter, string department) {
-            object[] results = this.Invoke("HRMLeaveApplication", new object[] {
+        public string HRMLeaveApplication1(string username, string reliever, string leaveType, decimal appliedDays, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime startDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime endDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime returnDate, string purpose, string responsibilityCenter, string department) {
+            object[] results = this.Invoke("HRMLeaveApplication1", new object[] {
                         username,
                         reliever,
                         leaveType,
@@ -1751,12 +2189,59 @@ namespace KSAStaff.NAVWS {
         }
         
         /// <remarks/>
-        public void HRMLeaveApplicationAsync(string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter, string department) {
-            this.HRMLeaveApplicationAsync(username, reliever, leaveType, appliedDays, startDate, endDate, returnDate, purpose, responsibilityCenter, department, null);
+        public void HRMLeaveApplication1Async(string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter, string department) {
+            this.HRMLeaveApplication1Async(username, reliever, leaveType, appliedDays, startDate, endDate, returnDate, purpose, responsibilityCenter, department, null);
         }
         
         /// <remarks/>
-        public void HRMLeaveApplicationAsync(string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter, string department, object userState) {
+        public void HRMLeaveApplication1Async(string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter, string department, object userState) {
+            if ((this.HRMLeaveApplication1OperationCompleted == null)) {
+                this.HRMLeaveApplication1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnHRMLeaveApplication1OperationCompleted);
+            }
+            this.InvokeAsync("HRMLeaveApplication1", new object[] {
+                        username,
+                        reliever,
+                        leaveType,
+                        appliedDays,
+                        startDate,
+                        endDate,
+                        returnDate,
+                        purpose,
+                        responsibilityCenter,
+                        department}, this.HRMLeaveApplication1OperationCompleted, userState);
+        }
+        
+        private void OnHRMLeaveApplication1OperationCompleted(object arg) {
+            if ((this.HRMLeaveApplication1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.HRMLeaveApplication1Completed(this, new HRMLeaveApplication1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:HRMLeaveApplication", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="HRMLeaveApplication_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string HRMLeaveApplication(string username, string reliever, string leaveType, decimal appliedDays, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime startDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime endDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime returnDate, string purpose, string responsibilityCenter) {
+            object[] results = this.Invoke("HRMLeaveApplication", new object[] {
+                        username,
+                        reliever,
+                        leaveType,
+                        appliedDays,
+                        startDate,
+                        endDate,
+                        returnDate,
+                        purpose,
+                        responsibilityCenter});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void HRMLeaveApplicationAsync(string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter) {
+            this.HRMLeaveApplicationAsync(username, reliever, leaveType, appliedDays, startDate, endDate, returnDate, purpose, responsibilityCenter, null);
+        }
+        
+        /// <remarks/>
+        public void HRMLeaveApplicationAsync(string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter, object userState) {
             if ((this.HRMLeaveApplicationOperationCompleted == null)) {
                 this.HRMLeaveApplicationOperationCompleted = new System.Threading.SendOrPostCallback(this.OnHRMLeaveApplicationOperationCompleted);
             }
@@ -1769,8 +2254,7 @@ namespace KSAStaff.NAVWS {
                         endDate,
                         returnDate,
                         purpose,
-                        responsibilityCenter,
-                        department}, this.HRMLeaveApplicationOperationCompleted, userState);
+                        responsibilityCenter}, this.HRMLeaveApplicationOperationCompleted, userState);
         }
         
         private void OnHRMLeaveApplicationOperationCompleted(object arg) {
@@ -2658,6 +3142,44 @@ namespace KSAStaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:RegFileUploadAtt1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="RegFileUploadAtt1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool RegFileUploadAtt1(string retNo, string fileName, string attachment, int tableId, string docType) {
+            object[] results = this.Invoke("RegFileUploadAtt1", new object[] {
+                        retNo,
+                        fileName,
+                        attachment,
+                        tableId,
+                        docType});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RegFileUploadAtt1Async(string retNo, string fileName, string attachment, int tableId, string docType) {
+            this.RegFileUploadAtt1Async(retNo, fileName, attachment, tableId, docType, null);
+        }
+        
+        /// <remarks/>
+        public void RegFileUploadAtt1Async(string retNo, string fileName, string attachment, int tableId, string docType, object userState) {
+            if ((this.RegFileUploadAtt1OperationCompleted == null)) {
+                this.RegFileUploadAtt1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnRegFileUploadAtt1OperationCompleted);
+            }
+            this.InvokeAsync("RegFileUploadAtt1", new object[] {
+                        retNo,
+                        fileName,
+                        attachment,
+                        tableId,
+                        docType}, this.RegFileUploadAtt1OperationCompleted, userState);
+        }
+        
+        private void OnRegFileUploadAtt1OperationCompleted(object arg) {
+            if ((this.RegFileUploadAtt1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RegFileUploadAtt1Completed(this, new RegFileUploadAtt1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:RegFileUploadAtt", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="RegFileUploadAtt_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public bool RegFileUploadAtt(string retNo, string fileName, string attachment, int tableId, string docType) {
@@ -2758,232 +3280,6 @@ namespace KSAStaff.NAVWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:RemoveImprestRequisitionLine", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="RemoveImprestRequisitionLine_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string RemoveImprestRequisitionLine(string imprestNo, string advanceType) {
-            object[] results = this.Invoke("RemoveImprestRequisitionLine", new object[] {
-                        imprestNo,
-                        advanceType});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void RemoveImprestRequisitionLineAsync(string imprestNo, string advanceType) {
-            this.RemoveImprestRequisitionLineAsync(imprestNo, advanceType, null);
-        }
-        
-        /// <remarks/>
-        public void RemoveImprestRequisitionLineAsync(string imprestNo, string advanceType, object userState) {
-            if ((this.RemoveImprestRequisitionLineOperationCompleted == null)) {
-                this.RemoveImprestRequisitionLineOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveImprestRequisitionLineOperationCompleted);
-            }
-            this.InvokeAsync("RemoveImprestRequisitionLine", new object[] {
-                        imprestNo,
-                        advanceType}, this.RemoveImprestRequisitionLineOperationCompleted, userState);
-        }
-        
-        private void OnRemoveImprestRequisitionLineOperationCompleted(object arg) {
-            if ((this.RemoveImprestRequisitionLineCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.RemoveImprestRequisitionLineCompleted(this, new RemoveImprestRequisitionLineCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:RemovePettyCashRequisitionLin" +
-            "e", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="RemovePettyCashRequisitionLine_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string RemovePettyCashRequisitionLine(int lineNo) {
-            object[] results = this.Invoke("RemovePettyCashRequisitionLine", new object[] {
-                        lineNo});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void RemovePettyCashRequisitionLineAsync(int lineNo) {
-            this.RemovePettyCashRequisitionLineAsync(lineNo, null);
-        }
-        
-        /// <remarks/>
-        public void RemovePettyCashRequisitionLineAsync(int lineNo, object userState) {
-            if ((this.RemovePettyCashRequisitionLineOperationCompleted == null)) {
-                this.RemovePettyCashRequisitionLineOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemovePettyCashRequisitionLineOperationCompleted);
-            }
-            this.InvokeAsync("RemovePettyCashRequisitionLine", new object[] {
-                        lineNo}, this.RemovePettyCashRequisitionLineOperationCompleted, userState);
-        }
-        
-        private void OnRemovePettyCashRequisitionLineOperationCompleted(object arg) {
-            if ((this.RemovePettyCashRequisitionLineCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.RemovePettyCashRequisitionLineCompleted(this, new RemovePettyCashRequisitionLineCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:SaveMemoAttchmnts", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="SaveMemoAttchmnts_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void SaveMemoAttchmnts(string documentsNoz, string attachmentz, string decriptionz, string username) {
-            this.Invoke("SaveMemoAttchmnts", new object[] {
-                        documentsNoz,
-                        attachmentz,
-                        decriptionz,
-                        username});
-        }
-        
-        /// <remarks/>
-        public void SaveMemoAttchmntsAsync(string documentsNoz, string attachmentz, string decriptionz, string username) {
-            this.SaveMemoAttchmntsAsync(documentsNoz, attachmentz, decriptionz, username, null);
-        }
-        
-        /// <remarks/>
-        public void SaveMemoAttchmntsAsync(string documentsNoz, string attachmentz, string decriptionz, string username, object userState) {
-            if ((this.SaveMemoAttchmntsOperationCompleted == null)) {
-                this.SaveMemoAttchmntsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSaveMemoAttchmntsOperationCompleted);
-            }
-            this.InvokeAsync("SaveMemoAttchmnts", new object[] {
-                        documentsNoz,
-                        attachmentz,
-                        decriptionz,
-                        username}, this.SaveMemoAttchmntsOperationCompleted, userState);
-        }
-        
-        private void OnSaveMemoAttchmntsOperationCompleted(object arg) {
-            if ((this.SaveMemoAttchmntsCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.SaveMemoAttchmntsCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:StaffLogin", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="StaffLogin_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string StaffLogin(string username, string password) {
-            object[] results = this.Invoke("StaffLogin", new object[] {
-                        username,
-                        password});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void StaffLoginAsync(string username, string password) {
-            this.StaffLoginAsync(username, password, null);
-        }
-        
-        /// <remarks/>
-        public void StaffLoginAsync(string username, string password, object userState) {
-            if ((this.StaffLoginOperationCompleted == null)) {
-                this.StaffLoginOperationCompleted = new System.Threading.SendOrPostCallback(this.OnStaffLoginOperationCompleted);
-            }
-            this.InvokeAsync("StaffLogin", new object[] {
-                        username,
-                        password}, this.StaffLoginOperationCompleted, userState);
-        }
-        
-        private void OnStaffLoginOperationCompleted(object arg) {
-            if ((this.StaffLoginCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.StaffLoginCompleted(this, new StaffLoginCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:UpdatePettyCashSurrenderLines" +
-            "", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="UpdatePettyCashSurrenderLines_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void UpdatePettyCashSurrenderLines(string documentNo, string pettyCashNo, decimal amountSpent, decimal cashReturned, string accountNo) {
-            this.Invoke("UpdatePettyCashSurrenderLines", new object[] {
-                        documentNo,
-                        pettyCashNo,
-                        amountSpent,
-                        cashReturned,
-                        accountNo});
-        }
-        
-        /// <remarks/>
-        public void UpdatePettyCashSurrenderLinesAsync(string documentNo, string pettyCashNo, decimal amountSpent, decimal cashReturned, string accountNo) {
-            this.UpdatePettyCashSurrenderLinesAsync(documentNo, pettyCashNo, amountSpent, cashReturned, accountNo, null);
-        }
-        
-        /// <remarks/>
-        public void UpdatePettyCashSurrenderLinesAsync(string documentNo, string pettyCashNo, decimal amountSpent, decimal cashReturned, string accountNo, object userState) {
-            if ((this.UpdatePettyCashSurrenderLinesOperationCompleted == null)) {
-                this.UpdatePettyCashSurrenderLinesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdatePettyCashSurrenderLinesOperationCompleted);
-            }
-            this.InvokeAsync("UpdatePettyCashSurrenderLines", new object[] {
-                        documentNo,
-                        pettyCashNo,
-                        amountSpent,
-                        cashReturned,
-                        accountNo}, this.UpdatePettyCashSurrenderLinesOperationCompleted, userState);
-        }
-        
-        private void OnUpdatePettyCashSurrenderLinesOperationCompleted(object arg) {
-            if ((this.UpdatePettyCashSurrenderLinesCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.UpdatePettyCashSurrenderLinesCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:UpdateStaffPassword", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="UpdateStaffPassword_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string UpdateStaffPassword(string username, string genpass) {
-            object[] results = this.Invoke("UpdateStaffPassword", new object[] {
-                        username,
-                        genpass});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void UpdateStaffPasswordAsync(string username, string genpass) {
-            this.UpdateStaffPasswordAsync(username, genpass, null);
-        }
-        
-        /// <remarks/>
-        public void UpdateStaffPasswordAsync(string username, string genpass, object userState) {
-            if ((this.UpdateStaffPasswordOperationCompleted == null)) {
-                this.UpdateStaffPasswordOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUpdateStaffPasswordOperationCompleted);
-            }
-            this.InvokeAsync("UpdateStaffPassword", new object[] {
-                        username,
-                        genpass}, this.UpdateStaffPasswordOperationCompleted, userState);
-        }
-        
-        private void OnUpdateStaffPasswordOperationCompleted(object arg) {
-            if ((this.UpdateStaffPasswordCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.UpdateStaffPasswordCompleted(this, new UpdateStaffPasswordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:ValidateStartDate", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="ValidateStartDate_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void ValidateStartDate([System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime starting_Date) {
-            this.Invoke("ValidateStartDate", new object[] {
-                        starting_Date});
-        }
-        
-        /// <remarks/>
-        public void ValidateStartDateAsync(System.DateTime starting_Date) {
-            this.ValidateStartDateAsync(starting_Date, null);
-        }
-        
-        /// <remarks/>
-        public void ValidateStartDateAsync(System.DateTime starting_Date, object userState) {
-            if ((this.ValidateStartDateOperationCompleted == null)) {
-                this.ValidateStartDateOperationCompleted = new System.Threading.SendOrPostCallback(this.OnValidateStartDateOperationCompleted);
-            }
-            this.InvokeAsync("ValidateStartDate", new object[] {
-                        starting_Date}, this.ValidateStartDateOperationCompleted, userState);
-        }
-        
-        private void OnValidateStartDateOperationCompleted(object arg) {
-            if ((this.ValidateStartDateCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.ValidateStartDateCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -3001,6 +3297,122 @@ namespace KSAStaff.NAVWS {
             return false;
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void RemoveImprestRequisitionLineCompletedEventHandler(object sender, RemoveImprestRequisitionLineCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RemoveImprestRequisitionLineCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RemoveImprestRequisitionLineCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void RemovePettyCashRequisitionLineCompletedEventHandler(object sender, RemovePettyCashRequisitionLineCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RemovePettyCashRequisitionLineCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RemovePettyCashRequisitionLineCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void SaveMemoAttchmntsCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void StaffLoginCompletedEventHandler(object sender, StaffLoginCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class StaffLoginCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal StaffLoginCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void UpdatePettyCashSurrenderLinesCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void UpdateStaffPasswordCompletedEventHandler(object sender, UpdateStaffPasswordCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class UpdateStaffPasswordCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal UpdateStaffPasswordCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void ValidateStartDateCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
@@ -3470,6 +3882,10 @@ namespace KSAStaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void GenerateMemoReportCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void GeneratePayslipReportCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
@@ -3479,6 +3895,32 @@ namespace KSAStaff.NAVWS {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void Generatep9ReportCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void GetAdvancetypeCompletedEventHandler(object sender, GetAdvancetypeCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAdvancetypeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAdvancetypeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
@@ -3664,6 +4106,32 @@ namespace KSAStaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void GetLeaveTypes1CompletedEventHandler(object sender, GetLeaveTypes1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetLeaveTypes1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetLeaveTypes1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void GetLeaveTypesCompletedEventHandler(object sender, GetLeaveTypesCompletedEventArgs e);
     
     /// <remarks/>
@@ -3675,6 +4143,32 @@ namespace KSAStaff.NAVWS {
         private object[] results;
         
         internal GetLeaveTypesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void GetMyImprestsCompletedEventHandler(object sender, GetMyImprestsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetMyImprestsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetMyImprestsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -3753,6 +4247,58 @@ namespace KSAStaff.NAVWS {
         private object[] results;
         
         internal GetNextPettyCashNoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void GetPayslipMonthsCompletedEventHandler(object sender, GetPayslipMonthsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetPayslipMonthsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetPayslipMonthsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void GetPayslipYearsCompletedEventHandler(object sender, GetPayslipYearsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetPayslipYearsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetPayslipYearsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -3987,6 +4533,32 @@ namespace KSAStaff.NAVWS {
         private object[] results;
         
         internal GetStoreItemQuantityCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void HRMLeaveApplication1CompletedEventHandler(object sender, HRMLeaveApplication1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class HRMLeaveApplication1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal HRMLeaveApplication1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -4598,6 +5170,32 @@ namespace KSAStaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void RegFileUploadAtt1CompletedEventHandler(object sender, RegFileUploadAtt1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RegFileUploadAtt1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RegFileUploadAtt1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
     public delegate void RegFileUploadAttCompletedEventHandler(object sender, RegFileUploadAttCompletedEventArgs e);
     
     /// <remarks/>
@@ -4673,122 +5271,6 @@ namespace KSAStaff.NAVWS {
             }
         }
     }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
-    public delegate void RemoveImprestRequisitionLineCompletedEventHandler(object sender, RemoveImprestRequisitionLineCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class RemoveImprestRequisitionLineCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal RemoveImprestRequisitionLineCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
-    public delegate void RemovePettyCashRequisitionLineCompletedEventHandler(object sender, RemovePettyCashRequisitionLineCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class RemovePettyCashRequisitionLineCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal RemovePettyCashRequisitionLineCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
-    public delegate void SaveMemoAttchmntsCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
-    public delegate void StaffLoginCompletedEventHandler(object sender, StaffLoginCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class StaffLoginCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal StaffLoginCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
-    public delegate void UpdatePettyCashSurrenderLinesCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
-    public delegate void UpdateStaffPasswordCompletedEventHandler(object sender, UpdateStaffPasswordCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class UpdateStaffPasswordCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal UpdateStaffPasswordCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
-    public delegate void ValidateStartDateCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

@@ -185,52 +185,15 @@ namespace KSAStaff.pages
             }
         }
         */
-        private string GetCurrentLeavePeriod()
-        {
-            string currentLeavePeriod = "";
-
-            try
-            {
-                using (SqlConnection conn =Components.getconnToNAV())
-                {
-                    string sqlStmt2 = "spGetCurrentLeavePeriod";
-                    using (SqlCommand cmd = new SqlCommand())
-                    {
-                        cmd.CommandText = sqlStmt2;
-                        cmd.Connection = conn;
-                        cmd.CommandType = CommandType.StoredProcedure;
-
-                        cmd.Parameters.AddWithValue("@Company_Name",Components.Company_Name);
-
-                        SqlParameter outputParam = new SqlParameter("@Year", SqlDbType.NVarChar, 50)
-                        {
-                            Direction = ParameterDirection.Output
-                        };
-                        cmd.Parameters.Add(outputParam);
-
-                        cmd.ExecuteNonQuery();
-
-
-                        currentLeavePeriod = outputParam.Value.ToString();
-                    }
-                }
-            }
-            catch (Exception Ex)
-            {
-                currentLeavePeriod = "Error retrieving leave period";
-                Ex.Data.Clear();
-            }
-
-            return currentLeavePeriod;
-        }
+        
         private void LoadLeaveBalance()
         {
             try
             {
                 string leaveType = ddlLeaveType.SelectedValue;
                 string employeeNo = Session["username"].ToString();
-                string currentLeavePeriod = GetCurrentLeavePeriod();
-                string availableDays = webportals.AvailableLeaveDays(employeeNo, leaveType,currentLeavePeriod);
+             
+                string availableDays = webportals.AvailableLeaveDays(employeeNo, leaveType);
                 if (!string.IsNullOrEmpty(availableDays))
                 {
                     double leaveBalance = Convert.ToDouble(availableDays);
@@ -443,7 +406,7 @@ namespace KSAStaff.pages
                 DateTime returnDate = Convert.ToDateTime(lblReturnDate.Text);
 
                 // Applications
-                string response = webportals.HRMLeaveApplication(username, reliever, leaveType, Convert.ToDecimal(appliedDays), Convert.ToDateTime(startDate), endDate, returnDate, purpose, resCenter,department);
+                string response = webportals.HRMLeaveApplication(username, reliever, leaveType, Convert.ToDecimal(appliedDays), Convert.ToDateTime(startDate), endDate, returnDate, purpose, resCenter);
                 if (!string.IsNullOrEmpty(response))
                 {
                     string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
