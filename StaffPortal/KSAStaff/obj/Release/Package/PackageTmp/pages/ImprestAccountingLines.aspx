@@ -31,12 +31,18 @@
                                         <asp:DropDownList ID="ddlPostedImprest" CssClass="form-control select2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlPostedImprest_SelectedIndexChanged"></asp:DropDownList>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <%--<div class="col-md-4">
                                     <div class="form-group">
                                         <label>Responsibility Center</label>
                                         <asp:DropDownList ID="ddlResponsibilityCenter" CssClass="form-control select2" runat="server"></asp:DropDownList>
                                     </div>
-                                </div>
+                                </div>--%>
+                                 <div class="col-md-4">
+                                      <div class="form-group">
+                                          <label>Responsibility Center: </label>
+                                          <asp:Label ID="lblResCenter" runat="server" Text="" ForeColor="Blue" Font-Bold="true"></asp:Label>
+                                      </div>
+                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
