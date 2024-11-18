@@ -138,8 +138,9 @@ namespace KSAStaff.pages
                     string returnMsg = departmentDetailsArr[0];
                     if (returnMsg == "SUCCESS")
                     {
-                        lblDirectorate.Text = departmentDetailsArr[1];
-                        lblDepartment.Text = departmentDetailsArr[2];
+                        lblDepartment.Text = departmentDetailsArr[1];
+                        //lblDirectorate.Text = departmentDetailsArr[2];
+                        
                     }
                 }
                 lblUserId.Text = username;
@@ -154,7 +155,7 @@ namespace KSAStaff.pages
         {
             try
             {
-                string grouping = "LEAVE";
+                string grouping = "SRN";
                 string responsibilityCenters = webportals.GetDocResponsibilityCentres(grouping);
 
                 if (!string.IsNullOrEmpty(responsibilityCenters))
@@ -251,7 +252,7 @@ namespace KSAStaff.pages
                 connection = Components.getconnToNAV();
                 command = new SqlCommand()
                 {
-                    CommandText = "spGetFixedAssets",
+                    CommandText = "spGetPRNFixedAssets",
                     CommandType = CommandType.StoredProcedure,
                     Connection = connection
                 };
@@ -261,7 +262,7 @@ namespace KSAStaff.pages
                 {
                     while (reader.Read())
                     {
-                        ListItem li = new ListItem(reader["Description"].ToString().ToUpper(), reader["No_"].ToString());
+                        ListItem li = new ListItem(reader["Description"].ToString().ToUpper(), reader["Code"].ToString());
                         ddlItem.Items.Add(li);
                     }
                 }
@@ -354,7 +355,7 @@ namespace KSAStaff.pages
             try
             {
                 string username = Session["username"].ToString();
-                string directorate = lblDirectorate.Text;
+               // string directorate = lblDirectorate.Text;
                 string department = lblDepartment.Text;
                 string requiredDate = txtRequiredDate.Text;
                 string responsibilityCenter = lblResCenter.Text.ToString();
@@ -362,9 +363,10 @@ namespace KSAStaff.pages
                 string requisitionType = ddlRequisitionType.SelectedValue.ToString();
                 string issuingStore = ddlissuingStore.SelectedValue.ToString();
 
-                if (string.IsNullOrEmpty(directorate) || string.IsNullOrEmpty(department))
-                {
-                    Message("Please ensure that you have the directorate and department defined.");
+                //if (string.IsNullOrEmpty(directorate) || string.IsNullOrEmpty(department))
+                    if (string.IsNullOrEmpty(department))
+                    {
+                    Message("Please ensure that you have the department defined.");
                     return;
                 }
                 if (string.IsNullOrEmpty(requiredDate))
@@ -393,7 +395,7 @@ namespace KSAStaff.pages
                     return;
                 }
 
-                string response = webportals.CreateStoreRequisitionHeader(username, Convert.ToInt32(requisitionType), Convert.ToDateTime(requiredDate), directorate, department, responsibilityCenter, issuingStore, description);
+                string response = webportals.CreateStoreRequisitionHeader(username, Convert.ToInt32(requisitionType), Convert.ToDateTime(requiredDate), department, responsibilityCenter, issuingStore, description);
                 if (!string.IsNullOrEmpty(response))
                 {
                     string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);

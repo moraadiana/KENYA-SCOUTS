@@ -37,12 +37,12 @@
                                                 <asp:Label ID="lblStaffName" runat="server" Text="" ForeColor="Blue" Font-Bold="true"></asp:Label>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                       <%-- <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Directorate: </label>
                                                 <asp:Label ID="lblDirectorate" runat="server" Text="" ForeColor="Blue" Font-Bold="true"></asp:Label>
                                             </div>
-                                        </div>
+                                        </div>--%>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Department: </label>

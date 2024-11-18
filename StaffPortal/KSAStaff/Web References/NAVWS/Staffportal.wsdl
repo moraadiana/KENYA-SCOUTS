@@ -299,7 +299,6 @@
             <element minOccurs="1" maxOccurs="1" name="username" type="string" />
             <element minOccurs="1" maxOccurs="1" name="requisitionType" type="int" />
             <element minOccurs="1" maxOccurs="1" name="requiredDate" type="date" />
-            <element minOccurs="1" maxOccurs="1" name="directorate" type="string" />
             <element minOccurs="1" maxOccurs="1" name="department" type="string" />
             <element minOccurs="1" maxOccurs="1" name="resCenter" type="string" />
             <element minOccurs="1" maxOccurs="1" name="issuingStore" type="string" />

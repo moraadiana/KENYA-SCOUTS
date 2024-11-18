@@ -1131,12 +1131,11 @@ namespace KSAStaff.NAVWS {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:CreateStoreRequisitionHeader", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="CreateStoreRequisitionHeader_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string CreateStoreRequisitionHeader(string username, int requisitionType, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime requiredDate, string directorate, string department, string resCenter, string issuingStore, string description) {
+        public string CreateStoreRequisitionHeader(string username, int requisitionType, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime requiredDate, string department, string resCenter, string issuingStore, string description) {
             object[] results = this.Invoke("CreateStoreRequisitionHeader", new object[] {
                         username,
                         requisitionType,
                         requiredDate,
-                        directorate,
                         department,
                         resCenter,
                         issuingStore,
@@ -1145,12 +1144,12 @@ namespace KSAStaff.NAVWS {
         }
         
         /// <remarks/>
-        public void CreateStoreRequisitionHeaderAsync(string username, int requisitionType, System.DateTime requiredDate, string directorate, string department, string resCenter, string issuingStore, string description) {
-            this.CreateStoreRequisitionHeaderAsync(username, requisitionType, requiredDate, directorate, department, resCenter, issuingStore, description, null);
+        public void CreateStoreRequisitionHeaderAsync(string username, int requisitionType, System.DateTime requiredDate, string department, string resCenter, string issuingStore, string description) {
+            this.CreateStoreRequisitionHeaderAsync(username, requisitionType, requiredDate, department, resCenter, issuingStore, description, null);
         }
         
         /// <remarks/>
-        public void CreateStoreRequisitionHeaderAsync(string username, int requisitionType, System.DateTime requiredDate, string directorate, string department, string resCenter, string issuingStore, string description, object userState) {
+        public void CreateStoreRequisitionHeaderAsync(string username, int requisitionType, System.DateTime requiredDate, string department, string resCenter, string issuingStore, string description, object userState) {
             if ((this.CreateStoreRequisitionHeaderOperationCompleted == null)) {
                 this.CreateStoreRequisitionHeaderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateStoreRequisitionHeaderOperationCompleted);
             }
@@ -1158,7 +1157,6 @@ namespace KSAStaff.NAVWS {
                         username,
                         requisitionType,
                         requiredDate,
-                        directorate,
                         department,
                         resCenter,
                         issuingStore,
