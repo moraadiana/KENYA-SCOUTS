@@ -7402,10 +7402,10 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
-    <None Include="Web References\NAVWS\Reference.map">
+    <Content Include="Web References\NAVWS\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
     <None Include="Web References\NAVWS\Staffportal.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -7427,10 +7427,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://108.181.152.166:9147/KSA/WS/KSA/Codeunit/Staffportal">
+    <WebReferenceUrl Include="http://108.181.152.166:9147/KSA/WS/LATEST/Codeunit/Staffportal">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\NAVWS\</RelPath>
-      <UpdateFromURL>http://108.181.152.166:9147/KSA/WS/KSA/Codeunit/Staffportal</UpdateFromURL>
+      <UpdateFromURL>http://108.181.152.166:9147/KSA/WS/LATEST/Codeunit/Staffportal</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
