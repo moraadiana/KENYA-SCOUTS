@@ -95,7 +95,7 @@ namespace KSAStaff.pages
         {
             try
             {
-                string grouping = "IMPSURR";
+                string grouping = "SURRENDER";
                 string responsibilityCenters = webportals.GetDocResponsibilityCentres(grouping);
 
                 if (!string.IsNullOrEmpty(responsibilityCenters))
