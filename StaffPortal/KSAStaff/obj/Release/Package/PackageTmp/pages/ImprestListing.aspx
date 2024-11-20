@@ -35,6 +35,7 @@
                                             <th class="small">#No</th>
                                             <th class="small">Payee</th>
                                             <th class="small">Purpose</th>
+                                           <%-- <th class="small">Memo No</th>--%>
                                             <th class="small">Status</th>
                                             <th class="small">Actions</th>
                                         </tr>

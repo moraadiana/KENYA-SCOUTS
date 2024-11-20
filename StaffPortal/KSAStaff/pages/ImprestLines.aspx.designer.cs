@@ -60,15 +60,6 @@ namespace KSAStaff.pages
         protected global::System.Web.UI.WebControls.Label lblRequester;
 
         /// <summary>
-        /// lblDirectorate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDirectorate;
-
-        /// <summary>
         /// lblDepartment control.
         /// </summary>
         /// <remarks>
@@ -78,13 +69,13 @@ namespace KSAStaff.pages
         protected global::System.Web.UI.WebControls.Label lblDepartment;
 
         /// <summary>
-        /// ddlResponsibilityCenter control.
+        /// lblResCenter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlResponsibilityCenter;
+        protected global::System.Web.UI.WebControls.Label lblResCenter;
 
         /// <summary>
         /// txtPurpose control.
@@ -150,13 +141,13 @@ namespace KSAStaff.pages
         protected global::System.Web.UI.WebControls.Label lblLNo;
 
         /// <summary>
-        /// ddlAdvancType control.
+        /// lblAdvanceType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAdvancType;
+        protected global::System.Web.UI.WebControls.Label lblAdvanceType;
 
         /// <summary>
         /// txtAmnt control.

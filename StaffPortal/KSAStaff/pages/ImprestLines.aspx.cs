@@ -87,8 +87,9 @@ namespace KSAStaff.pages
                     string returnMsg = responseArr[0];
                     if (returnMsg == "SUCCESS")
                     {
-                        lblDirectorate.Text = responseArr[1];
-                        lblDepartment.Text = responseArr[2];
+                        lblDepartment.Text = responseArr[1];
+                        //lblDirectorate.Text = responseArr[2];
+                        
                     }
                 }
                 lblRequester.Text = staffNo;
@@ -107,58 +108,75 @@ namespace KSAStaff.pages
             try
             {
                 string grouping = "IMPREST";
-                ddlResponsibilityCenter.Items.Clear();
-                connection = Components.getconnToNAV();
-                command = new SqlCommand()
+                string responsibilityCenters = webportals.GetDocResponsibilityCentres(grouping);
+
+                if (!string.IsNullOrEmpty(responsibilityCenters))
                 {
-                    CommandText = "spLoadResponsibilityCentre",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                command.Parameters.AddWithValue("@grouping", "'" + grouping + "'");
-                
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
+                    string[] centers = responsibilityCenters.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+
+                    if (centers.Length > 0)
                     {
-
-                     ListItem li = new ListItem(reader["Code"].ToString().ToUpper(), reader["Code"].ToString());
-                        ddlResponsibilityCenter.Items.Add(li);
-
+                        lblResCenter.Text = centers[0];
                     }
                 }
-
+                else
+                {
+                    lblResCenter.Text = "No responsibility centers found.";
+                }
             }
             catch (Exception ex)
             {
                 ex.Data.Clear();
+                lblResCenter.Text = "Error loading responsibility centers.";
             }
         }
+
+
+        /* private void LoadAdvanceTypes()
+         {
+             try
+             {
+                 ddlAdvancType.Items.Clear();
+                 connection = Components.getconnToNAV();
+                 command = new SqlCommand()
+                 {
+                     CommandText = "spLoadImprestAdvancedTypes",
+                     CommandType = CommandType.StoredProcedure,
+                     Connection = connection
+                 };
+                 command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
+                 reader = command.ExecuteReader();
+                 if (reader.HasRows)
+                 {
+                     while (reader.Read())
+                     {
+                         ListItem li = new ListItem(reader["Description"].ToString().ToUpper(), reader["Code"].ToString());
+                         ddlAdvancType.Items.Add(li);
+                     }
+                 }
+             }
+             catch (Exception ex)
+             {
+                 ex.Data.Clear();
+             }
+         }*/
 
         private void LoadAdvanceTypes()
         {
             try
             {
-                ddlAdvancType.Items.Clear();
-                connection = Components.getconnToNAV();
-                command = new SqlCommand()
+                string advancetype = webportals.GetAdvancetype(3);
+                if (!string.IsNullOrEmpty(advancetype))
                 {
-                    CommandText = "spLoadImprestAdvancedTypes",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
+                    string[] type = advancetype.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+
+                    if (type.Length > 0)
                     {
-                        ListItem li = new ListItem(reader["Description"].ToString().ToUpper(), reader["Code"].ToString());
-                        ddlAdvancType.Items.Add(li);
+                        lblAdvanceType.Text = type[0];
                     }
                 }
+
+
             }
             catch (Exception ex)
             {
@@ -172,8 +190,8 @@ namespace KSAStaff.pages
             {
                 string username = Session["username"].ToString();
                 string department = lblDepartment.Text;
-                string directorate = lblDirectorate.Text;
-                string responsibilityCenter = ddlResponsibilityCenter.SelectedValue;
+               // string directorate = lblDirectorate.Text;
+                string responsibilityCenter = lblResCenter.Text;
                 string purpose = txtPurpose.Text;
 
                 if (string.IsNullOrEmpty(department))
@@ -181,11 +199,11 @@ namespace KSAStaff.pages
                     Message("Department cannot be null!");
                     return;
                 }
-                if (string.IsNullOrEmpty(directorate))
-                {
-                    Message("Division cannot be null!");
-                    return;
-                }
+                //if (string.IsNullOrEmpty(directorate))
+                //{
+                //    Message("Division cannot be null!");
+                //    return;
+                //}
                 if (string.IsNullOrEmpty(responsibilityCenter))
                 {
                     Message("Responsibility center cannot be null!");
@@ -203,7 +221,7 @@ namespace KSAStaff.pages
                     return;
                 }
 
-                string response = webportals.CreateImprestRequisitionHeader(username, directorate, department, responsibilityCenter, purpose);
+                string response = webportals.CreateImprestRequisitionHeader(username, department, responsibilityCenter, purpose);
                 if (!string.IsNullOrEmpty(response))
                 {
                     string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
@@ -329,7 +347,7 @@ namespace KSAStaff.pages
             {
                 string imprestNo = lblImprestNo.Text;
                 string employeeNo = Session["username"].ToString();
-                string advanceType = ddlAdvancType.SelectedValue;
+                string advanceType = lblAdvanceType.Text;
                 string amount = txtAmnt.Text;
                 
                 if (advanceType == "0")
@@ -430,11 +448,11 @@ namespace KSAStaff.pages
                     Message("Please add lines before sending for approval!");
                     return;
                 }
-                if (gvAttachments.Rows.Count < 1)
-                {
-                    Message("Please attach documents before sending for approval!");
-                    return;
-                }
+                //if (gvAttachments.Rows.Count < 1)
+                //{
+                //    Message("Please attach documents before sending for approval!");
+                //    return;
+                //}
                 string msg = webportals.OnSendImprestRequisitionForApproval(imprestNo);
                 if (msg == "SUCCESS")
                 {
@@ -546,8 +564,8 @@ namespace KSAStaff.pages
                 {
                     string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
                     string returnMsg1 = responseArr[0];
-                    string returnMsg2 = responseArr[1];
-                    if (returnMsg1 == "SUCCESS" && returnMsg2 == "SUCCESS")
+                  ///  string returnMsg2 = responseArr[1];
+                    if (returnMsg1 == "SUCCESS" )
                     {
                         Message("Document deleted successfully.");
                         BindAttachedDocuments(documentNo);

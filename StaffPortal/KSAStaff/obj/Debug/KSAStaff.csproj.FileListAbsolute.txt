@@ -168,6 +168,7 @@ D:\KENYA-SCOUTS\StaffPortal\KSAStaff\bin\System.ValueTuple.dll
 D:\KENYA-SCOUTS\StaffPortal\KSAStaff\bin\System.Web.Optimization.dll
 D:\KENYA-SCOUTS\StaffPortal\KSAStaff\bin\WebGrease.dll
 D:\KENYA-SCOUTS\StaffPortal\KSAStaff\bin\Microsoft.Bcl.AsyncInterfaces.xml
+D:\KENYA-SCOUTS\StaffPortal\KSAStaff\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\KENYA-SCOUTS\StaffPortal\KSAStaff\bin\Microsoft.OData.Edm.xml
 D:\KENYA-SCOUTS\StaffPortal\KSAStaff\bin\Microsoft.Spatial.xml
 D:\KENYA-SCOUTS\StaffPortal\KSAStaff\bin\System.Buffers.xml
@@ -182,7 +183,6 @@ D:\KENYA-SCOUTS\StaffPortal\KSAStaff\bin\System.Web.Optimization.xml
 D:\KENYA-SCOUTS\StaffPortal\KSAStaff\bin\Newtonsoft.Json.xml
 D:\KENYA-SCOUTS\StaffPortal\KSAStaff\bin\Antlr3.Runtime.pdb
 D:\KENYA-SCOUTS\StaffPortal\KSAStaff\bin\Microsoft.AspNet.FriendlyUrls.xml
-D:\KENYA-SCOUTS\StaffPortal\KSAStaff\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\KENYA-SCOUTS\StaffPortal\KSAStaff\obj\Debug\KSAStaff.csproj.AssemblyReference.cache
 D:\KENYA-SCOUTS\StaffPortal\KSAStaff\obj\Debug\KSAStaff.csproj.CoreCompileInputs.cache
 D:\KENYA-SCOUTS\StaffPortal\KSAStaff\obj\Debug\KSAStaff.csproj.Up2Date

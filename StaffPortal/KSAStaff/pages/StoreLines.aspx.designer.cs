@@ -51,15 +51,6 @@ namespace KSAStaff.pages
         protected global::System.Web.UI.WebControls.Label lblStaffName;
 
         /// <summary>
-        /// lblDirectorate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDirectorate;
-
-        /// <summary>
         /// lblDepartment control.
         /// </summary>
         /// <remarks>
@@ -87,13 +78,13 @@ namespace KSAStaff.pages
         protected global::System.Web.UI.WebControls.TextBox txtRequiredDate;
 
         /// <summary>
-        /// ddlResponsibilityCenter control.
+        /// lblResCenter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlResponsibilityCenter;
+        protected global::System.Web.UI.WebControls.Label lblResCenter;
 
         /// <summary>
         /// ddlissuingStore control.

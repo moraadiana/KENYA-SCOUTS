@@ -33,18 +33,25 @@
                                         <asp:DropDownList ID="ddlReliver" runat="server" CssClass="form-control select2"></asp:DropDownList>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                               <%--  <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Responsibility Canter</label>
                                         <asp:DropDownList ID="ddlResponsibilityCenter" runat="server" CssClass="form-control select2"></asp:DropDownList>
                                     </div>
-                                </div>
+                                </div> --%>
+                                  <div class="col-md-3">
+                                      <div class="form-group">
+                                          <label>Applied Days</label>
+                                          <asp:TextBox ID="txtAppliedDays" CssClass="form-control" runat="server"></asp:TextBox>
+                                      </div>
+                                  </div>
                                 <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Applied Days</label>
-                                        <asp:TextBox ID="txtAppliedDays" CssClass="form-control" runat="server"></asp:TextBox>
-                                    </div>
+                                     <div class="form-group">
+                                         <label>Responsibility Center: </label>
+                                         <asp:Label ID="lblResCenter" runat="server" Text="" ForeColor="Blue" Font-Bold="true"></asp:Label>
+                                     </div>
                                 </div>
+                              
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
@@ -66,12 +73,12 @@
                                         <asp:Label ID="lblBalance" runat="server" Text="" Font-Bold="True" ForeColor="Blue"></asp:Label>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <%--<div class="col-md-3">
                                     <div class="form-group">
                                         <label>KSA: </label>
                                         <asp:Label ID="lblDirectorate" runat="server" Text="" Font-Bold="True" ForeColor="Blue"></asp:Label>
                                     </div>
-                                </div>
+                                </div>--%>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Department: </label>

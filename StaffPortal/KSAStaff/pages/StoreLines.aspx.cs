@@ -98,7 +98,7 @@ namespace KSAStaff.pages
                 connection = Components.getconnToNAV();
                 command = new SqlCommand()
                 {
-                    CommandText = "spLoadLocation",
+                    CommandText = "spGetIssuingStore",
                     CommandType = CommandType.StoredProcedure,
                     Connection = connection
                 };
@@ -138,8 +138,9 @@ namespace KSAStaff.pages
                     string returnMsg = departmentDetailsArr[0];
                     if (returnMsg == "SUCCESS")
                     {
-                        lblDirectorate.Text = departmentDetailsArr[1];
-                        lblDepartment.Text = departmentDetailsArr[2];
+                        lblDepartment.Text = departmentDetailsArr[1];
+                        //lblDirectorate.Text = departmentDetailsArr[2];
+                        
                     }
                 }
                 lblUserId.Text = username;
@@ -150,41 +151,69 @@ namespace KSAStaff.pages
                 ex.Data.Clear();
             }
         }
-
         private void LoadResponsibilityCenter()
         {
-
             try
             {
-                string grouping = "INVOICE";
-                ddlResponsibilityCenter.Items.Clear();
-                connection = Components.getconnToNAV();
-                command = new SqlCommand()
+                string grouping = "SRN";
+                string responsibilityCenters = webportals.GetDocResponsibilityCentres(grouping);
+
+                if (!string.IsNullOrEmpty(responsibilityCenters))
                 {
-                    CommandText = "spLoadResponsibilityCentre",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                command.Parameters.AddWithValue("@grouping", "'" + grouping + "'");
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
+                    string[] centers = responsibilityCenters.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+
+                    if (centers.Length > 0)
                     {
-
-                        ListItem li = new ListItem(reader["Code"].ToString().ToUpper(), reader["Code"].ToString());
-                        ddlResponsibilityCenter.Items.Add(li);
-
+                        lblResCenter.Text = centers[0];
                     }
                 }
-
+                else
+                {
+                    lblResCenter.Text = "No responsibility centers found.";
+                }
             }
             catch (Exception ex)
             {
                 ex.Data.Clear();
+                lblResCenter.Text = "Error loading responsibility centers.";
             }
         }
+
+        //private void LoadResponsibilityCenter()
+        //{
+
+        //    try
+        //    {
+        //
+        //    string grouping = "INVOICE";
+        //        ddlResponsibilityCenter.Items.Clear();
+        //        connection = Components.getconnToNAV();
+        //        command = new SqlCommand()
+        //        {
+        //            CommandText = "spLoadResponsibilityCentre",
+        //            CommandType = CommandType.StoredProcedure,
+        //            Connection = connection
+        //        };
+        //        command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
+        //        command.Parameters.AddWithValue("@grouping", "'" + grouping + "'");
+        //        reader = command.ExecuteReader();
+        //        if (reader.HasRows)
+        //        {
+        //            while (reader.Read())
+        //            {
+
+        //                ListItem li = new ListItem(reader["Code"].ToString().ToUpper(), reader["Code"].ToString());
+        //                ddlResponsibilityCenter.Items.Add(li);
+
+        //            }
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ex.Data.Clear();
+        //    }
+        //}
 
         private void LoadItems()
         {
@@ -223,7 +252,7 @@ namespace KSAStaff.pages
                 connection = Components.getconnToNAV();
                 command = new SqlCommand()
                 {
-                    CommandText = "spGetFixedAssets",
+                    CommandText = "spGetPRNFixedAssets",
                     CommandType = CommandType.StoredProcedure,
                     Connection = connection
                 };
@@ -233,7 +262,7 @@ namespace KSAStaff.pages
                 {
                     while (reader.Read())
                     {
-                        ListItem li = new ListItem(reader["Description"].ToString().ToUpper(), reader["No_"].ToString());
+                        ListItem li = new ListItem(reader["Description"].ToString().ToUpper(), reader["Code"].ToString());
                         ddlItem.Items.Add(li);
                     }
                 }
@@ -326,17 +355,18 @@ namespace KSAStaff.pages
             try
             {
                 string username = Session["username"].ToString();
-                string directorate = lblDirectorate.Text;
+               // string directorate = lblDirectorate.Text;
                 string department = lblDepartment.Text;
                 string requiredDate = txtRequiredDate.Text;
-                string responsibilityCenter = ddlResponsibilityCenter.SelectedValue.ToString();
+                string responsibilityCenter = lblResCenter.Text.ToString();
                 string description = txtDescription.Text;
                 string requisitionType = ddlRequisitionType.SelectedValue.ToString();
                 string issuingStore = ddlissuingStore.SelectedValue.ToString();
 
-                if (string.IsNullOrEmpty(directorate) || string.IsNullOrEmpty(department))
-                {
-                    Message("Please ensure that you have the directorate and department defined.");
+                //if (string.IsNullOrEmpty(directorate) || string.IsNullOrEmpty(department))
+                    if (string.IsNullOrEmpty(department))
+                    {
+                    Message("Please ensure that you have the department defined.");
                     return;
                 }
                 if (string.IsNullOrEmpty(requiredDate))
@@ -365,7 +395,7 @@ namespace KSAStaff.pages
                     return;
                 }
 
-                string response = webportals.CreateStoreRequisitionHeader(username, Convert.ToInt32(requisitionType), Convert.ToDateTime(requiredDate), directorate, department, responsibilityCenter, issuingStore, description);
+                string response = webportals.CreateStoreRequisitionHeader(username, Convert.ToInt32(requisitionType), Convert.ToDateTime(requiredDate), department, responsibilityCenter, issuingStore, description);
                 if (!string.IsNullOrEmpty(response))
                 {
                     string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);

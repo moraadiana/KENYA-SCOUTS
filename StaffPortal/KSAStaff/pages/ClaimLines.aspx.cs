@@ -105,36 +105,31 @@ namespace KSAStaff.pages
         {
             try
             {
-                string grouping = "CLAIM";
-                ddlResponsibilityCenter.Items.Clear();
-                connection = Components.getconnToNAV();
-                command = new SqlCommand()
-                {
-                    CommandText = "spLoadResponsibilityCentre",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                command.Parameters.AddWithValue("@grouping", "'" + grouping + "'");
+                string grouping = "S-CLAIMS";
+                string responsibilityCenters = webportals.GetDocResponsibilityCentres(grouping);
 
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
+                if (!string.IsNullOrEmpty(responsibilityCenters))
                 {
-                    while (reader.Read())
+                    string[] centers = responsibilityCenters.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+
+                    if (centers.Length > 0)
                     {
-
-                        ListItem li = new ListItem(reader["Code"].ToString().ToUpper(), reader["Code"].ToString());
-                        ddlResponsibilityCenter.Items.Add(li);
-
+                        lblResCenter.Text = centers[0];
                     }
                 }
-
+                else
+                {
+                    lblResCenter.Text = "No responsibility centers found.";
+                }
             }
             catch (Exception ex)
             {
                 ex.Data.Clear();
+                lblResCenter.Text = "Error loading responsibility centers.";
             }
         }
+
+
 
         private void LoadAdvanceTypes()
         {
@@ -172,7 +167,7 @@ namespace KSAStaff.pages
                 string username = Session["username"].ToString();
                 string department = lblDepartment.Text;
                 string directorate = lblDirectorate.Text;
-                string responsibilityCenter = ddlResponsibilityCenter.SelectedValue;
+                string responsibilityCenter = lblResCenter.Text;
                 string purpose = txtPurpose.Text;
 
                 if (string.IsNullOrEmpty(department))
