@@ -3,66 +3,40 @@
   "WorkspaceRootPath": "D:\\KENYA-SCOUTS\\StaffPortal\\",
   "Documents": [
     {
-<<<<<<< HEAD
-      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|D:\\KENYA-SCOUTS\\StaffPortal\\ksastaff\\pages\\imprestaccountinglines.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|solutionrelative:ksastaff\\pages\\imprestaccountinglines.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|d:\\kenya-scouts\\staffportal\\ksastaff\\pages\\leaveapplication.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|solutionrelative:ksastaff\\pages\\leaveapplication.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> baa2552329ad266d55024cea201c6a4ae3a957b5
-      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|d:\\kenya-scouts\\staffportal\\ksastaff\\pages\\imprestaccountinglines.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|solutionrelative:ksastaff\\pages\\imprestaccountinglines.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-<<<<<<< HEAD
-      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|d:\\kenya-scouts\\staffportal\\ksastaff\\pages\\claimlisting.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|solutionrelative:ksastaff\\pages\\claimlisting.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-=======
-      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|d:\\kenya-scouts\\staffportal\\ksastaff\\pages\\imprestaccountinglines.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|solutionrelative:ksastaff\\pages\\imprestaccountinglines.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-=======
-      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|d:\\kenya-scouts\\staffportal\\ksastaff\\app_data\\components.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|solutionrelative:ksastaff\\app_data\\components.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|d:\\kenya-scouts\\staffportal\\ksastaff\\pages\\approvaltracking.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|solutionrelative:ksastaff\\pages\\approvaltracking.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|D:\\KENYA-SCOUTS\\StaffPortal\\ksastaff\\pages\\imprestlines.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|solutionrelative:ksastaff\\pages\\imprestlines.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|D:\\KENYA-SCOUTS\\StaffPortal\\ksastaff\\pages\\approvaltracking.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|solutionrelative:ksastaff\\pages\\approvaltracking.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|D:\\KENYA-SCOUTS\\StaffPortal\\ksastaff\\pages\\storelisting.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|d:\\kenya-scouts\\staffportal\\ksastaff\\pages\\storelisting.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|solutionrelative:ksastaff\\pages\\storelisting.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|D:\\KENYA-SCOUTS\\StaffPortal\\ksastaff\\pages\\storelines.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|d:\\kenya-scouts\\staffportal\\ksastaff\\pages\\storelines.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|solutionrelative:ksastaff\\pages\\storelines.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|D:\\KENYA-SCOUTS\\StaffPortal\\ksastaff\\pages\\storelines.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|d:\\kenya-scouts\\staffportal\\ksastaff\\pages\\leaveapplication.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|solutionrelative:ksastaff\\pages\\leaveapplication.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|d:\\kenya-scouts\\staffportal\\ksastaff\\pages\\storelines.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|solutionrelative:ksastaff\\pages\\storelines.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|D:\\KENYA-SCOUTS\\StaffPortal\\ksastaff\\pages\\storelisting.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|solutionrelative:ksastaff\\pages\\storelisting.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
->>>>>>> bda199967b88bd462ec207ed66f9114877819b79
-=======
-      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|d:\\kenya-scouts\\staffportal\\ksastaff\\pages\\imprestaccountinglines.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|solutionrelative:ksastaff\\pages\\imprestaccountinglines.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|d:\\kenya-scouts\\staffportal\\ksastaff\\pages\\leavelisting.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|solutionrelative:ksastaff\\pages\\leavelisting.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|d:\\kenya-scouts\\staffportal\\ksastaff\\pages\\imprestaccountinglines.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|solutionrelative:ksastaff\\pages\\imprestaccountinglines.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
->>>>>>> 707c7db4d29685b329c0be426587c0c02488add6
->>>>>>> baa2552329ad266d55024cea201c6a4ae3a957b5
+      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|d:\\kenya-scouts\\staffportal\\ksastaff\\pages\\imprestlines.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|solutionrelative:ksastaff\\pages\\imprestlines.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|d:\\kenya-scouts\\staffportal\\ksastaff\\pages\\leavelisting.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|solutionrelative:ksastaff\\pages\\leavelisting.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|d:\\kenya-scouts\\staffportal\\ksastaff\\pages\\storelisting.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{E3B8F8DC-89D1-4B25-BBCC-8740C5630819}|KSAStaff\\KSAStaff.csproj|solutionrelative:ksastaff\\pages\\storelisting.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -72,115 +46,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-<<<<<<< HEAD
               "DocumentIndex": 2,
-              "Title": "ClaimListing.aspx.cs",
-              "DocumentMoniker": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\ClaimListing.aspx.cs",
-              "RelativeDocumentMoniker": "KSAStaff\\pages\\ClaimListing.aspx.cs",
-              "ToolTip": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\ClaimListing.aspx.cs",
-              "RelativeToolTip": "KSAStaff\\pages\\ClaimListing.aspx.cs",
-              "ViewState": "AgIAABcAAACAzMzMzMwIwB4AAAAIAAAAAAAAAA==",
+              "Title": "StoreLines.aspx.cs",
+              "DocumentMoniker": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\StoreLines.aspx.cs",
+              "RelativeDocumentMoniker": "KSAStaff\\pages\\StoreLines.aspx.cs",
+              "ToolTip": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\StoreLines.aspx.cs",
+              "RelativeToolTip": "KSAStaff\\pages\\StoreLines.aspx.cs",
+              "ViewState": "AgIAACYAAACAAQAAAEAtwC8AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T19:11:50.821Z",
+              "WhenOpened": "2024-11-26T14:24:24.602Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-=======
-              "DocumentIndex": 0,
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 707c7db4d29685b329c0be426587c0c02488add6
->>>>>>> baa2552329ad266d55024cea201c6a4ae3a957b5
-              "Title": "ImprestAccountingLines.aspx.cs",
-              "DocumentMoniker": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\ImprestAccountingLines.aspx.cs",
-              "RelativeDocumentMoniker": "KSAStaff\\pages\\ImprestAccountingLines.aspx.cs",
-              "ToolTip": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\ImprestAccountingLines.aspx.cs",
-              "RelativeToolTip": "KSAStaff\\pages\\ImprestAccountingLines.aspx.cs",
-<<<<<<< HEAD
-              "ViewState": "AgIAAKgAAAAAAAAAAAAqwLMAAAAIAAAAAAAAAA==",
-=======
-<<<<<<< HEAD
-              "ViewState": "AgIAAFkAAAAAAAAAAAAwwGQAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T18:25:01.558Z",
-=======
-              "Title": "Components.cs",
-              "DocumentMoniker": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\App_Data\\Components.cs",
-              "RelativeDocumentMoniker": "KSAStaff\\App_Data\\Components.cs",
-              "ToolTip": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\App_Data\\Components.cs",
-              "RelativeToolTip": "KSAStaff\\App_Data\\Components.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAVAAAAAAAAAA==",
-=======
-              "ViewState": "AgIAAF4AAACAzczMzMwmwGEAAAAsAAAAAAAAAA==",
->>>>>>> 707c7db4d29685b329c0be426587c0c02488add6
->>>>>>> baa2552329ad266d55024cea201c6a4ae3a957b5
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-20T18:57:40.681Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 0,
-=======
-              "DocumentIndex": 1,
-<<<<<<< HEAD
-              "Title": "ApprovalTracking.aspx.cs",
-              "DocumentMoniker": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\ApprovalTracking.aspx.cs",
-              "RelativeDocumentMoniker": "KSAStaff\\pages\\ApprovalTracking.aspx.cs",
-              "ToolTip": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\ApprovalTracking.aspx.cs",
-              "RelativeToolTip": "KSAStaff\\pages\\ApprovalTracking.aspx.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAqwB4AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-18T10:54:26.138Z",
->>>>>>> bda199967b88bd462ec207ed66f9114877819b79
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-<<<<<<< HEAD
-              "DocumentIndex": 1,
-              "Title": "ImprestAccountingLines.aspx",
-              "DocumentMoniker": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\ImprestAccountingLines.aspx",
-              "RelativeDocumentMoniker": "KSAStaff\\pages\\ImprestAccountingLines.aspx",
-              "ToolTip": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\ImprestAccountingLines.aspx",
-              "RelativeToolTip": "KSAStaff\\pages\\ImprestAccountingLines.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-11-20T18:24:54.278Z",
-=======
-              "DocumentIndex": 3,
-              "Title": "ApprovalTracking.aspx",
-              "DocumentMoniker": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\ApprovalTracking.aspx",
-              "RelativeDocumentMoniker": "KSAStaff\\pages\\ApprovalTracking.aspx",
-              "ToolTip": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\ApprovalTracking.aspx",
-              "RelativeToolTip": "KSAStaff\\pages\\ApprovalTracking.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-11-18T10:54:19.9Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "StoreListing.aspx.cs",
               "DocumentMoniker": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\StoreListing.aspx.cs",
               "RelativeDocumentMoniker": "KSAStaff\\pages\\StoreListing.aspx.cs",
               "ToolTip": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\StoreListing.aspx.cs",
               "RelativeToolTip": "KSAStaff\\pages\\StoreListing.aspx.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAqwBsAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAzszMzEwnwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-18T10:16:23.881Z"
+              "WhenOpened": "2024-11-26T16:24:25.645Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "StoreListing.aspx",
               "DocumentMoniker": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\StoreListing.aspx",
               "RelativeDocumentMoniker": "KSAStaff\\pages\\StoreListing.aspx",
@@ -188,25 +84,12 @@
               "RelativeToolTip": "KSAStaff\\pages\\StoreListing.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-11-18T10:16:20.78Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "StoreLines.aspx.cs",
-              "DocumentMoniker": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\StoreLines.aspx.cs",
-              "RelativeDocumentMoniker": "KSAStaff\\pages\\StoreLines.aspx.cs",
-              "ToolTip": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\StoreLines.aspx.cs",
-              "RelativeToolTip": "KSAStaff\\pages\\StoreLines.aspx.cs",
-              "ViewState": "AgIAAAoCAAAAAAAAAAAuwBwCAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-18T08:29:16.25Z",
->>>>>>> bda199967b88bd462ec207ed66f9114877819b79
+              "WhenOpened": "2024-11-26T16:24:08.052Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "StoreLines.aspx",
               "DocumentMoniker": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\StoreLines.aspx",
               "RelativeDocumentMoniker": "KSAStaff\\pages\\StoreLines.aspx",
@@ -214,19 +97,73 @@
               "RelativeToolTip": "KSAStaff\\pages\\StoreLines.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-11-18T08:28:44.02Z"
-=======
->>>>>>> baa2552329ad266d55024cea201c6a4ae3a957b5
-              "Title": "ImprestAccountingLines.aspx",
-              "DocumentMoniker": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\ImprestAccountingLines.aspx",
-              "RelativeDocumentMoniker": "KSAStaff\\pages\\ImprestAccountingLines.aspx",
-              "ToolTip": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\ImprestAccountingLines.aspx",
-              "RelativeToolTip": "KSAStaff\\pages\\ImprestAccountingLines.aspx",
+              "WhenOpened": "2024-11-26T14:02:01.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LeaveListing.aspx.cs",
+              "DocumentMoniker": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\LeaveListing.aspx.cs",
+              "RelativeDocumentMoniker": "KSAStaff\\pages\\LeaveListing.aspx.cs",
+              "ToolTip": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\LeaveListing.aspx.cs",
+              "RelativeToolTip": "KSAStaff\\pages\\LeaveListing.aspx.cs",
+              "ViewState": "AgIAAFAAAAAAMzMzM7MuwGMAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-26T13:53:28.675Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LeaveListing.aspx",
+              "DocumentMoniker": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\LeaveListing.aspx",
+              "RelativeDocumentMoniker": "KSAStaff\\pages\\LeaveListing.aspx",
+              "ToolTip": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\LeaveListing.aspx",
+              "RelativeToolTip": "KSAStaff\\pages\\LeaveListing.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-11-20T18:57:33.785Z",
+              "WhenOpened": "2024-11-26T13:53:25.217Z",
               "EditorCaption": ""
->>>>>>> 707c7db4d29685b329c0be426587c0c02488add6
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ImprestLines.aspx.cs",
+              "DocumentMoniker": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\ImprestLines.aspx.cs",
+              "RelativeDocumentMoniker": "KSAStaff\\pages\\ImprestLines.aspx.cs",
+              "ToolTip": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\ImprestLines.aspx.cs",
+              "RelativeToolTip": "KSAStaff\\pages\\ImprestLines.aspx.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAQwGcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-26T13:10:18.778Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LeaveApplication.aspx",
+              "DocumentMoniker": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\LeaveApplication.aspx",
+              "RelativeDocumentMoniker": "KSAStaff\\pages\\LeaveApplication.aspx",
+              "ToolTip": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\LeaveApplication.aspx",
+              "RelativeToolTip": "KSAStaff\\pages\\LeaveApplication.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-11-26T11:58:52.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LeaveApplication.aspx.cs",
+              "DocumentMoniker": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\LeaveApplication.aspx.cs",
+              "RelativeDocumentMoniker": "KSAStaff\\pages\\LeaveApplication.aspx.cs",
+              "ToolTip": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\LeaveApplication.aspx.cs",
+              "RelativeToolTip": "KSAStaff\\pages\\LeaveApplication.aspx.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAmwB0AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-26T11:46:51.053Z",
+              "EditorCaption": ""
             }
           ]
         }

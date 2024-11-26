@@ -5,7 +5,8 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\inetpub\wwwroot\KSAPortals\KSAStaff</_PublishTargetUrl>
-    <History>True|2024-11-18T17:16:28.5580881Z||;True|2024-11-18T10:37:15.5263241+03:00||;True|2024-11-15T13:17:04.1887554+03:00||;</History>
+    <History>True|2024-11-26T19:29:19.2695032Z||;True|2024-11-26T11:56:15.8552793+03:00||;True|2024-11-18T20:16:28.5580881+03:00||;True|2024-11-18T10:37:15.5263241+03:00||;True|2024-11-15T13:17:04.1887554+03:00||;</History>
+    <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
     <File Include="About.aspx">
@@ -18,13 +19,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/10/2013 16:29:20</publishTime>
     </File>
     <File Include="bin/KSAStaff.dll">
-      <publishTime>11/18/2024 20:16:17</publishTime>
+      <publishTime>11/26/2024 22:29:07</publishTime>
     </File>
     <File Include="bin/KSAStaff.pdb">
-      <publishTime>11/18/2024 20:16:17</publishTime>
+      <publishTime>11/26/2024 22:29:07</publishTime>
     </File>
     <File Include="bin/KSAStaff.XmlSerializers.dll">
-      <publishTime>11/18/2024 20:16:20</publishTime>
+      <publishTime>11/26/2024 22:29:10</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.FriendlyUrls.dll">
       <publishTime>07/30/2013 16:57:30</publishTime>
@@ -20502,7 +20503,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/14/2024 10:34:25</publishTime>
     </File>
     <File Include="pages/LeaveListing.aspx">
-      <publishTime>08/17/2024 17:53:51</publishTime>
+      <publishTime>11/26/2024 19:27:12</publishTime>
     </File>
     <File Include="pages/LeaveStatement.aspx">
       <publishTime>08/17/2024 17:53:51</publishTime>
