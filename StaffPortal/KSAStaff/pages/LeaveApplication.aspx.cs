@@ -7,6 +7,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Runtime.Remoting.Messaging;
+using System.Web.Configuration;
 
 namespace KSAStaff.pages
 {
@@ -27,12 +29,37 @@ namespace KSAStaff.pages
                     Response.Redirect("~/Default.aspx");
                     return;
                 }
+                string query = Request.QueryString["query"];
+                string leaveNo = null;
+                string approvalStatus = Request.QueryString["status"].Replace("%", " ");
+                if (query == "new")
+                {
+                    leaveNo = null;
+                    lbtnSubmit.Visible = true;
+                }
+                else if (query == "old")
+                {
+                     leaveNo = Request.QueryString["leaveNo"].ToString();
+                    
+                       if (approvalStatus == "Open" || approvalStatus == "Pending")
+                    {
+                       lbtnSubmit.Visible = false;
+                        //lbtnSubmit.Visible = true;
+                    }
+                    
+                    else
+                    {
+                        lbtnSubmit.Visible = false;
+                    }
+                 }
                 LoadLeaveTypes();
                 LoadReliever();
                 LoadResponsibilityCenter();
                 //LoadDays();
                 LoadLeaveBalance();
                 LoadStaffDepartmentDetails();
+               
+
             }
         }
 
@@ -151,40 +178,7 @@ namespace KSAStaff.pages
                 ex.Data.Clear();
             }
         }
-        /*
-        private void LoadLeaveBalance()
-        {
-            try
-            {
-                string leaveType = ddlLeaveType.SelectedValue;
-                string employeeNo = Session["username"].ToString();
-                string availableDays = webportals.AvailableLeaveDays(employeeNo, leaveType);
-                if (!string.IsNullOrEmpty(availableDays))
-                {
-                    double leaveBalance = Convert.ToDouble(availableDays);
-                    if (leaveBalance > 0)
-                    {
-                        lblBalance.Text = availableDays;
-                        lbtnSubmit.Visible = true;
-                    }
-                    else
-                    {
-                        lblBalance.Text = "Not Available";
-                        lbtnSubmit.Visible = false;
-                    }
-                }
-                else
-                {
-                    lblBalance.Text = "Not Available";
-                    lbtnSubmit.Visible = false;
-                }
-            }
-            catch (Exception ex)
-            {
-                ex.Data.Clear();
-            }
-        }
-        */
+       
         
         private void LoadLeaveBalance()
         {
@@ -287,21 +281,42 @@ namespace KSAStaff.pages
                 string startDate = txtStartDate.Text;
                 string appliedDays = txtAppliedDays.Text;
                 string leaveType = ddlLeaveType.SelectedValue.ToString();
+                DateTime applicationDate = DateTime.Now;
 
+                // Ensure applied days is not empty
                 if (string.IsNullOrEmpty(appliedDays))
                 {
-                    Message("Applied days cannot be empty");
+                    Message("Applied days cannot be empty.");
                     txtAppliedDays.Focus();
                     return;
                 }
 
-                webportals.ValidateStartDate(Convert.ToDateTime(startDate));
+                // Validate and parse start date
+                if (!DateTime.TryParse(startDate, out DateTime startingDate))
+                {
+                    Message("Invalid date format. Please enter a valid start date.");
+                    txtStartDate.Text = string.Empty;
+                    return;
+                }
 
-                DateTime startingDate = Convert.ToDateTime(startDate);
-                var endDate = webportals.CalcEndDate(startingDate, Convert.ToInt32(appliedDays), leaveType).ToString("d");
-                var returnDate = webportals.CalcReturnDate(Convert.ToDateTime(endDate), leaveType).ToString("d");
-                lblEndDate.Text = Convert.ToDateTime(endDate).ToString("yyyy-MM-dd");
-                lblReturnDate.Text = Convert.ToDateTime(returnDate).ToString("yyyy-MM-dd");
+                // Check if the start date is at least 3 days from the application date
+                if ((startingDate - applicationDate).TotalDays < 3)
+                {
+                    Message("Start date must be at least 3 days from the application date.");
+                    txtStartDate.Text = string.Empty;
+                    return;
+                }
+
+                // Validate start date using webportals
+                webportals.ValidateStartDate(startingDate);
+
+                // Calculate end date and return date
+                var endDate = webportals.CalcEndDate(startingDate, Convert.ToInt32(appliedDays), leaveType).ToString("yyyy-MM-dd");
+                var returnDate = webportals.CalcReturnDate(Convert.ToDateTime(endDate), leaveType).ToString("yyyy-MM-dd");
+
+                // Update labels
+                lblEndDate.Text = endDate;
+                lblReturnDate.Text = returnDate;
             }
             catch (Exception ex)
             {
@@ -309,9 +324,10 @@ namespace KSAStaff.pages
                 txtStartDate.Text = string.Empty;
                 lblEndDate.Text = string.Empty;
                 lblReturnDate.Text = string.Empty;
-                ex.Data.Clear();
             }
         }
+
+       
 
         protected void lbtnSubmit_Click(object sender, EventArgs e)
         {
@@ -404,9 +420,15 @@ namespace KSAStaff.pages
 
                 DateTime endDate = Convert.ToDateTime(lblEndDate.Text);
                 DateTime returnDate = Convert.ToDateTime(lblReturnDate.Text);
+                string LeaveNo = null;
+                string query = Request.QueryString["query"];
+                if (query == "old")
+                {
+                    LeaveNo = Request.QueryString["leaveNo"]; // Get the leaveNo from the query string
+                }
 
                 // Applications
-                string response = webportals.HRMLeaveApplication(username, reliever, leaveType, Convert.ToDecimal(appliedDays), Convert.ToDateTime(startDate), endDate, returnDate, purpose, resCenter);
+                string response = webportals.HRMLeaveApplication1(LeaveNo?? string.Empty, username, reliever, leaveType, Convert.ToDecimal(appliedDays), Convert.ToDateTime(startDate), endDate, returnDate, purpose, resCenter);
                 if (!string.IsNullOrEmpty(response))
                 {
                     string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
@@ -423,7 +445,7 @@ namespace KSAStaff.pages
                         }
                         else
                         {
-                            Message(approval);
+                            SuccessMessage(approval);
                             return;
                         }
                     }

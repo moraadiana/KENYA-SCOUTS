@@ -132,34 +132,7 @@ namespace KSAStaff.pages
         }
 
 
-        /* private void LoadAdvanceTypes()
-         {
-             try
-             {
-                 ddlAdvancType.Items.Clear();
-                 connection = Components.getconnToNAV();
-                 command = new SqlCommand()
-                 {
-                     CommandText = "spLoadImprestAdvancedTypes",
-                     CommandType = CommandType.StoredProcedure,
-                     Connection = connection
-                 };
-                 command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                 reader = command.ExecuteReader();
-                 if (reader.HasRows)
-                 {
-                     while (reader.Read())
-                     {
-                         ListItem li = new ListItem(reader["Description"].ToString().ToUpper(), reader["Code"].ToString());
-                         ddlAdvancType.Items.Add(li);
-                     }
-                 }
-             }
-             catch (Exception ex)
-             {
-                 ex.Data.Clear();
-             }
-         }*/
+        
 
         private void LoadAdvanceTypes()
         {

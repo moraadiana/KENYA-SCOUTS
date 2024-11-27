@@ -58,28 +58,7 @@ namespace KSAStaff.pages
                     ddlYear.DataValueField = "Period Year";
                     ddlYear.DataBind();
                 }
-                //using (SqlConnection connToNAV = Components.getconnToNAV())
-                //{
-                //    string sqlStmt = null;
-                //    sqlStmt = "spGetP9Years";
-                //    SqlCommand cmd = new SqlCommand();
-                //    cmd.CommandText = sqlStmt;
-                //    cmd.Connection = connToNAV;
-                //    cmd.CommandType = CommandType.StoredProcedure;
-                //    cmd.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                //    cmd.Parameters.AddWithValue("@username", "'" + username + "'");
-                //    using (SqlDataReader sqlReaderStages = cmd.ExecuteReader())
-                //    {
-                //        if (sqlReaderStages.HasRows)
-                //        {
-                //            ddlYear.DataSource = sqlReaderStages;
-                //            ddlYear.DataTextField = "Period Year";
-                //            ddlYear.DataValueField = "Period Year";
-                //            ddlYear.DataBind();
-                //        }
-                //    }
-                //    connToNAV.Close();
-                //}
+               
             }
             catch (Exception ex)
             {
@@ -97,8 +76,21 @@ namespace KSAStaff.pages
                 var period = Convert.ToInt32(ddlYear.SelectedValue);
 
                 var filePath = Server.MapPath("~/Downloads/") + String.Format("P9Form-{0}.pdf", filename);
+                if (!Directory.Exists(Server.MapPath("~/Downloads/")))
+                {
+                    Directory.CreateDirectory(Server.MapPath("~/Downloads/"));
+                }
                 webportals.Generatep9Report(employee, period, String.Format(@"P9Form-{0}.pdf", filename));
-                myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("P9Form-{0}.pdf", filename)));
+                if (File.Exists(filePath))
+                {
+                    System.Diagnostics.Debug.WriteLine("P9 generated successfully.");
+                    myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("P9Form-{0}.pdf", filename)));
+                }
+                else
+                {
+                    throw new FileNotFoundException("P9 PDF was not found after generation.");
+                }
+               // myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("P9Form-{0}.pdf", filename)));
                 //try
                 //{
                 //    string returnstring = "";

@@ -2,6 +2,21 @@
 <definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/Staffportal" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="RemoveHRMTrainingParticipant">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="trainingCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="employeeCode" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveHRMTrainingParticipant_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="RemoveImprestRequisitionLine">
         <complexType>
           <sequence>
@@ -571,6 +586,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetMonthName">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="monthNumber" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMonthName_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetMyImprests">
         <complexType>
           <sequence>
@@ -774,6 +803,7 @@
       <element name="HRMLeaveApplication1">
         <complexType>
           <sequence>
+            <element minOccurs="1" maxOccurs="1" name="leaveNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="username" type="string" />
             <element minOccurs="1" maxOccurs="1" name="reliever" type="string" />
             <element minOccurs="1" maxOccurs="1" name="leaveType" type="string" />
@@ -783,7 +813,6 @@
             <element minOccurs="1" maxOccurs="1" name="returnDate" type="date" />
             <element minOccurs="1" maxOccurs="1" name="purpose" type="string" />
             <element minOccurs="1" maxOccurs="1" name="responsibilityCenter" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="department" type="string" />
           </sequence>
         </complexType>
       </element>
@@ -1265,23 +1294,14 @@
           </sequence>
         </complexType>
       </element>
-      <element name="RemoveHRMTrainingParticipant">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="trainingCode" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="employeeCode" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="RemoveHRMTrainingParticipant_Result">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
-          </sequence>
-        </complexType>
-      </element>
     </schema>
   </types>
+  <message name="RemoveHRMTrainingParticipant">
+    <part name="parameters" element="tns:RemoveHRMTrainingParticipant" />
+  </message>
+  <message name="RemoveHRMTrainingParticipant_Result">
+    <part name="parameters" element="tns:RemoveHRMTrainingParticipant_Result" />
+  </message>
   <message name="RemoveImprestRequisitionLine">
     <part name="parameters" element="tns:RemoveImprestRequisitionLine" />
   </message>
@@ -1509,6 +1529,12 @@
   </message>
   <message name="GetLeaveTypes_Result">
     <part name="parameters" element="tns:GetLeaveTypes_Result" />
+  </message>
+  <message name="GetMonthName">
+    <part name="parameters" element="tns:GetMonthName" />
+  </message>
+  <message name="GetMonthName_Result">
+    <part name="parameters" element="tns:GetMonthName_Result" />
   </message>
   <message name="GetMyImprests">
     <part name="parameters" element="tns:GetMyImprests" />
@@ -1792,13 +1818,11 @@
   <message name="RemoveClaimRequisitionLines_Result">
     <part name="parameters" element="tns:RemoveClaimRequisitionLines_Result" />
   </message>
-  <message name="RemoveHRMTrainingParticipant">
-    <part name="parameters" element="tns:RemoveHRMTrainingParticipant" />
-  </message>
-  <message name="RemoveHRMTrainingParticipant_Result">
-    <part name="parameters" element="tns:RemoveHRMTrainingParticipant_Result" />
-  </message>
   <portType name="Staffportal_Port">
+    <operation name="RemoveHRMTrainingParticipant">
+      <input name="RemoveHRMTrainingParticipant" message="tns:RemoveHRMTrainingParticipant" />
+      <output name="RemoveHRMTrainingParticipant_Result" message="tns:RemoveHRMTrainingParticipant_Result" />
+    </operation>
     <operation name="RemoveImprestRequisitionLine">
       <input name="RemoveImprestRequisitionLine" message="tns:RemoveImprestRequisitionLine" />
       <output name="RemoveImprestRequisitionLine_Result" message="tns:RemoveImprestRequisitionLine_Result" />
@@ -1950,6 +1974,10 @@
     <operation name="GetLeaveTypes">
       <input name="GetLeaveTypes" message="tns:GetLeaveTypes" />
       <output name="GetLeaveTypes_Result" message="tns:GetLeaveTypes_Result" />
+    </operation>
+    <operation name="GetMonthName">
+      <input name="GetMonthName" message="tns:GetMonthName" />
+      <output name="GetMonthName_Result" message="tns:GetMonthName_Result" />
     </operation>
     <operation name="GetMyImprests">
       <input name="GetMyImprests" message="tns:GetMyImprests" />
@@ -2139,13 +2167,18 @@
       <input name="RemoveClaimRequisitionLines" message="tns:RemoveClaimRequisitionLines" />
       <output name="RemoveClaimRequisitionLines_Result" message="tns:RemoveClaimRequisitionLines_Result" />
     </operation>
-    <operation name="RemoveHRMTrainingParticipant">
-      <input name="RemoveHRMTrainingParticipant" message="tns:RemoveHRMTrainingParticipant" />
-      <output name="RemoveHRMTrainingParticipant_Result" message="tns:RemoveHRMTrainingParticipant_Result" />
-    </operation>
   </portType>
   <binding name="Staffportal_Binding" type="tns:Staffportal_Port">
     <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="RemoveHRMTrainingParticipant">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:RemoveHRMTrainingParticipant" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RemoveHRMTrainingParticipant">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RemoveHRMTrainingParticipant_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="RemoveImprestRequisitionLine">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:RemoveImprestRequisitionLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="RemoveImprestRequisitionLine">
@@ -2485,6 +2518,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetLeaveTypes_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetMonthName">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetMonthName" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMonthName">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMonthName_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -2908,15 +2950,6 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="RemoveClaimRequisitionLines_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
-    <operation name="RemoveHRMTrainingParticipant">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:RemoveHRMTrainingParticipant" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="RemoveHRMTrainingParticipant">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="RemoveHRMTrainingParticipant_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

@@ -29,6 +29,8 @@ namespace KSAStaff.NAVWS {
     [System.Web.Services.WebServiceBindingAttribute(Name="Staffportal_Binding", Namespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal")]
     public partial class Staffportal : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
+        private System.Threading.SendOrPostCallback RemoveHRMTrainingParticipantOperationCompleted;
+        
         private System.Threading.SendOrPostCallback RemoveImprestRequisitionLineOperationCompleted;
         
         private System.Threading.SendOrPostCallback RemovePettyCashRequisitionLineOperationCompleted;
@@ -104,6 +106,8 @@ namespace KSAStaff.NAVWS {
         private System.Threading.SendOrPostCallback GetLeaveTypes1OperationCompleted;
         
         private System.Threading.SendOrPostCallback GetLeaveTypesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetMonthNameOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMyImprestsOperationCompleted;
         
@@ -199,8 +203,6 @@ namespace KSAStaff.NAVWS {
         
         private System.Threading.SendOrPostCallback RemoveClaimRequisitionLinesOperationCompleted;
         
-        private System.Threading.SendOrPostCallback RemoveHRMTrainingParticipantOperationCompleted;
-        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -238,6 +240,9 @@ namespace KSAStaff.NAVWS {
                 this.useDefaultCredentialsSetExplicitly = true;
             }
         }
+        
+        /// <remarks/>
+        public event RemoveHRMTrainingParticipantCompletedEventHandler RemoveHRMTrainingParticipantCompleted;
         
         /// <remarks/>
         public event RemoveImprestRequisitionLineCompletedEventHandler RemoveImprestRequisitionLineCompleted;
@@ -352,6 +357,9 @@ namespace KSAStaff.NAVWS {
         
         /// <remarks/>
         public event GetLeaveTypesCompletedEventHandler GetLeaveTypesCompleted;
+        
+        /// <remarks/>
+        public event GetMonthNameCompletedEventHandler GetMonthNameCompleted;
         
         /// <remarks/>
         public event GetMyImprestsCompletedEventHandler GetMyImprestsCompleted;
@@ -495,7 +503,36 @@ namespace KSAStaff.NAVWS {
         public event RemoveClaimRequisitionLinesCompletedEventHandler RemoveClaimRequisitionLinesCompleted;
         
         /// <remarks/>
-        public event RemoveHRMTrainingParticipantCompletedEventHandler RemoveHRMTrainingParticipantCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:RemoveHRMTrainingParticipant", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="RemoveHRMTrainingParticipant_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string RemoveHRMTrainingParticipant(string trainingCode, string employeeCode) {
+            object[] results = this.Invoke("RemoveHRMTrainingParticipant", new object[] {
+                        trainingCode,
+                        employeeCode});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RemoveHRMTrainingParticipantAsync(string trainingCode, string employeeCode) {
+            this.RemoveHRMTrainingParticipantAsync(trainingCode, employeeCode, null);
+        }
+        
+        /// <remarks/>
+        public void RemoveHRMTrainingParticipantAsync(string trainingCode, string employeeCode, object userState) {
+            if ((this.RemoveHRMTrainingParticipantOperationCompleted == null)) {
+                this.RemoveHRMTrainingParticipantOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveHRMTrainingParticipantOperationCompleted);
+            }
+            this.InvokeAsync("RemoveHRMTrainingParticipant", new object[] {
+                        trainingCode,
+                        employeeCode}, this.RemoveHRMTrainingParticipantOperationCompleted, userState);
+        }
+        
+        private void OnRemoveHRMTrainingParticipantOperationCompleted(object arg) {
+            if ((this.RemoveHRMTrainingParticipantCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RemoveHRMTrainingParticipantCompleted(this, new RemoveHRMTrainingParticipantCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:RemoveImprestRequisitionLine", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="RemoveImprestRequisitionLine_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1729,6 +1766,36 @@ namespace KSAStaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetMonthName", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="GetMonthName_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetMonthName(int monthNumber) {
+            object[] results = this.Invoke("GetMonthName", new object[] {
+                        monthNumber});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetMonthNameAsync(int monthNumber) {
+            this.GetMonthNameAsync(monthNumber, null);
+        }
+        
+        /// <remarks/>
+        public void GetMonthNameAsync(int monthNumber, object userState) {
+            if ((this.GetMonthNameOperationCompleted == null)) {
+                this.GetMonthNameOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMonthNameOperationCompleted);
+            }
+            this.InvokeAsync("GetMonthName", new object[] {
+                        monthNumber}, this.GetMonthNameOperationCompleted, userState);
+        }
+        
+        private void OnGetMonthNameOperationCompleted(object arg) {
+            if ((this.GetMonthNameCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetMonthNameCompleted(this, new GetMonthNameCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetMyImprests", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="GetMyImprests_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string GetMyImprests(string username) {
@@ -2171,8 +2238,9 @@ namespace KSAStaff.NAVWS {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:HRMLeaveApplication1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="HRMLeaveApplication1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string HRMLeaveApplication1(string username, string reliever, string leaveType, decimal appliedDays, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime startDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime endDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime returnDate, string purpose, string responsibilityCenter, string department) {
+        public string HRMLeaveApplication1(string leaveNo, string username, string reliever, string leaveType, decimal appliedDays, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime startDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime endDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime returnDate, string purpose, string responsibilityCenter) {
             object[] results = this.Invoke("HRMLeaveApplication1", new object[] {
+                        leaveNo,
                         username,
                         reliever,
                         leaveType,
@@ -2181,22 +2249,22 @@ namespace KSAStaff.NAVWS {
                         endDate,
                         returnDate,
                         purpose,
-                        responsibilityCenter,
-                        department});
+                        responsibilityCenter});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void HRMLeaveApplication1Async(string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter, string department) {
-            this.HRMLeaveApplication1Async(username, reliever, leaveType, appliedDays, startDate, endDate, returnDate, purpose, responsibilityCenter, department, null);
+        public void HRMLeaveApplication1Async(string leaveNo, string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter) {
+            this.HRMLeaveApplication1Async(leaveNo, username, reliever, leaveType, appliedDays, startDate, endDate, returnDate, purpose, responsibilityCenter, null);
         }
         
         /// <remarks/>
-        public void HRMLeaveApplication1Async(string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter, string department, object userState) {
+        public void HRMLeaveApplication1Async(string leaveNo, string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter, object userState) {
             if ((this.HRMLeaveApplication1OperationCompleted == null)) {
                 this.HRMLeaveApplication1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnHRMLeaveApplication1OperationCompleted);
             }
             this.InvokeAsync("HRMLeaveApplication1", new object[] {
+                        leaveNo,
                         username,
                         reliever,
                         leaveType,
@@ -2205,8 +2273,7 @@ namespace KSAStaff.NAVWS {
                         endDate,
                         returnDate,
                         purpose,
-                        responsibilityCenter,
-                        department}, this.HRMLeaveApplication1OperationCompleted, userState);
+                        responsibilityCenter}, this.HRMLeaveApplication1OperationCompleted, userState);
         }
         
         private void OnHRMLeaveApplication1OperationCompleted(object arg) {
@@ -3246,38 +3313,6 @@ namespace KSAStaff.NAVWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:RemoveHRMTrainingParticipant", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="RemoveHRMTrainingParticipant_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string RemoveHRMTrainingParticipant(string trainingCode, string employeeCode) {
-            object[] results = this.Invoke("RemoveHRMTrainingParticipant", new object[] {
-                        trainingCode,
-                        employeeCode});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void RemoveHRMTrainingParticipantAsync(string trainingCode, string employeeCode) {
-            this.RemoveHRMTrainingParticipantAsync(trainingCode, employeeCode, null);
-        }
-        
-        /// <remarks/>
-        public void RemoveHRMTrainingParticipantAsync(string trainingCode, string employeeCode, object userState) {
-            if ((this.RemoveHRMTrainingParticipantOperationCompleted == null)) {
-                this.RemoveHRMTrainingParticipantOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveHRMTrainingParticipantOperationCompleted);
-            }
-            this.InvokeAsync("RemoveHRMTrainingParticipant", new object[] {
-                        trainingCode,
-                        employeeCode}, this.RemoveHRMTrainingParticipantOperationCompleted, userState);
-        }
-        
-        private void OnRemoveHRMTrainingParticipantOperationCompleted(object arg) {
-            if ((this.RemoveHRMTrainingParticipantCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.RemoveHRMTrainingParticipantCompleted(this, new RemoveHRMTrainingParticipantCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -3293,6 +3328,32 @@ namespace KSAStaff.NAVWS {
                 return true;
             }
             return false;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void RemoveHRMTrainingParticipantCompletedEventHandler(object sender, RemoveHRMTrainingParticipantCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RemoveHRMTrainingParticipantCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RemoveHRMTrainingParticipantCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
         }
     }
     
@@ -4141,6 +4202,32 @@ namespace KSAStaff.NAVWS {
         private object[] results;
         
         internal GetLeaveTypesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    public delegate void GetMonthNameCompletedEventHandler(object sender, GetMonthNameCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetMonthNameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetMonthNameCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -5231,32 +5318,6 @@ namespace KSAStaff.NAVWS {
         private object[] results;
         
         internal RemoveClaimRequisitionLinesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
-    public delegate void RemoveHRMTrainingParticipantCompletedEventHandler(object sender, RemoveHRMTrainingParticipantCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3761.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class RemoveHRMTrainingParticipantCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal RemoveHRMTrainingParticipantCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

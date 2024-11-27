@@ -23,7 +23,8 @@
                         </div>
                         <div class="box-body">
                             <div class="col-md-12">
-                                <p class="text-center"><a class="btn btn-pill btn-info u-posRelative pull-left" href="LeaveApplication.aspx">Apply For Leave<span class="waves"></span> </a></p>
+                                <p class="text-center"><a class="btn btn-pill btn-info u-posRelative pull-left" href="LeaveApplication.aspx?query=new&status=Open">Apply For Leave<span class="waves"></span> </a></p>
+                             
                                 <%--<a class="btn btn-pill btn-warning u-posRelative pull-right" href="LeaveStatement.aspx"><i class="fa fa-file-pdf-o"></i>My Leave Statement<span class="waves"></span> </a>--%>
                             </div>
                             <br />
