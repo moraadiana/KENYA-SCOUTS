@@ -32,6 +32,12 @@ namespace KSAStaff.pages
                 string query = Request.QueryString["query"];
                 string leaveNo = null;
                 string approvalStatus = Request.QueryString["status"].Replace("%", " ");
+                LoadLeaveTypes();
+                LoadReliever();
+                LoadResponsibilityCenter();
+                //LoadDays();
+                LoadLeaveBalance();
+                LoadStaffDepartmentDetails();
                 if (query == "new")
                 {
                     leaveNo = null;
@@ -40,11 +46,44 @@ namespace KSAStaff.pages
                 else if (query == "old")
                 {
                      leaveNo = Request.QueryString["leaveNo"].ToString();
-                    
-                       if (approvalStatus == "Open" || approvalStatus == "Pending")
+                    string response = webportals.GetLeaveDetails(leaveNo);
+                    if (!string.IsNullOrEmpty(response))
                     {
-                       lbtnSubmit.Visible = false;
-                        //lbtnSubmit.Visible = true;
+                        string[] responseArr = response.Split(':');
+                        string EmployeeNo = responseArr[0];
+                        string EmployeeName = responseArr[1];
+                        string Date = responseArr[2];
+                        string AppliedDays = responseArr[3];
+                        string StartingDate = responseArr[4];
+                        string EndingDate = responseArr[5];
+                        string Purpose = responseArr[6];
+                        string LeaveType = responseArr[7];
+                        string ReturnDate = responseArr[8];
+                        string userId = responseArr[9];
+                        string RelieverNo = responseArr[10];
+                        string RelieverName = responseArr[11];
+                        string department = responseArr[12];
+                        ddlLeaveType.SelectedValue = LeaveType;
+                        txtAppliedDays.Text = AppliedDays;
+
+                        txtPurpose.Text = Purpose;
+                        //lblEndDate.Text = EndingDate;
+
+
+                        if (!ddlReliver.Items.Contains(new ListItem(RelieverNo + " => " + RelieverName, RelieverNo)))
+                        {
+                            ListItem li = new ListItem(RelieverNo + " => " + RelieverName, RelieverNo);
+                            ddlReliver.Items.Add(li);
+                        }
+
+
+
+                    }
+
+                    if (approvalStatus == "Open" || approvalStatus == "Pending")
+                    {
+                       
+                        lbtnSubmit.Visible = true;
                     }
                     
                     else
@@ -52,12 +91,7 @@ namespace KSAStaff.pages
                         lbtnSubmit.Visible = false;
                     }
                  }
-                LoadLeaveTypes();
-                LoadReliever();
-                LoadResponsibilityCenter();
-                //LoadDays();
-                LoadLeaveBalance();
-                LoadStaffDepartmentDetails();
+               
                
 
             }
@@ -440,6 +474,14 @@ namespace KSAStaff.pages
                         if (approval == "SUCCESS")
                         {
                             // TODO: Sent email to reliever
+                            string relieverEmail = webportals.GetRelieverEmail(reliever);
+                            string subject = "KSA Leave Relieval Request";
+                            string body = $"Hello {ddlReliver.SelectedItem}" +
+                                $"<br/><br/>" +
+                                $"You have been requested by {Session["staffName"]} to be a reliever." +
+                                $"<br/><br/>" +
+                                $"Do not reply to this email.";
+                            Components.SentEmailAlerts(relieverEmail, subject, body);
                             SuccessMessage("Leave application has been sent for approval successfully.");
                             return;
                         }

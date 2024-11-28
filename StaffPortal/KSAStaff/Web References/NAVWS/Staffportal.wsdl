@@ -2,6 +2,38 @@
 <definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/Staffportal" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="RegFileUploadAtt">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="retNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="fileName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="attachment" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="tableId" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="docType" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RegFileUploadAtt_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveClaimRequisitionLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveClaimRequisitionLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="RemoveHRMTrainingParticipant">
         <complexType>
           <sequence>
@@ -544,6 +576,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetLeaveDetails">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="leaveNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetLeaveDetails_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetLeaveRelieverDetails">
         <complexType>
           <sequence>
@@ -684,6 +730,20 @@
         </complexType>
       </element>
       <element name="GetPettyCashDetails_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRelieverEmail">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="staffNum" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRelieverEmail_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1262,40 +1322,20 @@
           </sequence>
         </complexType>
       </element>
-      <element name="RegFileUploadAtt">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="retNo" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="fileName" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="attachment" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="tableId" type="int" />
-            <element minOccurs="1" maxOccurs="1" name="docType" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="RegFileUploadAtt_Result">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="RemoveClaimRequisitionLines">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="RemoveClaimRequisitionLines_Result">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
-          </sequence>
-        </complexType>
-      </element>
     </schema>
   </types>
+  <message name="RegFileUploadAtt">
+    <part name="parameters" element="tns:RegFileUploadAtt" />
+  </message>
+  <message name="RegFileUploadAtt_Result">
+    <part name="parameters" element="tns:RegFileUploadAtt_Result" />
+  </message>
+  <message name="RemoveClaimRequisitionLines">
+    <part name="parameters" element="tns:RemoveClaimRequisitionLines" />
+  </message>
+  <message name="RemoveClaimRequisitionLines_Result">
+    <part name="parameters" element="tns:RemoveClaimRequisitionLines_Result" />
+  </message>
   <message name="RemoveHRMTrainingParticipant">
     <part name="parameters" element="tns:RemoveHRMTrainingParticipant" />
   </message>
@@ -1512,6 +1552,12 @@
   <message name="GetItemQuantity_Result">
     <part name="parameters" element="tns:GetItemQuantity_Result" />
   </message>
+  <message name="GetLeaveDetails">
+    <part name="parameters" element="tns:GetLeaveDetails" />
+  </message>
+  <message name="GetLeaveDetails_Result">
+    <part name="parameters" element="tns:GetLeaveDetails_Result" />
+  </message>
   <message name="GetLeaveRelieverDetails">
     <part name="parameters" element="tns:GetLeaveRelieverDetails" />
   </message>
@@ -1577,6 +1623,12 @@
   </message>
   <message name="GetPettyCashDetails_Result">
     <part name="parameters" element="tns:GetPettyCashDetails_Result" />
+  </message>
+  <message name="GetRelieverEmail">
+    <part name="parameters" element="tns:GetRelieverEmail" />
+  </message>
+  <message name="GetRelieverEmail_Result">
+    <part name="parameters" element="tns:GetRelieverEmail_Result" />
   </message>
   <message name="GetRelievers">
     <part name="parameters" element="tns:GetRelievers" />
@@ -1806,19 +1858,15 @@
   <message name="RegFileUploadAtt1_Result">
     <part name="parameters" element="tns:RegFileUploadAtt1_Result" />
   </message>
-  <message name="RegFileUploadAtt">
-    <part name="parameters" element="tns:RegFileUploadAtt" />
-  </message>
-  <message name="RegFileUploadAtt_Result">
-    <part name="parameters" element="tns:RegFileUploadAtt_Result" />
-  </message>
-  <message name="RemoveClaimRequisitionLines">
-    <part name="parameters" element="tns:RemoveClaimRequisitionLines" />
-  </message>
-  <message name="RemoveClaimRequisitionLines_Result">
-    <part name="parameters" element="tns:RemoveClaimRequisitionLines_Result" />
-  </message>
   <portType name="Staffportal_Port">
+    <operation name="RegFileUploadAtt">
+      <input name="RegFileUploadAtt" message="tns:RegFileUploadAtt" />
+      <output name="RegFileUploadAtt_Result" message="tns:RegFileUploadAtt_Result" />
+    </operation>
+    <operation name="RemoveClaimRequisitionLines">
+      <input name="RemoveClaimRequisitionLines" message="tns:RemoveClaimRequisitionLines" />
+      <output name="RemoveClaimRequisitionLines_Result" message="tns:RemoveClaimRequisitionLines_Result" />
+    </operation>
     <operation name="RemoveHRMTrainingParticipant">
       <input name="RemoveHRMTrainingParticipant" message="tns:RemoveHRMTrainingParticipant" />
       <output name="RemoveHRMTrainingParticipant_Result" message="tns:RemoveHRMTrainingParticipant_Result" />
@@ -1963,6 +2011,10 @@
       <input name="GetItemQuantity" message="tns:GetItemQuantity" />
       <output name="GetItemQuantity_Result" message="tns:GetItemQuantity_Result" />
     </operation>
+    <operation name="GetLeaveDetails">
+      <input name="GetLeaveDetails" message="tns:GetLeaveDetails" />
+      <output name="GetLeaveDetails_Result" message="tns:GetLeaveDetails_Result" />
+    </operation>
     <operation name="GetLeaveRelieverDetails">
       <input name="GetLeaveRelieverDetails" message="tns:GetLeaveRelieverDetails" />
       <output name="GetLeaveRelieverDetails_Result" message="tns:GetLeaveRelieverDetails_Result" />
@@ -2006,6 +2058,10 @@
     <operation name="GetPettyCashDetails">
       <input name="GetPettyCashDetails" message="tns:GetPettyCashDetails" />
       <output name="GetPettyCashDetails_Result" message="tns:GetPettyCashDetails_Result" />
+    </operation>
+    <operation name="GetRelieverEmail">
+      <input name="GetRelieverEmail" message="tns:GetRelieverEmail" />
+      <output name="GetRelieverEmail_Result" message="tns:GetRelieverEmail_Result" />
     </operation>
     <operation name="GetRelievers">
       <input name="GetRelievers" message="tns:GetRelievers" />
@@ -2159,17 +2215,27 @@
       <input name="RegFileUploadAtt1" message="tns:RegFileUploadAtt1" />
       <output name="RegFileUploadAtt1_Result" message="tns:RegFileUploadAtt1_Result" />
     </operation>
-    <operation name="RegFileUploadAtt">
-      <input name="RegFileUploadAtt" message="tns:RegFileUploadAtt" />
-      <output name="RegFileUploadAtt_Result" message="tns:RegFileUploadAtt_Result" />
-    </operation>
-    <operation name="RemoveClaimRequisitionLines">
-      <input name="RemoveClaimRequisitionLines" message="tns:RemoveClaimRequisitionLines" />
-      <output name="RemoveClaimRequisitionLines_Result" message="tns:RemoveClaimRequisitionLines_Result" />
-    </operation>
   </portType>
   <binding name="Staffportal_Binding" type="tns:Staffportal_Port">
     <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="RegFileUploadAtt">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:RegFileUploadAtt" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RegFileUploadAtt">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RegFileUploadAtt_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RemoveClaimRequisitionLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:RemoveClaimRequisitionLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RemoveClaimRequisitionLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RemoveClaimRequisitionLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="RemoveHRMTrainingParticipant">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:RemoveHRMTrainingParticipant" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="RemoveHRMTrainingParticipant">
@@ -2494,6 +2560,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetLeaveDetails">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetLeaveDetails" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetLeaveDetails">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetLeaveDetails_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetLeaveRelieverDetails">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetLeaveRelieverDetails" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetLeaveRelieverDetails">
@@ -2590,6 +2665,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetPettyCashDetails_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetRelieverEmail">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetRelieverEmail" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetRelieverEmail">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetRelieverEmail_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -2932,24 +3016,6 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="RegFileUploadAtt1_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
-    <operation name="RegFileUploadAtt">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:RegFileUploadAtt" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="RegFileUploadAtt">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="RegFileUploadAtt_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
-    <operation name="RemoveClaimRequisitionLines">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:RemoveClaimRequisitionLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="RemoveClaimRequisitionLines">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="RemoveClaimRequisitionLines_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
