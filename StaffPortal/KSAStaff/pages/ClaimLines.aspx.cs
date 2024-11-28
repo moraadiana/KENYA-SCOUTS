@@ -105,7 +105,7 @@ namespace KSAStaff.pages
         {
             try
             {
-                string grouping = "S-CLAIMS";
+                string grouping = "CLAIM";
                 string responsibilityCenters = webportals.GetDocResponsibilityCentres(grouping);
 
                 if (!string.IsNullOrEmpty(responsibilityCenters))
