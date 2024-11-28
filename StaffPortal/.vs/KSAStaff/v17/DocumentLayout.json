@@ -30,12 +30,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:254354193:0:{71f361cc-493f-47c0-923f-f2570b6f8618}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -44,7 +40,7 @@
               "RelativeDocumentMoniker": "KSAStaff\\pages\\Payslip.aspx.cs",
               "ToolTip": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\Payslip.aspx.cs",
               "RelativeToolTip": "KSAStaff\\pages\\Payslip.aspx.cs",
-              "ViewState": "AgIAAIQAAAAAAAAAAADgvyMAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAIQAAAAAAAAAAADgv40AAAB5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-27T18:26:51.074Z",
               "EditorCaption": ""
@@ -59,7 +55,8 @@
               "RelativeToolTip": "KSAStaff\\pages\\PettyCashLines.aspx.cs",
               "ViewState": "AgIAAI4BAAAAAAAAAAAmwJUBAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-23T21:26:32.482Z"
+              "WhenOpened": "2024-11-23T21:26:32.482Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -69,9 +66,9 @@
               "RelativeDocumentMoniker": "KSAStaff\\pages\\PettyCashLines.aspx",
               "ToolTip": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\PettyCashLines.aspx",
               "RelativeToolTip": "KSAStaff\\pages\\PettyCashLines.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-11-23T21:26:27.885Z"
+              "WhenOpened": "2024-11-23T21:26:27.885Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -94,29 +91,9 @@
               "RelativeDocumentMoniker": "KSAStaff\\pages\\PettyCashAccountingLines.aspx",
               "ToolTip": "D:\\KENYA-SCOUTS\\StaffPortal\\KSAStaff\\pages\\PettyCashAccountingLines.aspx",
               "RelativeToolTip": "KSAStaff\\pages\\PettyCashAccountingLines.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000192|",
-              "WhenOpened": "2024-11-23T20:36:54.013Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 313,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 42,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{f2e84780-2af1-11d1-a7fa-00a0c9110051}"
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-11-23T20:36:54.013Z",
+              "EditorCaption": ""
             }
           ]
         }
