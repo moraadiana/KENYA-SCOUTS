@@ -2,6 +2,24 @@
 <definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/Staffportal" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="RegFileUploadAtt1">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="retNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="fileName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="attachment" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="tableId" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="docType" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RegFileUploadAtt1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="RegFileUploadAtt">
         <complexType>
           <sequence>
@@ -259,7 +277,6 @@
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="username" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="directorate" type="string" />
             <element minOccurs="1" maxOccurs="1" name="department" type="string" />
             <element minOccurs="1" maxOccurs="1" name="responsibilityCenter" type="string" />
             <element minOccurs="1" maxOccurs="1" name="purpose" type="string" />
@@ -640,6 +657,20 @@
         </complexType>
       </element>
       <element name="GetMonthName_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyClaims">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyClaims_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1304,26 +1335,14 @@
           </sequence>
         </complexType>
       </element>
-      <element name="RegFileUploadAtt1">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="retNo" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="fileName" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="attachment" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="tableId" type="int" />
-            <element minOccurs="1" maxOccurs="1" name="docType" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="RegFileUploadAtt1_Result">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
-          </sequence>
-        </complexType>
-      </element>
     </schema>
   </types>
+  <message name="RegFileUploadAtt1">
+    <part name="parameters" element="tns:RegFileUploadAtt1" />
+  </message>
+  <message name="RegFileUploadAtt1_Result">
+    <part name="parameters" element="tns:RegFileUploadAtt1_Result" />
+  </message>
   <message name="RegFileUploadAtt">
     <part name="parameters" element="tns:RegFileUploadAtt" />
   </message>
@@ -1581,6 +1600,12 @@
   </message>
   <message name="GetMonthName_Result">
     <part name="parameters" element="tns:GetMonthName_Result" />
+  </message>
+  <message name="GetMyClaims">
+    <part name="parameters" element="tns:GetMyClaims" />
+  </message>
+  <message name="GetMyClaims_Result">
+    <part name="parameters" element="tns:GetMyClaims_Result" />
   </message>
   <message name="GetMyImprests">
     <part name="parameters" element="tns:GetMyImprests" />
@@ -1852,13 +1877,11 @@
   <message name="OnsendLeaveRequisitionForApproval_Result">
     <part name="parameters" element="tns:OnsendLeaveRequisitionForApproval_Result" />
   </message>
-  <message name="RegFileUploadAtt1">
-    <part name="parameters" element="tns:RegFileUploadAtt1" />
-  </message>
-  <message name="RegFileUploadAtt1_Result">
-    <part name="parameters" element="tns:RegFileUploadAtt1_Result" />
-  </message>
   <portType name="Staffportal_Port">
+    <operation name="RegFileUploadAtt1">
+      <input name="RegFileUploadAtt1" message="tns:RegFileUploadAtt1" />
+      <output name="RegFileUploadAtt1_Result" message="tns:RegFileUploadAtt1_Result" />
+    </operation>
     <operation name="RegFileUploadAtt">
       <input name="RegFileUploadAtt" message="tns:RegFileUploadAtt" />
       <output name="RegFileUploadAtt_Result" message="tns:RegFileUploadAtt_Result" />
@@ -2030,6 +2053,10 @@
     <operation name="GetMonthName">
       <input name="GetMonthName" message="tns:GetMonthName" />
       <output name="GetMonthName_Result" message="tns:GetMonthName_Result" />
+    </operation>
+    <operation name="GetMyClaims">
+      <input name="GetMyClaims" message="tns:GetMyClaims" />
+      <output name="GetMyClaims_Result" message="tns:GetMyClaims_Result" />
     </operation>
     <operation name="GetMyImprests">
       <input name="GetMyImprests" message="tns:GetMyImprests" />
@@ -2211,13 +2238,18 @@
       <input name="OnsendLeaveRequisitionForApproval" message="tns:OnsendLeaveRequisitionForApproval" />
       <output name="OnsendLeaveRequisitionForApproval_Result" message="tns:OnsendLeaveRequisitionForApproval_Result" />
     </operation>
-    <operation name="RegFileUploadAtt1">
-      <input name="RegFileUploadAtt1" message="tns:RegFileUploadAtt1" />
-      <output name="RegFileUploadAtt1_Result" message="tns:RegFileUploadAtt1_Result" />
-    </operation>
   </portType>
   <binding name="Staffportal_Binding" type="tns:Staffportal_Port">
     <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="RegFileUploadAtt1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:RegFileUploadAtt1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RegFileUploadAtt1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RegFileUploadAtt1_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="RegFileUploadAtt">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:RegFileUploadAtt" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="RegFileUploadAtt">
@@ -2602,6 +2634,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetMonthName_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetMyClaims">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetMyClaims" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMyClaims">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMyClaims_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -3007,15 +3048,6 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="OnsendLeaveRequisitionForApproval_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
-    <operation name="RegFileUploadAtt1">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:RegFileUploadAtt1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="RegFileUploadAtt1">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="RegFileUploadAtt1_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

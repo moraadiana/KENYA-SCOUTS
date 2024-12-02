@@ -19,6 +19,7 @@ namespace KSAStaff.pages
         SqlDataAdapter adapter;
         Staffportal webportals = Components.ObjNav;
         string[] strLimiters = new string[] { "::" };
+        string[] strLimiters2 = new string[] { "[]" };
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -87,8 +88,8 @@ namespace KSAStaff.pages
                     string returnMsg = responseArr[0];
                     if (returnMsg == "SUCCESS")
                     {
-                        lblDirectorate.Text = responseArr[1];
-                        lblDepartment.Text = responseArr[2];
+                       // lblDirectorate.Text = responseArr[2];
+                        lblDepartment.Text = responseArr[1];
                     }
                 }
 
@@ -128,10 +129,35 @@ namespace KSAStaff.pages
                 lblResCenter.Text = "Error loading responsibility centers.";
             }
         }
-
-
-
         private void LoadAdvanceTypes()
+        {
+            try
+            {
+                ddlAdvancType.Items.Clear();
+                string advanceTypes = webportals.GetAdvancetype(4);
+                if (!string.IsNullOrEmpty(advanceTypes))
+                {
+                    string[] advanceTypeArr = advanceTypes.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string advanceType in advanceTypeArr)
+                    {
+                        string[] responseArr = advanceType.Split(strLimiters, StringSplitOptions.None);
+                        ListItem li = new ListItem(responseArr[0]);
+                        ddlAdvancType.Items.Add(li);
+                    }
+                }
+
+            }
+
+
+            catch (Exception ex)
+            {
+                ex.Data.Clear();
+            }
+        }
+
+
+
+        private void LoadAdvanceTypes1()
         {
             try
             {
@@ -166,7 +192,7 @@ namespace KSAStaff.pages
             {
                 string username = Session["username"].ToString();
                 string department = lblDepartment.Text;
-                string directorate = lblDirectorate.Text;
+               // string directorate = lblDirectorate.Text;
                 string responsibilityCenter = lblResCenter.Text;
                 string purpose = txtPurpose.Text;
 
@@ -175,11 +201,11 @@ namespace KSAStaff.pages
                     Message("Department cannot be null!");
                     return;
                 }
-                if (string.IsNullOrEmpty(directorate))
-                {
-                    Message("Division cannot be null!");
-                    return;
-                }
+                //if (string.IsNullOrEmpty(directorate))
+                //{
+                //    Message("Division cannot be null!");
+                //    return;
+                //}
                 if (string.IsNullOrEmpty(responsibilityCenter))
                 {
                     Message("Responsibility center cannot be null!");
@@ -196,8 +222,8 @@ namespace KSAStaff.pages
                     Message("Purpose should be 200 characters and below!");
                     return;
                 }
-
-                string response = webportals.CreateClaimRequisitionHeader(username, directorate, department, responsibilityCenter, purpose);
+                
+                string response = webportals.CreateClaimRequisitionHeader(username, department, responsibilityCenter, purpose);
                 if (!string.IsNullOrEmpty(response))
                 {
                     string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);

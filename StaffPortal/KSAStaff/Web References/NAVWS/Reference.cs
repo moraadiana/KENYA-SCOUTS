@@ -29,6 +29,8 @@ namespace KSAStaff.NAVWS {
     [System.Web.Services.WebServiceBindingAttribute(Name="Staffportal_Binding", Namespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal")]
     public partial class Staffportal : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
+        private System.Threading.SendOrPostCallback RegFileUploadAtt1OperationCompleted;
+        
         private System.Threading.SendOrPostCallback RegFileUploadAttOperationCompleted;
         
         private System.Threading.SendOrPostCallback RemoveClaimRequisitionLinesOperationCompleted;
@@ -114,6 +116,8 @@ namespace KSAStaff.NAVWS {
         private System.Threading.SendOrPostCallback GetLeaveTypesOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMonthNameOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetMyClaimsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMyImprestsOperationCompleted;
         
@@ -205,8 +209,6 @@ namespace KSAStaff.NAVWS {
         
         private System.Threading.SendOrPostCallback OnsendLeaveRequisitionForApprovalOperationCompleted;
         
-        private System.Threading.SendOrPostCallback RegFileUploadAtt1OperationCompleted;
-        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -244,6 +246,9 @@ namespace KSAStaff.NAVWS {
                 this.useDefaultCredentialsSetExplicitly = true;
             }
         }
+        
+        /// <remarks/>
+        public event RegFileUploadAtt1CompletedEventHandler RegFileUploadAtt1Completed;
         
         /// <remarks/>
         public event RegFileUploadAttCompletedEventHandler RegFileUploadAttCompleted;
@@ -373,6 +378,9 @@ namespace KSAStaff.NAVWS {
         
         /// <remarks/>
         public event GetMonthNameCompletedEventHandler GetMonthNameCompleted;
+        
+        /// <remarks/>
+        public event GetMyClaimsCompletedEventHandler GetMyClaimsCompleted;
         
         /// <remarks/>
         public event GetMyImprestsCompletedEventHandler GetMyImprestsCompleted;
@@ -510,7 +518,42 @@ namespace KSAStaff.NAVWS {
         public event OnsendLeaveRequisitionForApprovalCompletedEventHandler OnsendLeaveRequisitionForApprovalCompleted;
         
         /// <remarks/>
-        public event RegFileUploadAtt1CompletedEventHandler RegFileUploadAtt1Completed;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:RegFileUploadAtt1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="RegFileUploadAtt1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool RegFileUploadAtt1(string retNo, string fileName, string attachment, int tableId, string docType) {
+            object[] results = this.Invoke("RegFileUploadAtt1", new object[] {
+                        retNo,
+                        fileName,
+                        attachment,
+                        tableId,
+                        docType});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RegFileUploadAtt1Async(string retNo, string fileName, string attachment, int tableId, string docType) {
+            this.RegFileUploadAtt1Async(retNo, fileName, attachment, tableId, docType, null);
+        }
+        
+        /// <remarks/>
+        public void RegFileUploadAtt1Async(string retNo, string fileName, string attachment, int tableId, string docType, object userState) {
+            if ((this.RegFileUploadAtt1OperationCompleted == null)) {
+                this.RegFileUploadAtt1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnRegFileUploadAtt1OperationCompleted);
+            }
+            this.InvokeAsync("RegFileUploadAtt1", new object[] {
+                        retNo,
+                        fileName,
+                        attachment,
+                        tableId,
+                        docType}, this.RegFileUploadAtt1OperationCompleted, userState);
+        }
+        
+        private void OnRegFileUploadAtt1OperationCompleted(object arg) {
+            if ((this.RegFileUploadAtt1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RegFileUploadAtt1Completed(this, new RegFileUploadAtt1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:RegFileUploadAtt", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="RegFileUploadAtt_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1063,10 +1106,9 @@ namespace KSAStaff.NAVWS {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:CreateClaimRequisitionHeader", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="CreateClaimRequisitionHeader_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string CreateClaimRequisitionHeader(string username, string directorate, string department, string responsibilityCenter, string purpose) {
+        public string CreateClaimRequisitionHeader(string username, string department, string responsibilityCenter, string purpose) {
             object[] results = this.Invoke("CreateClaimRequisitionHeader", new object[] {
                         username,
-                        directorate,
                         department,
                         responsibilityCenter,
                         purpose});
@@ -1074,18 +1116,17 @@ namespace KSAStaff.NAVWS {
         }
         
         /// <remarks/>
-        public void CreateClaimRequisitionHeaderAsync(string username, string directorate, string department, string responsibilityCenter, string purpose) {
-            this.CreateClaimRequisitionHeaderAsync(username, directorate, department, responsibilityCenter, purpose, null);
+        public void CreateClaimRequisitionHeaderAsync(string username, string department, string responsibilityCenter, string purpose) {
+            this.CreateClaimRequisitionHeaderAsync(username, department, responsibilityCenter, purpose, null);
         }
         
         /// <remarks/>
-        public void CreateClaimRequisitionHeaderAsync(string username, string directorate, string department, string responsibilityCenter, string purpose, object userState) {
+        public void CreateClaimRequisitionHeaderAsync(string username, string department, string responsibilityCenter, string purpose, object userState) {
             if ((this.CreateClaimRequisitionHeaderOperationCompleted == null)) {
                 this.CreateClaimRequisitionHeaderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateClaimRequisitionHeaderOperationCompleted);
             }
             this.InvokeAsync("CreateClaimRequisitionHeader", new object[] {
                         username,
-                        directorate,
                         department,
                         responsibilityCenter,
                         purpose}, this.CreateClaimRequisitionHeaderOperationCompleted, userState);
@@ -1900,6 +1941,36 @@ namespace KSAStaff.NAVWS {
             if ((this.GetMonthNameCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetMonthNameCompleted(this, new GetMonthNameCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetMyClaims", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="GetMyClaims_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetMyClaims(string username) {
+            object[] results = this.Invoke("GetMyClaims", new object[] {
+                        username});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetMyClaimsAsync(string username) {
+            this.GetMyClaimsAsync(username, null);
+        }
+        
+        /// <remarks/>
+        public void GetMyClaimsAsync(string username, object userState) {
+            if ((this.GetMyClaimsOperationCompleted == null)) {
+                this.GetMyClaimsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMyClaimsOperationCompleted);
+            }
+            this.InvokeAsync("GetMyClaims", new object[] {
+                        username}, this.GetMyClaimsOperationCompleted, userState);
+        }
+        
+        private void OnGetMyClaimsOperationCompleted(object arg) {
+            if ((this.GetMyClaimsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetMyClaimsCompleted(this, new GetMyClaimsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3345,44 +3416,6 @@ namespace KSAStaff.NAVWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportal:RegFileUploadAtt1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", ResponseElementName="RegFileUploadAtt1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public bool RegFileUploadAtt1(string retNo, string fileName, string attachment, int tableId, string docType) {
-            object[] results = this.Invoke("RegFileUploadAtt1", new object[] {
-                        retNo,
-                        fileName,
-                        attachment,
-                        tableId,
-                        docType});
-            return ((bool)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void RegFileUploadAtt1Async(string retNo, string fileName, string attachment, int tableId, string docType) {
-            this.RegFileUploadAtt1Async(retNo, fileName, attachment, tableId, docType, null);
-        }
-        
-        /// <remarks/>
-        public void RegFileUploadAtt1Async(string retNo, string fileName, string attachment, int tableId, string docType, object userState) {
-            if ((this.RegFileUploadAtt1OperationCompleted == null)) {
-                this.RegFileUploadAtt1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnRegFileUploadAtt1OperationCompleted);
-            }
-            this.InvokeAsync("RegFileUploadAtt1", new object[] {
-                        retNo,
-                        fileName,
-                        attachment,
-                        tableId,
-                        docType}, this.RegFileUploadAtt1OperationCompleted, userState);
-        }
-        
-        private void OnRegFileUploadAtt1OperationCompleted(object arg) {
-            if ((this.RegFileUploadAtt1Completed != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.RegFileUploadAtt1Completed(this, new RegFileUploadAtt1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -3398,6 +3431,32 @@ namespace KSAStaff.NAVWS {
                 return true;
             }
             return false;
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void RegFileUploadAtt1CompletedEventHandler(object sender, RegFileUploadAtt1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RegFileUploadAtt1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RegFileUploadAtt1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
         }
     }
     
@@ -4376,6 +4435,32 @@ namespace KSAStaff.NAVWS {
         private object[] results;
         
         internal GetMonthNameCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetMyClaimsCompletedEventHandler(object sender, GetMyClaimsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetMyClaimsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetMyClaimsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -5423,32 +5508,6 @@ namespace KSAStaff.NAVWS {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-    public delegate void RegFileUploadAtt1CompletedEventHandler(object sender, RegFileUploadAtt1CompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class RegFileUploadAtt1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal RegFileUploadAtt1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public bool Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
             }
         }
     }

@@ -31,7 +31,8 @@
                                 <table id="example1" class="table no-margin">
                                     <thead>
                                         <tr>
-                                            <th class="small">#No</th>
+                                            <th class="small">#</th>
+                                            <th class="small">Ref No</th>
                                             <th class="small">Date</th>
                                             <th class="small">Payee</th>
                                             <th class="small">Purpose</th>
