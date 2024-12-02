@@ -15,7 +15,7 @@ namespace KSAStaff
     {
         public static SqlConnection connection;
        // public static string Company_Name = "KSA";
-        public static string Company_Name = "LATEST";
+        public static string Company_Name = "KSA";
         //public static string ServiceRoot = "http://108.181.152.166:9048/KSCOUTS/ODataV4/Company('KSA')/";
 
         //public static void Context_BuildingRequest(object sender, Microsoft.OData.Client.BuildingRequestEventArgs e)
