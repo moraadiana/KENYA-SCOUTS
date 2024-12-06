@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Create Account";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+
+<form class="login-form" autocomplete="off" action="@Url.Action("createaccount", "login")" method="post">
+    <p>Create Account.</p>
+    <div class="alert alert-danger display-hide">
+        <button class="close" data-close="alert"></button>
+        <span> Fill all the required fields </span>
+    </div>
+    <div class="form-group">
+        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+        <label class="control-label visible-ie8 visible-ie9">Id Number</label>
+        <div class="input-icon">
+            <i class="icon-user"></i>
+            <input class="form-control placeholder-no-fix" type="number" autocomplete="off" placeholder="Id Number" name="IdNumber" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">First Name</label>
+        <div class="input-icon">
+            <i class="icon-lock"></i>
+            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="First Name" name="FirstName" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Middle Name</label>
+        <div class="input-icon">
+            <i class="icon-lock"></i>
+            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Middle Name" name="MiddleName" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Last Name</label>
+        <div class="input-icon">
+            <i class="icon-lock"></i>
+            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Last Name" name="LastName" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Email Address</label>
+        <div class="input-icon">
+            <i class="icon-lock"></i>
+            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email Address" name="EmailAddress" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Password</label>
+        <div class="input-icon">
+            <i class="icon-lock"></i>
+            <input class="form-control placeholder-no-fix" id="password" type="password" autocomplete="off" placeholder="Password" name="Password" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">First Name</label>
+        <div class="input-icon">
+            <i class="icon-lock"></i>
+            <input class="form-control placeholder-no-fix" type="password" id="confirm-password" autocomplete="off" placeholder="Confirm Password" />
+        </div>
+    </div>
+    <label class="mt-checkbox mt-checkbox-outline">
+        <input type="checkbox" onclick="showPassword()" /> Show Password
+        <span></span>
+    </label>
+    <div class="form-actions">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="@Url.Action("index", "login")" class="btn green pull-left"> <i class="icon-question"> Back</i></a>
+            </div>
+            <div class="col-md-6">
+                <button type="submit" class="btn green pull-right" onclick="return validatePasswords()"> <i class="icon-login"> Create Account</i></button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirm-password');
+
+    const showPassword = function () {
+        if (password.type == 'password') password.type = 'text';
+        else password.type = 'password';
+
+        if (confirmPassword.type == 'password') confirmPassword.type = 'text';
+        else confirmPassword.type = 'password';
+    }
+
+    const validatePasswords = function () {
+        if (password.value !== confirmPassword.value) {
+            alert('Passwords do not match!');
+            return false;
+        } else return true;
+    }
+</script>

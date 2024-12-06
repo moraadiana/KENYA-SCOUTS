@@ -1,0 +1,2036 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/Recruitment" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/Recruitment" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/Recruitment" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="AccountExists">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="idNumber" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="AccountExists_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CloseAllRequisitions">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="CloseAllRequisitions_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="CreateOnlineAccount">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="idNumber" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="firstName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="middleName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="lastName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="password" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="email" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateOnlineAccount_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteAttachment">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="systemId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteAttachment_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAdvertisedJobs">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetAdvertisedJobs_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetApplicantAttachments">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetApplicantAttachments_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetApplicantQualifications">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetApplicantQualifications_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetApplicantReferees">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetApplicantReferees_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAreaOfSpecialization">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="areaOfStudy" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAreaOfSpecialization_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAreaOfStudy">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetAreaOfStudy_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAward">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="areaOfSpecialization" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAward_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetConstituencies">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="subCounty" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetConstituencies_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCounties">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetCounties_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCourse">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="award" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="areaOfSpecialization" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCourse_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmploymentDetails">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetEmploymentDetails_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetGrades">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="course" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetGrades_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetJobQualificationCodes">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="jobId" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="qualificationType" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetJobQualificationCodes_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetJobQualificationType">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="jobId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetJobQualificationType_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetJobRequirements">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="jobId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetJobRequirements_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetJobResponsibilities">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="jobId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetJobResponsibilities_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetJobTitle">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="jobId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetJobTitle_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMinimumRequirements">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="jobId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMinimumRequirements_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyApplications">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyApplications_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyCompleteApplications">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyCompleteApplications_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetNationalities">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetNationalities_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetNextOfKin">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetNextOfKin_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetProfessionalBodies">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetProfessionalBodies_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetProfessionalQualifications">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetProfessionalQualifications_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRelatives">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetRelatives_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetSubCounties">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="county" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetSubCounties_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetSubmittedMinimumRequirements">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="jobId" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="refNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetSubmittedMinimumRequirements_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetTrainingsAttended">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetTrainingsAttended_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetTribes">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetTribes_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetUserData">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="idNumber" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetUserData_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HasInsertedMinimumRequirement">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="refNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="code" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="jobId" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HasInsertedMinimumRequirement_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HasUpdatedProfile">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="idNumber" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HasUpdatedProfile_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertApplicantQualification">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="areaOfStudy" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="areaOfSpecialization" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="award" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="course" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="grade" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="institution" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dateFrom" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="dateTo" type="date" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertApplicantQualification_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertApplicantReferees">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="names" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="designation" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="institution" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="address" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="phone" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="email" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="postCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="city" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="period" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertApplicantReferees_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertEmploymentDetails">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="designation" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="jobGrade" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="organization" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="salary" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="dateFrom" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="dateTo" type="date" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertEmploymentDetails_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertNextOfKin">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="name" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="address" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="telNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="relationship" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertNextOfKin_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertProfessionalBodies">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="professionalBody" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="membershipNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="membershipType" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="renewalDate" type="date" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertProfessionalBodies_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertProfessionalQualifications">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="institution" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="attainment" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="subject" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="grade" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dateFrom" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="dateTo" type="date" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertProfessionalQualifications_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertTrainingAttended">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="institution" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="name" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="details" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="year" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertTrainingAttended_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="JobRequirements">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="jobId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="JobRequirements_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="JobResponsibilities">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="jobId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="JobResponsibilities_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RecruitmentUserLogin">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="idNumber" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="password" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RecruitmentUserLogin_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RegFileUpload">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="retNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="fileName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="attachment" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="tableId" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RegFileUpload_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveApplicantQualifications">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="systemId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveApplicantQualifications_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveApplicantReferee">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="systemId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveApplicantReferee_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveEmploymentDetails">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="systemId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveEmploymentDetails_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveNextOfKin">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="systemId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveNextOfKin_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveProfessionalBody">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="systemId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveProfessionalBody_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveProfessionalQualifications">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="systemId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveProfessionalQualifications_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveTrainingAttended">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="systemId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveTrainingAttended_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SubmitApplication">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SubmitApplication_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SubmitJobApplication">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="jobId" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="refNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SubmitJobApplication_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateEmployeeMinimuRequirement">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="refNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="jobId" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="answer" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="code" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateEmployeeMinimuRequirement_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateUserPassword">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="idNumber" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="password" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateUserPassword_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateUserProfile">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="idNumber" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dob" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="pinNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="title" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="gender" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="nationality" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="ethnicity" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="homeCounty" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="subCounty" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="constituency" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="postCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="postAddress" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="town" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="telNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="mobileNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="emailaddress" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="contactPersonName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="contactPersonTel" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="disability" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="natureOfDisability" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="registrationNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="maritalStatus" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="ethnicOrigin" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateUserProfile_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="AccountExists">
+    <part name="parameters" element="tns:AccountExists" />
+  </message>
+  <message name="AccountExists_Result">
+    <part name="parameters" element="tns:AccountExists_Result" />
+  </message>
+  <message name="CloseAllRequisitions">
+    <part name="parameters" element="tns:CloseAllRequisitions" />
+  </message>
+  <message name="CloseAllRequisitions_Result">
+    <part name="parameters" element="tns:CloseAllRequisitions_Result" />
+  </message>
+  <message name="CreateOnlineAccount">
+    <part name="parameters" element="tns:CreateOnlineAccount" />
+  </message>
+  <message name="CreateOnlineAccount_Result">
+    <part name="parameters" element="tns:CreateOnlineAccount_Result" />
+  </message>
+  <message name="DeleteAttachment">
+    <part name="parameters" element="tns:DeleteAttachment" />
+  </message>
+  <message name="DeleteAttachment_Result">
+    <part name="parameters" element="tns:DeleteAttachment_Result" />
+  </message>
+  <message name="GetAdvertisedJobs">
+    <part name="parameters" element="tns:GetAdvertisedJobs" />
+  </message>
+  <message name="GetAdvertisedJobs_Result">
+    <part name="parameters" element="tns:GetAdvertisedJobs_Result" />
+  </message>
+  <message name="GetApplicantAttachments">
+    <part name="parameters" element="tns:GetApplicantAttachments" />
+  </message>
+  <message name="GetApplicantAttachments_Result">
+    <part name="parameters" element="tns:GetApplicantAttachments_Result" />
+  </message>
+  <message name="GetApplicantQualifications">
+    <part name="parameters" element="tns:GetApplicantQualifications" />
+  </message>
+  <message name="GetApplicantQualifications_Result">
+    <part name="parameters" element="tns:GetApplicantQualifications_Result" />
+  </message>
+  <message name="GetApplicantReferees">
+    <part name="parameters" element="tns:GetApplicantReferees" />
+  </message>
+  <message name="GetApplicantReferees_Result">
+    <part name="parameters" element="tns:GetApplicantReferees_Result" />
+  </message>
+  <message name="GetAreaOfSpecialization">
+    <part name="parameters" element="tns:GetAreaOfSpecialization" />
+  </message>
+  <message name="GetAreaOfSpecialization_Result">
+    <part name="parameters" element="tns:GetAreaOfSpecialization_Result" />
+  </message>
+  <message name="GetAreaOfStudy">
+    <part name="parameters" element="tns:GetAreaOfStudy" />
+  </message>
+  <message name="GetAreaOfStudy_Result">
+    <part name="parameters" element="tns:GetAreaOfStudy_Result" />
+  </message>
+  <message name="GetAward">
+    <part name="parameters" element="tns:GetAward" />
+  </message>
+  <message name="GetAward_Result">
+    <part name="parameters" element="tns:GetAward_Result" />
+  </message>
+  <message name="GetConstituencies">
+    <part name="parameters" element="tns:GetConstituencies" />
+  </message>
+  <message name="GetConstituencies_Result">
+    <part name="parameters" element="tns:GetConstituencies_Result" />
+  </message>
+  <message name="GetCounties">
+    <part name="parameters" element="tns:GetCounties" />
+  </message>
+  <message name="GetCounties_Result">
+    <part name="parameters" element="tns:GetCounties_Result" />
+  </message>
+  <message name="GetCourse">
+    <part name="parameters" element="tns:GetCourse" />
+  </message>
+  <message name="GetCourse_Result">
+    <part name="parameters" element="tns:GetCourse_Result" />
+  </message>
+  <message name="GetEmploymentDetails">
+    <part name="parameters" element="tns:GetEmploymentDetails" />
+  </message>
+  <message name="GetEmploymentDetails_Result">
+    <part name="parameters" element="tns:GetEmploymentDetails_Result" />
+  </message>
+  <message name="GetGrades">
+    <part name="parameters" element="tns:GetGrades" />
+  </message>
+  <message name="GetGrades_Result">
+    <part name="parameters" element="tns:GetGrades_Result" />
+  </message>
+  <message name="GetJobQualificationCodes">
+    <part name="parameters" element="tns:GetJobQualificationCodes" />
+  </message>
+  <message name="GetJobQualificationCodes_Result">
+    <part name="parameters" element="tns:GetJobQualificationCodes_Result" />
+  </message>
+  <message name="GetJobQualificationType">
+    <part name="parameters" element="tns:GetJobQualificationType" />
+  </message>
+  <message name="GetJobQualificationType_Result">
+    <part name="parameters" element="tns:GetJobQualificationType_Result" />
+  </message>
+  <message name="GetJobRequirements">
+    <part name="parameters" element="tns:GetJobRequirements" />
+  </message>
+  <message name="GetJobRequirements_Result">
+    <part name="parameters" element="tns:GetJobRequirements_Result" />
+  </message>
+  <message name="GetJobResponsibilities">
+    <part name="parameters" element="tns:GetJobResponsibilities" />
+  </message>
+  <message name="GetJobResponsibilities_Result">
+    <part name="parameters" element="tns:GetJobResponsibilities_Result" />
+  </message>
+  <message name="GetJobTitle">
+    <part name="parameters" element="tns:GetJobTitle" />
+  </message>
+  <message name="GetJobTitle_Result">
+    <part name="parameters" element="tns:GetJobTitle_Result" />
+  </message>
+  <message name="GetMinimumRequirements">
+    <part name="parameters" element="tns:GetMinimumRequirements" />
+  </message>
+  <message name="GetMinimumRequirements_Result">
+    <part name="parameters" element="tns:GetMinimumRequirements_Result" />
+  </message>
+  <message name="GetMyApplications">
+    <part name="parameters" element="tns:GetMyApplications" />
+  </message>
+  <message name="GetMyApplications_Result">
+    <part name="parameters" element="tns:GetMyApplications_Result" />
+  </message>
+  <message name="GetMyCompleteApplications">
+    <part name="parameters" element="tns:GetMyCompleteApplications" />
+  </message>
+  <message name="GetMyCompleteApplications_Result">
+    <part name="parameters" element="tns:GetMyCompleteApplications_Result" />
+  </message>
+  <message name="GetNationalities">
+    <part name="parameters" element="tns:GetNationalities" />
+  </message>
+  <message name="GetNationalities_Result">
+    <part name="parameters" element="tns:GetNationalities_Result" />
+  </message>
+  <message name="GetNextOfKin">
+    <part name="parameters" element="tns:GetNextOfKin" />
+  </message>
+  <message name="GetNextOfKin_Result">
+    <part name="parameters" element="tns:GetNextOfKin_Result" />
+  </message>
+  <message name="GetProfessionalBodies">
+    <part name="parameters" element="tns:GetProfessionalBodies" />
+  </message>
+  <message name="GetProfessionalBodies_Result">
+    <part name="parameters" element="tns:GetProfessionalBodies_Result" />
+  </message>
+  <message name="GetProfessionalQualifications">
+    <part name="parameters" element="tns:GetProfessionalQualifications" />
+  </message>
+  <message name="GetProfessionalQualifications_Result">
+    <part name="parameters" element="tns:GetProfessionalQualifications_Result" />
+  </message>
+  <message name="GetRelatives">
+    <part name="parameters" element="tns:GetRelatives" />
+  </message>
+  <message name="GetRelatives_Result">
+    <part name="parameters" element="tns:GetRelatives_Result" />
+  </message>
+  <message name="GetSubCounties">
+    <part name="parameters" element="tns:GetSubCounties" />
+  </message>
+  <message name="GetSubCounties_Result">
+    <part name="parameters" element="tns:GetSubCounties_Result" />
+  </message>
+  <message name="GetSubmittedMinimumRequirements">
+    <part name="parameters" element="tns:GetSubmittedMinimumRequirements" />
+  </message>
+  <message name="GetSubmittedMinimumRequirements_Result">
+    <part name="parameters" element="tns:GetSubmittedMinimumRequirements_Result" />
+  </message>
+  <message name="GetTrainingsAttended">
+    <part name="parameters" element="tns:GetTrainingsAttended" />
+  </message>
+  <message name="GetTrainingsAttended_Result">
+    <part name="parameters" element="tns:GetTrainingsAttended_Result" />
+  </message>
+  <message name="GetTribes">
+    <part name="parameters" element="tns:GetTribes" />
+  </message>
+  <message name="GetTribes_Result">
+    <part name="parameters" element="tns:GetTribes_Result" />
+  </message>
+  <message name="GetUserData">
+    <part name="parameters" element="tns:GetUserData" />
+  </message>
+  <message name="GetUserData_Result">
+    <part name="parameters" element="tns:GetUserData_Result" />
+  </message>
+  <message name="HasInsertedMinimumRequirement">
+    <part name="parameters" element="tns:HasInsertedMinimumRequirement" />
+  </message>
+  <message name="HasInsertedMinimumRequirement_Result">
+    <part name="parameters" element="tns:HasInsertedMinimumRequirement_Result" />
+  </message>
+  <message name="HasUpdatedProfile">
+    <part name="parameters" element="tns:HasUpdatedProfile" />
+  </message>
+  <message name="HasUpdatedProfile_Result">
+    <part name="parameters" element="tns:HasUpdatedProfile_Result" />
+  </message>
+  <message name="InsertApplicantQualification">
+    <part name="parameters" element="tns:InsertApplicantQualification" />
+  </message>
+  <message name="InsertApplicantQualification_Result">
+    <part name="parameters" element="tns:InsertApplicantQualification_Result" />
+  </message>
+  <message name="InsertApplicantReferees">
+    <part name="parameters" element="tns:InsertApplicantReferees" />
+  </message>
+  <message name="InsertApplicantReferees_Result">
+    <part name="parameters" element="tns:InsertApplicantReferees_Result" />
+  </message>
+  <message name="InsertEmploymentDetails">
+    <part name="parameters" element="tns:InsertEmploymentDetails" />
+  </message>
+  <message name="InsertEmploymentDetails_Result">
+    <part name="parameters" element="tns:InsertEmploymentDetails_Result" />
+  </message>
+  <message name="InsertNextOfKin">
+    <part name="parameters" element="tns:InsertNextOfKin" />
+  </message>
+  <message name="InsertNextOfKin_Result">
+    <part name="parameters" element="tns:InsertNextOfKin_Result" />
+  </message>
+  <message name="InsertProfessionalBodies">
+    <part name="parameters" element="tns:InsertProfessionalBodies" />
+  </message>
+  <message name="InsertProfessionalBodies_Result">
+    <part name="parameters" element="tns:InsertProfessionalBodies_Result" />
+  </message>
+  <message name="InsertProfessionalQualifications">
+    <part name="parameters" element="tns:InsertProfessionalQualifications" />
+  </message>
+  <message name="InsertProfessionalQualifications_Result">
+    <part name="parameters" element="tns:InsertProfessionalQualifications_Result" />
+  </message>
+  <message name="InsertTrainingAttended">
+    <part name="parameters" element="tns:InsertTrainingAttended" />
+  </message>
+  <message name="InsertTrainingAttended_Result">
+    <part name="parameters" element="tns:InsertTrainingAttended_Result" />
+  </message>
+  <message name="JobRequirements">
+    <part name="parameters" element="tns:JobRequirements" />
+  </message>
+  <message name="JobRequirements_Result">
+    <part name="parameters" element="tns:JobRequirements_Result" />
+  </message>
+  <message name="JobResponsibilities">
+    <part name="parameters" element="tns:JobResponsibilities" />
+  </message>
+  <message name="JobResponsibilities_Result">
+    <part name="parameters" element="tns:JobResponsibilities_Result" />
+  </message>
+  <message name="RecruitmentUserLogin">
+    <part name="parameters" element="tns:RecruitmentUserLogin" />
+  </message>
+  <message name="RecruitmentUserLogin_Result">
+    <part name="parameters" element="tns:RecruitmentUserLogin_Result" />
+  </message>
+  <message name="RegFileUpload">
+    <part name="parameters" element="tns:RegFileUpload" />
+  </message>
+  <message name="RegFileUpload_Result">
+    <part name="parameters" element="tns:RegFileUpload_Result" />
+  </message>
+  <message name="RemoveApplicantQualifications">
+    <part name="parameters" element="tns:RemoveApplicantQualifications" />
+  </message>
+  <message name="RemoveApplicantQualifications_Result">
+    <part name="parameters" element="tns:RemoveApplicantQualifications_Result" />
+  </message>
+  <message name="RemoveApplicantReferee">
+    <part name="parameters" element="tns:RemoveApplicantReferee" />
+  </message>
+  <message name="RemoveApplicantReferee_Result">
+    <part name="parameters" element="tns:RemoveApplicantReferee_Result" />
+  </message>
+  <message name="RemoveEmploymentDetails">
+    <part name="parameters" element="tns:RemoveEmploymentDetails" />
+  </message>
+  <message name="RemoveEmploymentDetails_Result">
+    <part name="parameters" element="tns:RemoveEmploymentDetails_Result" />
+  </message>
+  <message name="RemoveNextOfKin">
+    <part name="parameters" element="tns:RemoveNextOfKin" />
+  </message>
+  <message name="RemoveNextOfKin_Result">
+    <part name="parameters" element="tns:RemoveNextOfKin_Result" />
+  </message>
+  <message name="RemoveProfessionalBody">
+    <part name="parameters" element="tns:RemoveProfessionalBody" />
+  </message>
+  <message name="RemoveProfessionalBody_Result">
+    <part name="parameters" element="tns:RemoveProfessionalBody_Result" />
+  </message>
+  <message name="RemoveProfessionalQualifications">
+    <part name="parameters" element="tns:RemoveProfessionalQualifications" />
+  </message>
+  <message name="RemoveProfessionalQualifications_Result">
+    <part name="parameters" element="tns:RemoveProfessionalQualifications_Result" />
+  </message>
+  <message name="RemoveTrainingAttended">
+    <part name="parameters" element="tns:RemoveTrainingAttended" />
+  </message>
+  <message name="RemoveTrainingAttended_Result">
+    <part name="parameters" element="tns:RemoveTrainingAttended_Result" />
+  </message>
+  <message name="SubmitApplication">
+    <part name="parameters" element="tns:SubmitApplication" />
+  </message>
+  <message name="SubmitApplication_Result">
+    <part name="parameters" element="tns:SubmitApplication_Result" />
+  </message>
+  <message name="SubmitJobApplication">
+    <part name="parameters" element="tns:SubmitJobApplication" />
+  </message>
+  <message name="SubmitJobApplication_Result">
+    <part name="parameters" element="tns:SubmitJobApplication_Result" />
+  </message>
+  <message name="UpdateEmployeeMinimuRequirement">
+    <part name="parameters" element="tns:UpdateEmployeeMinimuRequirement" />
+  </message>
+  <message name="UpdateEmployeeMinimuRequirement_Result">
+    <part name="parameters" element="tns:UpdateEmployeeMinimuRequirement_Result" />
+  </message>
+  <message name="UpdateUserPassword">
+    <part name="parameters" element="tns:UpdateUserPassword" />
+  </message>
+  <message name="UpdateUserPassword_Result">
+    <part name="parameters" element="tns:UpdateUserPassword_Result" />
+  </message>
+  <message name="UpdateUserProfile">
+    <part name="parameters" element="tns:UpdateUserProfile" />
+  </message>
+  <message name="UpdateUserProfile_Result">
+    <part name="parameters" element="tns:UpdateUserProfile_Result" />
+  </message>
+  <portType name="Recruitment_Port">
+    <operation name="AccountExists">
+      <input name="AccountExists" message="tns:AccountExists" />
+      <output name="AccountExists_Result" message="tns:AccountExists_Result" />
+    </operation>
+    <operation name="CloseAllRequisitions">
+      <input name="CloseAllRequisitions" message="tns:CloseAllRequisitions" />
+      <output name="CloseAllRequisitions_Result" message="tns:CloseAllRequisitions_Result" />
+    </operation>
+    <operation name="CreateOnlineAccount">
+      <input name="CreateOnlineAccount" message="tns:CreateOnlineAccount" />
+      <output name="CreateOnlineAccount_Result" message="tns:CreateOnlineAccount_Result" />
+    </operation>
+    <operation name="DeleteAttachment">
+      <input name="DeleteAttachment" message="tns:DeleteAttachment" />
+      <output name="DeleteAttachment_Result" message="tns:DeleteAttachment_Result" />
+    </operation>
+    <operation name="GetAdvertisedJobs">
+      <input name="GetAdvertisedJobs" message="tns:GetAdvertisedJobs" />
+      <output name="GetAdvertisedJobs_Result" message="tns:GetAdvertisedJobs_Result" />
+    </operation>
+    <operation name="GetApplicantAttachments">
+      <input name="GetApplicantAttachments" message="tns:GetApplicantAttachments" />
+      <output name="GetApplicantAttachments_Result" message="tns:GetApplicantAttachments_Result" />
+    </operation>
+    <operation name="GetApplicantQualifications">
+      <input name="GetApplicantQualifications" message="tns:GetApplicantQualifications" />
+      <output name="GetApplicantQualifications_Result" message="tns:GetApplicantQualifications_Result" />
+    </operation>
+    <operation name="GetApplicantReferees">
+      <input name="GetApplicantReferees" message="tns:GetApplicantReferees" />
+      <output name="GetApplicantReferees_Result" message="tns:GetApplicantReferees_Result" />
+    </operation>
+    <operation name="GetAreaOfSpecialization">
+      <input name="GetAreaOfSpecialization" message="tns:GetAreaOfSpecialization" />
+      <output name="GetAreaOfSpecialization_Result" message="tns:GetAreaOfSpecialization_Result" />
+    </operation>
+    <operation name="GetAreaOfStudy">
+      <input name="GetAreaOfStudy" message="tns:GetAreaOfStudy" />
+      <output name="GetAreaOfStudy_Result" message="tns:GetAreaOfStudy_Result" />
+    </operation>
+    <operation name="GetAward">
+      <input name="GetAward" message="tns:GetAward" />
+      <output name="GetAward_Result" message="tns:GetAward_Result" />
+    </operation>
+    <operation name="GetConstituencies">
+      <input name="GetConstituencies" message="tns:GetConstituencies" />
+      <output name="GetConstituencies_Result" message="tns:GetConstituencies_Result" />
+    </operation>
+    <operation name="GetCounties">
+      <input name="GetCounties" message="tns:GetCounties" />
+      <output name="GetCounties_Result" message="tns:GetCounties_Result" />
+    </operation>
+    <operation name="GetCourse">
+      <input name="GetCourse" message="tns:GetCourse" />
+      <output name="GetCourse_Result" message="tns:GetCourse_Result" />
+    </operation>
+    <operation name="GetEmploymentDetails">
+      <input name="GetEmploymentDetails" message="tns:GetEmploymentDetails" />
+      <output name="GetEmploymentDetails_Result" message="tns:GetEmploymentDetails_Result" />
+    </operation>
+    <operation name="GetGrades">
+      <input name="GetGrades" message="tns:GetGrades" />
+      <output name="GetGrades_Result" message="tns:GetGrades_Result" />
+    </operation>
+    <operation name="GetJobQualificationCodes">
+      <input name="GetJobQualificationCodes" message="tns:GetJobQualificationCodes" />
+      <output name="GetJobQualificationCodes_Result" message="tns:GetJobQualificationCodes_Result" />
+    </operation>
+    <operation name="GetJobQualificationType">
+      <input name="GetJobQualificationType" message="tns:GetJobQualificationType" />
+      <output name="GetJobQualificationType_Result" message="tns:GetJobQualificationType_Result" />
+    </operation>
+    <operation name="GetJobRequirements">
+      <input name="GetJobRequirements" message="tns:GetJobRequirements" />
+      <output name="GetJobRequirements_Result" message="tns:GetJobRequirements_Result" />
+    </operation>
+    <operation name="GetJobResponsibilities">
+      <input name="GetJobResponsibilities" message="tns:GetJobResponsibilities" />
+      <output name="GetJobResponsibilities_Result" message="tns:GetJobResponsibilities_Result" />
+    </operation>
+    <operation name="GetJobTitle">
+      <input name="GetJobTitle" message="tns:GetJobTitle" />
+      <output name="GetJobTitle_Result" message="tns:GetJobTitle_Result" />
+    </operation>
+    <operation name="GetMinimumRequirements">
+      <input name="GetMinimumRequirements" message="tns:GetMinimumRequirements" />
+      <output name="GetMinimumRequirements_Result" message="tns:GetMinimumRequirements_Result" />
+    </operation>
+    <operation name="GetMyApplications">
+      <input name="GetMyApplications" message="tns:GetMyApplications" />
+      <output name="GetMyApplications_Result" message="tns:GetMyApplications_Result" />
+    </operation>
+    <operation name="GetMyCompleteApplications">
+      <input name="GetMyCompleteApplications" message="tns:GetMyCompleteApplications" />
+      <output name="GetMyCompleteApplications_Result" message="tns:GetMyCompleteApplications_Result" />
+    </operation>
+    <operation name="GetNationalities">
+      <input name="GetNationalities" message="tns:GetNationalities" />
+      <output name="GetNationalities_Result" message="tns:GetNationalities_Result" />
+    </operation>
+    <operation name="GetNextOfKin">
+      <input name="GetNextOfKin" message="tns:GetNextOfKin" />
+      <output name="GetNextOfKin_Result" message="tns:GetNextOfKin_Result" />
+    </operation>
+    <operation name="GetProfessionalBodies">
+      <input name="GetProfessionalBodies" message="tns:GetProfessionalBodies" />
+      <output name="GetProfessionalBodies_Result" message="tns:GetProfessionalBodies_Result" />
+    </operation>
+    <operation name="GetProfessionalQualifications">
+      <input name="GetProfessionalQualifications" message="tns:GetProfessionalQualifications" />
+      <output name="GetProfessionalQualifications_Result" message="tns:GetProfessionalQualifications_Result" />
+    </operation>
+    <operation name="GetRelatives">
+      <input name="GetRelatives" message="tns:GetRelatives" />
+      <output name="GetRelatives_Result" message="tns:GetRelatives_Result" />
+    </operation>
+    <operation name="GetSubCounties">
+      <input name="GetSubCounties" message="tns:GetSubCounties" />
+      <output name="GetSubCounties_Result" message="tns:GetSubCounties_Result" />
+    </operation>
+    <operation name="GetSubmittedMinimumRequirements">
+      <input name="GetSubmittedMinimumRequirements" message="tns:GetSubmittedMinimumRequirements" />
+      <output name="GetSubmittedMinimumRequirements_Result" message="tns:GetSubmittedMinimumRequirements_Result" />
+    </operation>
+    <operation name="GetTrainingsAttended">
+      <input name="GetTrainingsAttended" message="tns:GetTrainingsAttended" />
+      <output name="GetTrainingsAttended_Result" message="tns:GetTrainingsAttended_Result" />
+    </operation>
+    <operation name="GetTribes">
+      <input name="GetTribes" message="tns:GetTribes" />
+      <output name="GetTribes_Result" message="tns:GetTribes_Result" />
+    </operation>
+    <operation name="GetUserData">
+      <input name="GetUserData" message="tns:GetUserData" />
+      <output name="GetUserData_Result" message="tns:GetUserData_Result" />
+    </operation>
+    <operation name="HasInsertedMinimumRequirement">
+      <input name="HasInsertedMinimumRequirement" message="tns:HasInsertedMinimumRequirement" />
+      <output name="HasInsertedMinimumRequirement_Result" message="tns:HasInsertedMinimumRequirement_Result" />
+    </operation>
+    <operation name="HasUpdatedProfile">
+      <input name="HasUpdatedProfile" message="tns:HasUpdatedProfile" />
+      <output name="HasUpdatedProfile_Result" message="tns:HasUpdatedProfile_Result" />
+    </operation>
+    <operation name="InsertApplicantQualification">
+      <input name="InsertApplicantQualification" message="tns:InsertApplicantQualification" />
+      <output name="InsertApplicantQualification_Result" message="tns:InsertApplicantQualification_Result" />
+    </operation>
+    <operation name="InsertApplicantReferees">
+      <input name="InsertApplicantReferees" message="tns:InsertApplicantReferees" />
+      <output name="InsertApplicantReferees_Result" message="tns:InsertApplicantReferees_Result" />
+    </operation>
+    <operation name="InsertEmploymentDetails">
+      <input name="InsertEmploymentDetails" message="tns:InsertEmploymentDetails" />
+      <output name="InsertEmploymentDetails_Result" message="tns:InsertEmploymentDetails_Result" />
+    </operation>
+    <operation name="InsertNextOfKin">
+      <input name="InsertNextOfKin" message="tns:InsertNextOfKin" />
+      <output name="InsertNextOfKin_Result" message="tns:InsertNextOfKin_Result" />
+    </operation>
+    <operation name="InsertProfessionalBodies">
+      <input name="InsertProfessionalBodies" message="tns:InsertProfessionalBodies" />
+      <output name="InsertProfessionalBodies_Result" message="tns:InsertProfessionalBodies_Result" />
+    </operation>
+    <operation name="InsertProfessionalQualifications">
+      <input name="InsertProfessionalQualifications" message="tns:InsertProfessionalQualifications" />
+      <output name="InsertProfessionalQualifications_Result" message="tns:InsertProfessionalQualifications_Result" />
+    </operation>
+    <operation name="InsertTrainingAttended">
+      <input name="InsertTrainingAttended" message="tns:InsertTrainingAttended" />
+      <output name="InsertTrainingAttended_Result" message="tns:InsertTrainingAttended_Result" />
+    </operation>
+    <operation name="JobRequirements">
+      <input name="JobRequirements" message="tns:JobRequirements" />
+      <output name="JobRequirements_Result" message="tns:JobRequirements_Result" />
+    </operation>
+    <operation name="JobResponsibilities">
+      <input name="JobResponsibilities" message="tns:JobResponsibilities" />
+      <output name="JobResponsibilities_Result" message="tns:JobResponsibilities_Result" />
+    </operation>
+    <operation name="RecruitmentUserLogin">
+      <input name="RecruitmentUserLogin" message="tns:RecruitmentUserLogin" />
+      <output name="RecruitmentUserLogin_Result" message="tns:RecruitmentUserLogin_Result" />
+    </operation>
+    <operation name="RegFileUpload">
+      <input name="RegFileUpload" message="tns:RegFileUpload" />
+      <output name="RegFileUpload_Result" message="tns:RegFileUpload_Result" />
+    </operation>
+    <operation name="RemoveApplicantQualifications">
+      <input name="RemoveApplicantQualifications" message="tns:RemoveApplicantQualifications" />
+      <output name="RemoveApplicantQualifications_Result" message="tns:RemoveApplicantQualifications_Result" />
+    </operation>
+    <operation name="RemoveApplicantReferee">
+      <input name="RemoveApplicantReferee" message="tns:RemoveApplicantReferee" />
+      <output name="RemoveApplicantReferee_Result" message="tns:RemoveApplicantReferee_Result" />
+    </operation>
+    <operation name="RemoveEmploymentDetails">
+      <input name="RemoveEmploymentDetails" message="tns:RemoveEmploymentDetails" />
+      <output name="RemoveEmploymentDetails_Result" message="tns:RemoveEmploymentDetails_Result" />
+    </operation>
+    <operation name="RemoveNextOfKin">
+      <input name="RemoveNextOfKin" message="tns:RemoveNextOfKin" />
+      <output name="RemoveNextOfKin_Result" message="tns:RemoveNextOfKin_Result" />
+    </operation>
+    <operation name="RemoveProfessionalBody">
+      <input name="RemoveProfessionalBody" message="tns:RemoveProfessionalBody" />
+      <output name="RemoveProfessionalBody_Result" message="tns:RemoveProfessionalBody_Result" />
+    </operation>
+    <operation name="RemoveProfessionalQualifications">
+      <input name="RemoveProfessionalQualifications" message="tns:RemoveProfessionalQualifications" />
+      <output name="RemoveProfessionalQualifications_Result" message="tns:RemoveProfessionalQualifications_Result" />
+    </operation>
+    <operation name="RemoveTrainingAttended">
+      <input name="RemoveTrainingAttended" message="tns:RemoveTrainingAttended" />
+      <output name="RemoveTrainingAttended_Result" message="tns:RemoveTrainingAttended_Result" />
+    </operation>
+    <operation name="SubmitApplication">
+      <input name="SubmitApplication" message="tns:SubmitApplication" />
+      <output name="SubmitApplication_Result" message="tns:SubmitApplication_Result" />
+    </operation>
+    <operation name="SubmitJobApplication">
+      <input name="SubmitJobApplication" message="tns:SubmitJobApplication" />
+      <output name="SubmitJobApplication_Result" message="tns:SubmitJobApplication_Result" />
+    </operation>
+    <operation name="UpdateEmployeeMinimuRequirement">
+      <input name="UpdateEmployeeMinimuRequirement" message="tns:UpdateEmployeeMinimuRequirement" />
+      <output name="UpdateEmployeeMinimuRequirement_Result" message="tns:UpdateEmployeeMinimuRequirement_Result" />
+    </operation>
+    <operation name="UpdateUserPassword">
+      <input name="UpdateUserPassword" message="tns:UpdateUserPassword" />
+      <output name="UpdateUserPassword_Result" message="tns:UpdateUserPassword_Result" />
+    </operation>
+    <operation name="UpdateUserProfile">
+      <input name="UpdateUserProfile" message="tns:UpdateUserProfile" />
+      <output name="UpdateUserProfile_Result" message="tns:UpdateUserProfile_Result" />
+    </operation>
+  </portType>
+  <binding name="Recruitment_Binding" type="tns:Recruitment_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="AccountExists">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:AccountExists" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="AccountExists">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="AccountExists_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CloseAllRequisitions">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:CloseAllRequisitions" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CloseAllRequisitions">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CloseAllRequisitions_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateOnlineAccount">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:CreateOnlineAccount" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateOnlineAccount">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateOnlineAccount_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteAttachment">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:DeleteAttachment" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteAttachment">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteAttachment_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetAdvertisedJobs">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetAdvertisedJobs" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetAdvertisedJobs">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetAdvertisedJobs_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetApplicantAttachments">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetApplicantAttachments" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetApplicantAttachments">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetApplicantAttachments_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetApplicantQualifications">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetApplicantQualifications" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetApplicantQualifications">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetApplicantQualifications_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetApplicantReferees">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetApplicantReferees" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetApplicantReferees">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetApplicantReferees_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetAreaOfSpecialization">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetAreaOfSpecialization" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetAreaOfSpecialization">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetAreaOfSpecialization_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetAreaOfStudy">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetAreaOfStudy" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetAreaOfStudy">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetAreaOfStudy_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetAward">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetAward" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetAward">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetAward_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetConstituencies">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetConstituencies" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetConstituencies">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetConstituencies_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetCounties">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetCounties" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetCounties">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetCounties_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetCourse">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetCourse" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetCourse">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetCourse_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetEmploymentDetails">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetEmploymentDetails" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetEmploymentDetails">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetEmploymentDetails_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetGrades">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetGrades" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetGrades">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetGrades_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetJobQualificationCodes">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetJobQualificationCodes" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetJobQualificationCodes">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetJobQualificationCodes_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetJobQualificationType">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetJobQualificationType" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetJobQualificationType">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetJobQualificationType_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetJobRequirements">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetJobRequirements" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetJobRequirements">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetJobRequirements_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetJobResponsibilities">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetJobResponsibilities" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetJobResponsibilities">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetJobResponsibilities_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetJobTitle">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetJobTitle" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetJobTitle">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetJobTitle_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetMinimumRequirements">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetMinimumRequirements" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMinimumRequirements">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMinimumRequirements_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetMyApplications">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetMyApplications" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMyApplications">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMyApplications_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetMyCompleteApplications">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetMyCompleteApplications" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMyCompleteApplications">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMyCompleteApplications_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetNationalities">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetNationalities" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetNationalities">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetNationalities_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetNextOfKin">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetNextOfKin" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetNextOfKin">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetNextOfKin_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetProfessionalBodies">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetProfessionalBodies" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetProfessionalBodies">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetProfessionalBodies_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetProfessionalQualifications">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetProfessionalQualifications" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetProfessionalQualifications">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetProfessionalQualifications_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetRelatives">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetRelatives" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetRelatives">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetRelatives_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetSubCounties">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetSubCounties" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetSubCounties">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetSubCounties_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetSubmittedMinimumRequirements">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetSubmittedMinimumRequirements" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetSubmittedMinimumRequirements">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetSubmittedMinimumRequirements_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetTrainingsAttended">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetTrainingsAttended" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetTrainingsAttended">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetTrainingsAttended_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetTribes">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetTribes" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetTribes">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetTribes_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetUserData">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:GetUserData" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetUserData">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetUserData_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="HasInsertedMinimumRequirement">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:HasInsertedMinimumRequirement" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="HasInsertedMinimumRequirement">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="HasInsertedMinimumRequirement_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="HasUpdatedProfile">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:HasUpdatedProfile" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="HasUpdatedProfile">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="HasUpdatedProfile_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertApplicantQualification">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:InsertApplicantQualification" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertApplicantQualification">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertApplicantQualification_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertApplicantReferees">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:InsertApplicantReferees" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertApplicantReferees">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertApplicantReferees_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertEmploymentDetails">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:InsertEmploymentDetails" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertEmploymentDetails">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertEmploymentDetails_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertNextOfKin">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:InsertNextOfKin" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertNextOfKin">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertNextOfKin_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertProfessionalBodies">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:InsertProfessionalBodies" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertProfessionalBodies">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertProfessionalBodies_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertProfessionalQualifications">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:InsertProfessionalQualifications" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertProfessionalQualifications">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertProfessionalQualifications_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertTrainingAttended">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:InsertTrainingAttended" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertTrainingAttended">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertTrainingAttended_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="JobRequirements">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:JobRequirements" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="JobRequirements">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="JobRequirements_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="JobResponsibilities">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:JobResponsibilities" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="JobResponsibilities">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="JobResponsibilities_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RecruitmentUserLogin">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:RecruitmentUserLogin" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RecruitmentUserLogin">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RecruitmentUserLogin_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RegFileUpload">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:RegFileUpload" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RegFileUpload">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RegFileUpload_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RemoveApplicantQualifications">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:RemoveApplicantQualifications" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RemoveApplicantQualifications">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RemoveApplicantQualifications_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RemoveApplicantReferee">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:RemoveApplicantReferee" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RemoveApplicantReferee">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RemoveApplicantReferee_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RemoveEmploymentDetails">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:RemoveEmploymentDetails" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RemoveEmploymentDetails">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RemoveEmploymentDetails_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RemoveNextOfKin">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:RemoveNextOfKin" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RemoveNextOfKin">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RemoveNextOfKin_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RemoveProfessionalBody">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:RemoveProfessionalBody" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RemoveProfessionalBody">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RemoveProfessionalBody_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RemoveProfessionalQualifications">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:RemoveProfessionalQualifications" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RemoveProfessionalQualifications">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RemoveProfessionalQualifications_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RemoveTrainingAttended">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:RemoveTrainingAttended" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RemoveTrainingAttended">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RemoveTrainingAttended_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SubmitApplication">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:SubmitApplication" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SubmitApplication">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SubmitApplication_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SubmitJobApplication">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:SubmitJobApplication" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SubmitJobApplication">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SubmitJobApplication_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateEmployeeMinimuRequirement">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:UpdateEmployeeMinimuRequirement" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateEmployeeMinimuRequirement">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateEmployeeMinimuRequirement_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateUserPassword">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:UpdateUserPassword" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateUserPassword">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateUserPassword_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateUserProfile">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Recruitment:UpdateUserProfile" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateUserProfile">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateUserProfile_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Recruitment">
+    <port name="Recruitment_Port" binding="tns:Recruitment_Binding">
+      <address location="http://108.181.152.166:1047/OAG/WS/OAG%20TEST/Codeunit/Recruitment" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

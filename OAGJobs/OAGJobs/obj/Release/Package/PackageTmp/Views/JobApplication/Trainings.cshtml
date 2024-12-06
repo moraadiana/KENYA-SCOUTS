@@ -1,0 +1,98 @@
+﻿@model OAGJobs.Models.Applicant
+@{
+    ViewBag.Title = "Trainings Attended";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light portlet-fit bordered">
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger">
+                        <button class="close" data-close="alert"></button>
+                        <span>@TempData["Error"]</span>
+                    </div>
+                }
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success">
+                        <button class="close" data-close="alert"></button>
+                        <span>@TempData["Success"]</span>
+                    </div>
+                }
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-settings font-red"></i>
+                        <span class="caption-subject font-red sbold uppercase">Training attended</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <form action="@Url.Action("submittraining","jobapplication")" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Institution</label> <span class="text-danger">*</span>
+                                    <input type="text" name="Institution" class="form-control" placeholder="Institution" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Name of Course</label> <span class="text-danger">*</span>
+                                    <input type="text" name="Course" class="form-control" placeholder="Name of Course" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Duration</label> <span class="text-danger">*</span>
+                                    <input type="text" name="Duration" class="form-control" placeholder="Detail or Duration" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Year</label> <span class="text-danger">*</span>
+                                    <input type="number" name="Year" class="form-control" placeholder="Year" required />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary" id="btn-academic"><i class="fa fa-pen"></i> Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Institution</th>
+                                        <th>Name of Course</th>
+                                        <th>Duration</th>
+                                        <th>Year</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.ApplicantTrainings)
+                                    {
+                                        <tr>
+                                            <td>@item.Institution</td>
+                                            <td>@item.Course</td>
+                                            <td>@item.Duration</td>
+                                            <td>@item.Year</td>
+                                            <td><a href="@Url.Action("removetraining", "jobapplication", new {id=item.SystemId})" class="text-danger"><i class="fa fa-trash-alt"></i></a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

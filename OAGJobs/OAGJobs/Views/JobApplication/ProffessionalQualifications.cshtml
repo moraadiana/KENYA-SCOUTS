@@ -1,0 +1,144 @@
+﻿
+@{
+    ViewBag.Title = "Proffessional Qualifications";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light portlet-fit bordered">
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger">
+                        <button class="close" data-close="alert"></button>
+                        <span>@TempData["Error"]</span>
+                    </div>
+                }
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success">
+                        <button class="close" data-close="alert"></button>
+                        <span>@TempData["Success"]</span>
+                    </div>
+                }
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-settings font-red"></i>
+                        <span class="caption-subject font-red sbold uppercase">Step 3 : Proffesional Qualifications</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <form action="@Url.Action("submitprofessionalqualification","jobapplication")" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Institution</label> <span class="text-danger">*</span>
+                                    <input type="text" name="Institution" class="form-control" placeholder="Name of Institution" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Attainment/Award</label> <span class="text-danger">*</span>
+                                    <input type="text" name="Award" class="form-control" placeholder="Attainment/Award" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Specialization/Subject</label> <span class="text-danger">*</span>
+                                    <input type="text" name="Specialization" class="form-control" placeholder="Specialization/Subject" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Class/Grade</label> <span class="text-danger">*</span>
+                                    <input type="text" name="Grade" class="form-control" placeholder="Class/Grade" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>From</label> <span class="text-danger">*</span>
+                                    <input type="date" name="DateFrom" id="date-from" class="form-control" placeholder="From Date" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>To</label> <span class="text-danger">*</span>
+                                    <input type="date" name="DateTo" id="date-to" class="form-control" placeholder="To Date" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Choose file to Upload</label>
+                                    <input type="file" name="AttachmentFile" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary" id="btn-academic" onclick="return validateInputs()"><i class="fa fa-pen"></i> Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Institution</th>
+                                        <th>Award</th>
+                                        <th>Specialization</th>
+                                        <th>From Date</th>
+                                        <th>To Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.ApplicantProfessionalQualifications)
+                                    {
+                                        <tr>
+                                            <td>@item.Institution</td>
+                                            <td>@item.Award</td>
+                                            <td>@item.Specialization</td>
+                                            <td>@Convert.ToDateTime(item.DateFrom).ToShortDateString()</td>
+                                            <td>@Convert.ToDateTime(item.DateTo).ToShortDateString()</td>
+                                            <td><a href="@Url.Action("removeprofessionalqualification", "jobapplication", new {id=item.SystemId})" class="text-danger"><i class="fa fa-trash-alt"></i></a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            @*<a class="btn btn-warning pull-left" href="@Url.Action("qualifications","jobapplication")">Back</a>*@
+                            <a class="btn btn-primary pull-right" href="@Url.Action("navigateproffessionalbody","jobapplication")">Next</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const dateFrom = document.getElementById('date-from');
+    const dateTo = document.getElementById('date-to');
+
+    const validateInputs = function () {
+        if (dateFrom.value === '') {
+            alert('Date from cannot be empty');
+            dateFrom.focus();
+            return false;
+        }
+
+        if (dateTo.value === '') {
+            alert('Date to cannot be empty');
+            dateTo.focus();
+            return false;
+        }
+    }
+</script>

@@ -1,0 +1,121 @@
+﻿@model OAGJobs.Models.Applicant
+@{
+    ViewBag.Title = "Proffessional Bodies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light portlet-fit bordered">
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger">
+                        <button class="close" data-close="alert"></button>
+                        <span>@TempData["Error"]</span>
+                    </div>
+                }
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success">
+                        <button class="close" data-close="alert"></button>
+                        <span>@TempData["Success"]</span>
+                    </div>
+                }
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-settings font-red"></i>
+                        <span class="caption-subject font-red sbold uppercase">Step 4 : Proffesional Bodies</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <form action="@Url.Action("submitprofessionalbody","jobapplication")" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Proffessional Body</label> <span class="text-danger">*</span>
+                                    <input type="text" name="ProffessionalBody" class="form-control" placeholder="Name of Proffessional Body" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Membership No</label> <span class="text-danger">*</span>
+                                    <input type="text" name="MembershipNo" class="form-control" placeholder="Membership No" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Membership Type</label> <span class="text-danger">*</span>
+                                    <input type="text" name="MembershipType" class="form-control" placeholder="Membership Type" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Date Of Renewal</label> <span class="text-danger">*</span>
+                                    <input type="date" name="DateOfRenewal" id="date-to" class="form-control" placeholder="Date of Renewal" required />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary" id="btn-academic" onclick="return validateInputs()"><i class="fa fa-pen"></i> Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Professional Body</th>
+                                        <th>Membership No</th>
+                                        <th>Membership Type</th>
+                                        <th>Date of Renewal</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.ProffessionalBodies)
+                                    {
+                                        <tr>
+                                            <td>@item.ProffessionalBody</td>
+                                            <td>@item.MembershipNo</td>
+                                            <td>@item.MembershipType</td>
+                                            <td>@Convert.ToDateTime(item.DateOfRenewal).ToShortDateString()</td>
+                                            <td><a href="@Url.Action("removeprofessionalbody", "jobapplication", new {id=item.SystemId})" class="text-danger"><i class="fa fa-trash-alt"></i></a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            @*<a class="btn btn-warning pull-left" href="@Url.Action("proffessionalqualifications","jobapplication")">Back</a>*@
+                            <a class="btn btn-primary pull-right" href="@Url.Action("navigatenok","jobapplication")">Next</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const dateTo = document.getElementById('date-to');
+
+    const validateInputs = function () {
+        if (dateTo.value === '') {
+            alert('Date to cannot be empty');
+            dateTo.focus();
+            return false;
+        }
+    }
+
+    flatpickr("dateTo", {
+        minDate: 'today'
+    });
+</script>

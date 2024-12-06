@@ -1,0 +1,105 @@
+﻿@model OAGJobs.Models.Applicant
+@{
+    ViewBag.Title = "Next Of Kin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light portlet-fit bordered">
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger">
+                        <button class="close" data-close="alert"></button>
+                        <span>@TempData["Error"]</span>
+                    </div>
+                }
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success">
+                        <button class="close" data-close="alert"></button>
+                        <span>@TempData["Success"]</span>
+                    </div>
+                }
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-settings font-red"></i>
+                        <span class="caption-subject font-red sbold uppercase">Step 5 : Next of Kin</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <form action="@Url.Action("submitnextofkin","jobapplication")" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Name</label> <span class="text-danger">*</span>
+                                    <input type="text" name="NokName" class="form-control" placeholder="Name" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Address</label> <span class="text-danger">*</span>
+                                    <input type="text" name="NokAddress" class="form-control" placeholder="Address" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Tel No</label> <span class="text-danger">*</span>
+                                    <input type="text" name="NokTel" class="form-control" placeholder="Telephone Number" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Relationship</label> <span class="text-danger">*</span>
+                                    @Html.DropDownListFor(m=>m.NokRelationship,new SelectList(Model.Relationships, "Code", "Description"), new {@class="form-control"})
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary" id="btn-academic"><i class="fa fa-pen"></i> Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Address</th>
+                                        <th>Tel No</th>
+                                        <th>Relationship</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.ApplicantNok)
+                                    {
+                                        <tr>
+                                            <td>@item.NokName</td>
+                                            <td>@item.NokAddress</td>
+                                            <td>@item.NokTel</td>
+                                            <td>@item.NokRelationship</td>
+                                            <td><a href="@Url.Action("removenok", "jobapplication", new {id=item.SystemId})" class="text-danger"><i class="fa fa-trash-alt"></i></a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            @*<a class="btn btn-warning pull-left" href="@Url.Action("proffessionalqualifications","jobapplication")">Back</a>*@
+                            <a class="btn btn-primary pull-right" href="@Url.Action("navigatereferees","jobapplication")">Next</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

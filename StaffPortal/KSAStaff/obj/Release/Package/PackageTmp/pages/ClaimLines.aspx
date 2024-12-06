@@ -39,12 +39,12 @@
                                                 <asp:Label ID="lblRequester" runat="server" Text="" ForeColor="Blue"></asp:Label>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <%--<div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Directorate: </label>
                                                 <asp:Label ID="lblDirectorate" runat="server" Text="" ForeColor="Blue"></asp:Label>
                                             </div>
-                                        </div>
+                                        </div>--%>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Department: </label>
