@@ -1,0 +1,111 @@
+﻿@model OAGJobs.Models.Applicant
+@{
+    ViewBag.Title = "Applicant Attachments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light portlet-fit bordered">
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger">
+                        <button class="close" data-close="alert"></button>
+                        <span>@TempData["Error"]</span>
+                    </div>
+                }
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success">
+                        <button class="close" data-close="alert"></button>
+                        <span>@TempData["Success"]</span>
+                    </div>
+                }
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-settings font-red"></i>
+                        <span class="caption-subject font-red sbold uppercase">Step 7 : Attachments</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <form action="@Url.Action("submitattachment","jobapplication")" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Choose a file to upload (Less than 5 MB)</p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Attachment</label> <span class="text-danger">*</span>
+                                    <input type="file" name="AttachmentFile" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-upload"></i>&nbsp;Upload</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#No</th>
+                                        <th>Document No</th>
+                                        <th>Description</th>
+                                        <th>Created At</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var attachment in @Model.ApplicantAttachments)
+                                    {
+                                        <tr>
+                                            <td>@attachment.Counter</td>
+                                            <td>@attachment.DocumentNo</td>
+                                            <td>@attachment.Description</td>
+                                            <td>@Convert.ToDateTime(attachment.CreatedAt).ToShortDateString()</td>
+                                            <td class="text-center"><a href="@Url.Action("removeattachment","jobapplication", new { id = attachment.SystemId })" class="label label-danger"><i class="fa fa-trash-alt"></i></a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br />
+                    <form action="@Url.Action("complete","jobapplication")" method="post">
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="checkbox" id="checkbox" />
+                                    I certify that the particulars given on this form are correct and understand that any incorrect /misleading information may lead
+                                    to disqualification and/or legal action. I hereby authorize the Office of the Auditor-General to authenticate my academic and
+                                    professional certificates and to undertake background check of my employment history
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                @*<a class="btn btn-warning pull-left" href="@Url.Action("referees","jobapplication")">Back</a>*@
+                                <button type="submit" class="btn btn-success pull-right" onclick="return consent()">Complete</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    const checkbox = document.getElementById('checkbox');
+
+    const consent = function () {
+        if (checkbox.Checked === false) {
+            alert('Please consent to the Office of the Auditor General policies before you submit');
+            return false;
+        }
+    }
+</script>

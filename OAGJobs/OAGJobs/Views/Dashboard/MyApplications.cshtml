@@ -1,0 +1,95 @@
+﻿@model OAGJobs.Models.Job
+@{
+    ViewBag.Title = "My Applications";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    <!-- BEGIN PAGE HEADER-->
+    <!-- BEGIN PAGE BAR -->
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="">Home</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <a href="#">OAG Online Jobs</a>
+                <i class="fa fa-circle"></i>
+            </li>
+        </ul>
+    </div>
+    <!-- END PAGE BAR -->
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            <button class="close" data-close="alert"></button>
+            <span>@TempData["Error"]</span>
+        </div>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            <button class="close" data-close="alert"></button>
+            <span>@TempData["Success"]</span>
+        </div>
+    }
+    <!-- BEGIN PAGE TITLE-->
+    <h1 class="page-title">
+        OAG Online Jobs Board
+    </h1>
+    <!-- END PAGE TITLE-->
+    <!-- END PAGE HEADER-->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light portlet-fit bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-settings font-red"></i>
+                        <span class="caption-subject font-red sbold uppercase">My Applications</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="table-toolbar">
+                    </div>
+                    <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+                        <thead>
+                            <tr>
+                                <th> Ref No. </th>
+                                <th> Application No </th>
+                                <th> Job Id </th>
+                                <th> Job Title </th>
+                                <th> Date Applied </th>
+                                <th> Status </th>
+                                <th> Action </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.MyApplications)
+                            {
+                                <tr>
+                                    <td>@item.RefNo</td>
+                                    <td>@item.ApplicationNo</td>
+                                    <td>@item.JobId</td>
+                                    <td>@item.JobTitle</td>
+                                    <td>@Convert.ToDateTime(item.Date).ToShortDateString()</td>
+                                    @if (item.Status == "No")
+                                    {
+                                        <td>Not Submitted</td>
+                                    }
+                                    else
+                                    {
+                                        <td>Submitted</td>
+                                    }
+                                    <td><a href="@Url.Action("generalinformation", "jobapplication", new {jobId=item.JobId,refNo=item.RefNo})" class="text-info"><i class="fa fa-pencil-square"></i> Edit</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+
+<form class="login-form" autocomplete="off" action="@Url.Action("login", "login")" method="post">
+    <p>Login To Start Your Session.</p>
+    <div class="alert alert-danger display-hide">
+        <button class="close" data-close="alert"></button>
+        <span> Fill all the required fields </span>
+    </div>
+    <div class="form-group">
+        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+        <label class="control-label visible-ie8 visible-ie9">Id Number</label>
+        <div class="input-icon">
+            <i class="icon-user"></i>
+            <input class="form-control placeholder-no-fix" type="number" autocomplete="off" placeholder="Id Number" name="IdNumber" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label visible-ie8 visible-ie9">Password</label>
+        <div class="input-icon">
+            <i class="icon-lock"></i>
+            <input class="form-control placeholder-no-fix" id="password" type="password" autocomplete="off" placeholder="Password" name="Password" />
+        </div>
+    </div>
+    <label class="mt-checkbox mt-checkbox-outline">
+        <input type="checkbox" onclick="showPassword()" /> Show Password
+        <span></span>
+    </label>
+    <div class="form-actions">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="@Url.Action("forgotpassword", "login")" class="btn green pull-left"> <i class="icon-question"> Forgot Password</i></a>
+            </div>
+            <div class="col-md-6">
+                <button type="submit" class="btn green pull-right"> <i class="icon-login"> Login</i></button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6">
+                <p>
+                    <a style="color:#fff" href="@Url.Action("createaccount", "login")" class="pull-right"> Create Account? </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+    function showPassword() {
+        var y = document.getElementById("password");
+        if (y.type === "password") {
+            y.type = "text";
+        } else {
+            y.type = "password";
+        }
+    }
+</script>
