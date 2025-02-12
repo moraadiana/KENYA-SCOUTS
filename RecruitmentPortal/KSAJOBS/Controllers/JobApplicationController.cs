@@ -189,8 +189,8 @@ namespace KSAJOBS.Controllers
         {
             Referee referee = new Referee();
             string applicationNo = Session["ApplicationNo"].ToString();
-            //var applicantReferees = Services.GetApplicantReferee(applicationNo);
-            //referee.ApplicantReferees = applicantReferees;
+            var applicantReferees = Services.GetApplicantReferee(applicationNo);
+            referee.ApplicantReferees = applicantReferees;
             return View(referee);
         }
 
@@ -441,7 +441,7 @@ namespace KSAJOBS.Controllers
                 string subject = "KSA Job Application Alert";
                 string body = $"Hello {webportals.RecruitmentUserNames(recipient)}" +
                     $"<br/><br/>" +
-                    $"You have successfully initiated a job application for <b>{jobTitle}</b> at the Office of the Auditor General." +
+                    $"You have successfully initiated a job application for <b>{jobTitle}</b> at the Kenya Scouts." +
                     $"<br/>" +
                     $"Your application reference number is: <b>{applicationNo}</b>";
                 Components.SendEmailAlerts(recipient, subject, body);
