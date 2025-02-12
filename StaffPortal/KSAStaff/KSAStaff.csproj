@@ -6396,6 +6396,7 @@
     <Content Include="pages\LeaveListing.aspx" />
     <Content Include="pages\LeaveStatement.aspx" />
     <Content Include="pages\MemoReport.aspx" />
+    <Content Include="pages\MyProfile.aspx" />
     <Content Include="pages\Payslip.aspx" />
     <Content Include="pages\PettyCashAccountingLines.aspx" />
     <Content Include="pages\PettyCashLines.aspx" />
@@ -7292,6 +7293,13 @@
     </Compile>
     <Compile Include="pages\MemoReport.aspx.designer.cs">
       <DependentUpon>MemoReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\MyProfile.aspx.cs">
+      <DependentUpon>MyProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\MyProfile.aspx.designer.cs">
+      <DependentUpon>MyProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\Payslip.aspx.cs">
       <DependentUpon>Payslip.aspx</DependentUpon>
