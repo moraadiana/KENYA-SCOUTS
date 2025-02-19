@@ -19,6 +19,7 @@ namespace KSAStaff.pages
         SqlDataAdapter adapter;
         Staffportal webportals = Components.ObjNav;
         string[] strLimiters = new string[] { "::" };
+        string[] strLimiters2 = new string[] { "[]" };
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -31,6 +32,7 @@ namespace KSAStaff.pages
 
                 LoadStaffDetails();
                 LoadResponsibilityCenter();
+               
 
                 string query = Request.QueryString["query"];
                 string approvalStatus = Request.QueryString["status"].Replace("%", " ");
@@ -73,7 +75,7 @@ namespace KSAStaff.pages
                 }
             }
         }
-
+      
         private void LoadStaffDetails()
         {
             try
@@ -164,6 +166,7 @@ namespace KSAStaff.pages
                 string username = Session["username"].ToString();
                 string department = lblDepartment.Text;
                // string directorate = lblDirectorate.Text;
+               
                 string responsibilityCenter = lblResCenter.Text;
                 string purpose = txtPurpose.Text;
 

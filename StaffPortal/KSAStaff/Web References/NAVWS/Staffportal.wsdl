@@ -2,6 +2,20 @@
 <definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/Staffportal" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportal" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="OnsendLeaveRequisitionForApproval">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="leaveNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="OnsendLeaveRequisitionForApproval_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="RegFileUploadAtt1">
         <complexType>
           <sequence>
@@ -517,6 +531,18 @@
         </complexType>
       </element>
       <element name="GetAttachmentDetails_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCustomers">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetCustomers_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1321,22 +1347,14 @@
           </sequence>
         </complexType>
       </element>
-      <element name="OnsendLeaveRequisitionForApproval">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="leaveNo" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="OnsendLeaveRequisitionForApproval_Result">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
-          </sequence>
-        </complexType>
-      </element>
     </schema>
   </types>
+  <message name="OnsendLeaveRequisitionForApproval">
+    <part name="parameters" element="tns:OnsendLeaveRequisitionForApproval" />
+  </message>
+  <message name="OnsendLeaveRequisitionForApproval_Result">
+    <part name="parameters" element="tns:OnsendLeaveRequisitionForApproval_Result" />
+  </message>
   <message name="RegFileUploadAtt1">
     <part name="parameters" element="tns:RegFileUploadAtt1" />
   </message>
@@ -1540,6 +1558,12 @@
   </message>
   <message name="GetAttachmentDetails_Result">
     <part name="parameters" element="tns:GetAttachmentDetails_Result" />
+  </message>
+  <message name="GetCustomers">
+    <part name="parameters" element="tns:GetCustomers" />
+  </message>
+  <message name="GetCustomers_Result">
+    <part name="parameters" element="tns:GetCustomers_Result" />
   </message>
   <message name="GetDefaultDays">
     <part name="parameters" element="tns:GetDefaultDays" />
@@ -1871,13 +1895,11 @@
   <message name="OnSendStoreRequisitionForApproval_Result">
     <part name="parameters" element="tns:OnSendStoreRequisitionForApproval_Result" />
   </message>
-  <message name="OnsendLeaveRequisitionForApproval">
-    <part name="parameters" element="tns:OnsendLeaveRequisitionForApproval" />
-  </message>
-  <message name="OnsendLeaveRequisitionForApproval_Result">
-    <part name="parameters" element="tns:OnsendLeaveRequisitionForApproval_Result" />
-  </message>
   <portType name="Staffportal_Port">
+    <operation name="OnsendLeaveRequisitionForApproval">
+      <input name="OnsendLeaveRequisitionForApproval" message="tns:OnsendLeaveRequisitionForApproval" />
+      <output name="OnsendLeaveRequisitionForApproval_Result" message="tns:OnsendLeaveRequisitionForApproval_Result" />
+    </operation>
     <operation name="RegFileUploadAtt1">
       <input name="RegFileUploadAtt1" message="tns:RegFileUploadAtt1" />
       <output name="RegFileUploadAtt1_Result" message="tns:RegFileUploadAtt1_Result" />
@@ -2013,6 +2035,10 @@
     <operation name="GetAttachmentDetails">
       <input name="GetAttachmentDetails" message="tns:GetAttachmentDetails" />
       <output name="GetAttachmentDetails_Result" message="tns:GetAttachmentDetails_Result" />
+    </operation>
+    <operation name="GetCustomers">
+      <input name="GetCustomers" message="tns:GetCustomers" />
+      <output name="GetCustomers_Result" message="tns:GetCustomers_Result" />
     </operation>
     <operation name="GetDefaultDays">
       <input name="GetDefaultDays" message="tns:GetDefaultDays" />
@@ -2234,13 +2260,18 @@
       <input name="OnSendStoreRequisitionForApproval" message="tns:OnSendStoreRequisitionForApproval" />
       <output name="OnSendStoreRequisitionForApproval_Result" message="tns:OnSendStoreRequisitionForApproval_Result" />
     </operation>
-    <operation name="OnsendLeaveRequisitionForApproval">
-      <input name="OnsendLeaveRequisitionForApproval" message="tns:OnsendLeaveRequisitionForApproval" />
-      <output name="OnsendLeaveRequisitionForApproval_Result" message="tns:OnsendLeaveRequisitionForApproval_Result" />
-    </operation>
   </portType>
   <binding name="Staffportal_Binding" type="tns:Staffportal_Port">
     <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="OnsendLeaveRequisitionForApproval">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:OnsendLeaveRequisitionForApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="OnsendLeaveRequisitionForApproval">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="OnsendLeaveRequisitionForApproval_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="RegFileUploadAtt1">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:RegFileUploadAtt1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="RegFileUploadAtt1">
@@ -2544,6 +2575,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetAttachmentDetails_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetCustomers">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:GetCustomers" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetCustomers">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetCustomers_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -3039,15 +3079,6 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="OnSendStoreRequisitionForApproval_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
-    <operation name="OnsendLeaveRequisitionForApproval">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportal:OnsendLeaveRequisitionForApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="OnsendLeaveRequisitionForApproval">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="OnsendLeaveRequisitionForApproval_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
