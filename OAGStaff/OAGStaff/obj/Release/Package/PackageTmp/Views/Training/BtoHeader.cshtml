@@ -1,0 +1,108 @@
+﻿@model OAGStaff.Models.Training
+@{
+    ViewBag.Title = "Bto Header";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-lg-12 mb-4 order-0">
+            <div class="card">
+                <div class="card-body">
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            @TempData["Error"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            @TempData["Success"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="text-uppercase">Training Back to Office</h5>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item active">Dashboard</li>
+                                <li class="breadcrumb-item">
+                                    <a href="@Url.Action("index","dashboard")">Training Back to Office</a>
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <form action="@Url.Action("btoheader","training")" method="post" enctype="multipart/form-data">
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <label>Staff No</label><br />
+                                <label class="text-primary">@Model.StaffNo</label>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Staff Name</label><br />
+                                <label class="text-primary">@Model.StaffName</label>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Directorate</label><br />
+                                <label class="text-primary">@Model.Directorate</label>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Department</label><br />
+                                <label class="text-primary">@Model.Department</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Training No</label>
+                                    @Html.DropDownListFor(m => m.ApplicationNo, new SelectList(Model.Trainings, "DocumentNo", "DocumentNo"), new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <div class="form-group">
+                                    <label>Relevant Points</label>
+                                    <textarea class="form-control" name="RelevantPoints" required placeholder="Type relevant points here.."></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <div class="form-group">
+                                    <label>Recommendations</label>
+                                    <textarea class="form-control" name="Recommendations" required placeholder="Type recommendations here.."></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <div class="form-group">
+                                    <label>Comments</label>
+                                    <textarea class="form-control" name="Comments" required placeholder="Type comments here.."></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <div class="form-group">
+                                    <label>Course Content</label>
+                                    <textarea class="form-control" name="CourseContent" required placeholder="Type course content here.."></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mt-3">
+                                <div class="form-group">
+                                    <label>Upload files</label>
+                                    <input type="file" name="AttachmentFile" class="form-control" required placeholder="Upload a file" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="@Url.Action("btolisting","training")" class="btn btn-warning">Back</a>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+﻿@model OAGStaff.Models.HumanResource
+@{
+    ViewBag.Title = "Disciplinary Header";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-lg-12 mb-4 order-0">
+            <div class="card">
+                <div class="card-body">
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            @TempData["Error"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            @TempData["Success"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="text-uppercase">Disciplinary Header</h5>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item active">Dashboard</li>
+                                <li class="breadcrumb-item">
+                                    <a href="@Url.Action("index","dashboard")">Disciplinary Header</a>
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <form action="@Url.Action("disciplinaryheader","humanresource")" method="post">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-label">Staff No</label><br />
+                                <label class="text-success">@Model.StaffNo</label>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Staff Name</label><br />
+                                <label class="text-success">@Model.StaffName</label>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Incident Type</label>
+                                @Html.DropDownListFor(m => m.IncidentType, new SelectList(Model.IncidentTypes, "Code", "Description"), new { @class = "form-control", required = "required" })
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Incident Date</label>
+                                <input type="date" id="incident-date" name="IncidentDate" class="form-control" required placeholder="Incident Date" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Accussed Employee</label>
+                                @Html.DropDownListFor(m => m.AccusedEmployee, new SelectList(Model.Relievers, "Code", "Description"), new { @class = "form-control", required = "required" })
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <label class="form-label">Description</label>
+                                <textarea name="Description" class="form-control" required placeholder="Type your description here..."></textarea>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-success float-end">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script type="text/javascript">
+    const incidentDate = document.getElementById('incident-date');
+    flatpickr(incidentDate, {
+        //minDate: "today",
+    });
+</script>

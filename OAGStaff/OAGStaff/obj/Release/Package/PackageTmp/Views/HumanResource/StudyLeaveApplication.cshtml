@@ -1,0 +1,243 @@
+﻿@model OAGStaff.Models.HumanResource
+@{
+    ViewBag.Title = "Study Leave Application";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-lg-12 mb-4 order-0">
+            <div class="card">
+                <div class="card-body">
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            @TempData["Error"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            @TempData["Success"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="text-uppercase">Talent Leave Application</h5>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item active">Dashboard</li>
+                                <li class="breadcrumb-item">
+                                    <a href="@Url.Action("index","dashboard")">Talent Leave Application</a>
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <form action="@Url.Action("studyleaveapplication","humanresource")" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="mb-1">Leave Type</label>
+                                    @Html.DropDownListFor(m => m.LeaveType, new SelectList(Model.LeaveTypes, "Code", "Description"), new { @class = "form-control", id = "leave-type" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="mb-1">Responsibility Center</label>
+                                    @Html.DropDownListFor(m => m.ResponsibilityCenter, new SelectList(Model.ResponsibilityCenters, "Code", "Description"), new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="mb-1">Balance</label>
+                                    <input type="text" name="LeaveBalance" id="leave-balance" class="form-control" required readonly placeholder="Leave Balance" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="mb-1">Applied Days</label>
+                                    <input type="number" id="applied-days" name="AppliedDays" class="form-control" required placeholder="Applied Days" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="mb-1">Course</label>
+                                    <input type="text" name="Course" class="form-control" required placeholder="Course of Study" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="mb-1">University of Study</label>
+                                    <input type="text" name="UniversityOfStudy" class="form-control" required placeholder="University of Study" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="mb-1">Country of Study</label>
+                                    <input type="text" name="CountryOfStudy" class="form-control" required placeholder="Country of Study" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="mb-1">Scholarship</label>
+                                    <select class="form-control" name="Scholarship" required>
+                                        <option value="0">25%</option>
+                                        <option value="1">50%</option>
+                                        <option value="2">75%</option>
+                                        <option value="3">100%</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="mb-1">Start Date</label>
+                                    <input type="date" id="start-date" name="StartDate" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="mb-1">End Date</label>
+                                    <input type="text" name="EndDate" id="end-date" class="form-control" required readonly />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="mb-1">Return Date</label>
+                                    <input type="text" name="ReturnDate" id="return-date" class="form-control" required readonly />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="mb-1">Department</label>
+                                    <input type="text" name="Department" id="department" value="@Model.Department" class="form-control" required readonly />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="mb-1">Directorate</label>
+                                    <input type="text" name="Directorate" id="directorate" value="@Model.Directorate" class="form-control" required readonly />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="mb-1">Sub-Directorate</label>
+                                    <input type="text" name="SubDirectorate" id="sub-directorate" value="@Model.SubDirectorate" class="form-control" required readonly />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="mb-1">Unit Code</label>
+                                    <input type="text" name="UnitCode" id="unit-code" value="@Model.UnitCode" class="form-control" required readonly />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="mb-1">Purpose</label>
+                                    <textarea id="purpose" name="Purpose" class="form-control" required placeholder="Please type your purpose here..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label>Attachments</label>
+                                    <input type="file" name="AttachmentFile" placeholder="Upload a document" class="form-control" required />
+                                </div>
+                            </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="@Url.Action("studyleavelisting","humanresource")" class="btn btn-warning">Back</a>
+                                    <button type="submit" class="btn btn-success" onclick="return validateLeave()">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    const leaveTypes = document.getElementById('leave-type');
+    const leaveBalance = document.querySelector('#leave-balance');
+    const startDate = document.getElementById('start-date');
+    const appliedDays = document.getElementById('applied-days');
+    const endDate = document.getElementById('end-date');
+    const returnDate = document.getElementById('return-date');
+    const purpose = document.getElementById('purpose');
+
+    const addZero = function (num) {
+        return num < 10 ? `0${num}` : num;
+    }
+
+    const formatDates = function (dateObj) {
+        const today = new Date(dateObj);
+        const year = today.getFullYear();
+        const month = today.getMonth() + 1;
+        const date = today.getDate();
+
+        return `${addZero(month)}/${addZero(date)}/${year}`;
+    }
+
+    const getLeaveBalance = async function () {
+        const leaveType = leaveTypes.value;
+        const response = await fetch(`/api/leavebalance?leaveType=${leaveType}`);
+        const result = await response.json();
+        leaveBalance.value = result;
+    }
+    getLeaveBalance();
+    leaveTypes.addEventListener('change', getLeaveBalance);
+
+    const validStartDate = async function () {
+        const startingDate = startDate.value;
+        const leaveType = leaveTypes.value;
+        const response = await fetch(`/api/validatestartdate?startDate=${startingDate}`);
+        const result = await response.json();
+        if (result !== '') {
+            alert(result)
+            startDate.value = '';
+            return;
+        } else {
+            const daysApplied = appliedDays.value;
+            if (daysApplied === '') {
+                alert('Applied days cannot be empty!');
+                startDate.value = '';
+                appliedDays.focus();
+                return;
+            }
+            const dateResponse = await fetch(`/api/calculateenddate?startDate=${startingDate}&appliedDays=${daysApplied}&leaveType=${leaveType}`);
+            const dateResult = await dateResponse.json();
+            endDate.value = formatDates(dateResult.EndDate);
+            returnDate.value = formatDates(dateResult.ReturnDate);
+        }
+    }
+
+    startDate.addEventListener('change', validStartDate);
+
+    function validateLeave() {
+        const days = appliedDays.value;
+        const startDateValue = startDate.value;       
+
+        if (+days <= 0) {
+            alert('Applied days cannot be zero or a negative');
+            appliedDays.value = '';
+            appliedDays.focus();
+            return false;
+        }
+
+        if (startDateValue == '') {
+            alert('Start daye cannot be null or empty');
+            startDate.focus();
+            return false;
+        }
+
+        if (purpose.value.length > 200) {
+            alert('Purpose cannot be more than 200 characters.');
+            return false
+        }
+    }
+</script>

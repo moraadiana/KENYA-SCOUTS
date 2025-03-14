@@ -1,0 +1,74 @@
+﻿@model OAGStaff.Models.Approval
+@{
+    ViewBag.Title = "Employee Requisitions Approval Requests";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-lg-12 mb-4 order-0">
+            <div class="card">
+                <div class="card-body">
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            @TempData["Error"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            @TempData["Success"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="text-uppercase">Employee Requisitions Approvals</h5>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item active">Dashboard</li>
+                                <li class="breadcrumb-item">
+                                    <a href="@Url.Action("index","dashboard")">Employee Requisitions Approvals</a>
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="table-responsive text-wrap">
+                        <table id="example" class="table table-striped mt-3 small">
+                            <thead>
+                                <tr>
+                                    <th>Document Type</th>
+                                    <th>Document No</th>
+                                    <th>Sender Id</th>
+                                    <th>Record Id</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.LeaveApprovals)
+                                {
+                                    <tr>
+                                        <td>@item.DocumentType</td>
+                                        <td>@item.DocumentNo</td>
+                                        <td>@item.SenderId</td>
+                                        <td>@item.RecordId</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a class="text-success dropdown-toggle cursor-pointer" data-bs-toggle="dropdown" aria-expanded="false">Details</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item text-success" href="@Url.Action("employeerequisitiondetails","approvals", new { documentNo = item.DocumentNo, workflowId = item.WorkflowInstanceId })"><i class="bx bx-detail"></i> View</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
