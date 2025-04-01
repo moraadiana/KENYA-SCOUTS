@@ -62,6 +62,7 @@
                                                  <asp:Label ID="lblResCenter" runat="server" Text="" ForeColor="Blue" Font-Bold="true"></asp:Label>
                                              </div>
                                         </div>
+                                        
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -70,6 +71,7 @@
                                                 <asp:TextBox ID="txtPurpose" CssClass="form-control" runat="server" TextMode="MultiLine"></asp:TextBox>
                                             </div>
                                         </div>
+
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
