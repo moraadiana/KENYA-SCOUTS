@@ -1,9 +1,0 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OAGStaff.Properties" GeneratedClassName="Settings">
-  <Profiles />
-  <Settings>
-    <Setting Name="OAGStaff_NAVWS_Staffportal" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://108.181.152.166:1047/OAG/WS/OAG%20TEST/Codeunit/Staffportal</Value>
-    </Setting>
-  </Settings>
-</SettingsFile>
